@@ -1,24 +1,18 @@
-# 🎯 Chef Classification with DistilBERT
-## NLP Group 2 - Final Presentation
+# Chef Classification with DistilBERT
+## NLP Group 2
 
 ---
 
-## 📋 Project Overview
+## The Challenge
 
-**Challenge**: Predict which chef created a recipe from 6 possible chefs
-
-**Dataset**:
-- 2,999 recipes with labels (train)
-- 6 chef classes with 2.17x imbalance
-- Features: name, tags, steps, description, ingredients
-
-**Baselines to Beat**:
-- Weak (TF-IDF on description): **30.0%**
-- Strong (TF-IDF on all fields): **43.0%**
+- **Task**: Predict which chef (out of 6) created a recipe
+- **Data**: 2,999 training recipes, 823 test recipes
+- **Baselines**: TF-IDF 30% (weak), 43% (strong)
+- **Goal**: Beat 43% with deep learning
 
 ---
 
-## 🔍 Dataset Analysis
+## Dataset
 
 **Class Distribution**:
 - Most common: Chef 4470 (806 recipes)
