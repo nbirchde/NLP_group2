@@ -70,3 +70,14 @@
   - ✅ .gitignore working correctly: heavyweight checkpoints excluded, metrics preserved
 - Cleaned quick-test artifacts (checkpoint-150, final_model) to prepare for 5-epoch production run
 - **Ready for full training**: artifacts/ cleared, baseline documented, all systems validated
+
+## 2025-10-04 (Final Training - Chill Mode)
+- Created `configs/chill_mode.yaml` (batch_size=8) for GPU-friendly training
+- Created `train_chill.sh` launcher script with nice priority
+- Created `CHILL_MODE.md` guide for heat-conscious training
+- **5-epoch training completed successfully** (~20-25 minutes):
+  - Final train loss: 0.4042
+  - Final validation accuracy: **90.17%** (exceeds strong baseline 43% by +47.17%)
+  - Final validation F1-macro: **0.8967** (excellent class balance despite 2.17x imbalance)
+- Model and metrics saved to artifacts/final_model/
+- **Next steps**: Generate test predictions, finalize paper with results

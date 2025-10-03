@@ -127,13 +127,17 @@ All hyperparameters are defined in `configs/base.yaml`:
 
 ---
 
-## 📈 Baseline Metrics (1 Epoch Quick Test)
+## 📈 Final Results (5 Epochs - Chill Mode)
 
-- **Train loss:** 1.3387
-- **Validation accuracy:** 0.8100
-- **Validation F1-macro:** 0.7913
+- **Train loss:** 0.4042
+- **Validation accuracy:** 0.9017 (90.17%)
+- **Validation F1-macro:** 0.8967
 
-Artifacts saved in `artifacts/` for reproducibility.
+**Performance vs Baselines:**
+- Weak baseline (TF-IDF on description): 30.0% → **+60.17%**
+- Strong baseline (TF-IDF on all fields): 43.0% → **+47.17%**
+
+Artifacts saved in `artifacts/final_model/` for reproducibility.
 
 ---
 
