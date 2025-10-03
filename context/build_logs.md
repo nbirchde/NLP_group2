@@ -81,3 +81,9 @@
   - Final validation F1-macro: **0.8967** (excellent class balance despite 2.17x imbalance)
 - Model and metrics saved to artifacts/final_model/
 - **Next steps**: Generate test predictions, finalize paper with results
+
+## 2025-10-04 (Codex)
+- Consolidated documentation footprint to keep only high-signal references.
+- Archived redundant guides (`CHILL_MODE.md`, `DOCUMENTATION_INDEX.md`, `RESULTS_GUIDE.md`, `SUBMISSION_CHECKLIST.md`, and context handoff files) after migrating key details into the main README and experiment README.
+- Added concise thermal-training instructions directly in `README.md` alongside links to surviving resources.
+- Verified `experiments/distilbert_text_only/README.md` reflects completed prediction script and updated status checklist.

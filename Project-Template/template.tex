@@ -3,6 +3,7 @@
 \usepackage{authblk}
 \usepackage{bera}
 \usepackage[utf8]{inputenc}
+\usepackage{graphicx}
 
 % TITLE
 \title{Chef Classification from Recipe Text using DistilBERT Fine-Tuning}
@@ -72,12 +73,9 @@ DistilBERT (5 epochs, final) & \textbf{90.2\%} & \textbf{0.897} \\
 
 Table~\ref{tab:results} shows our model's performance compared to baseline methods. After 5 epochs of training, our DistilBERT model achieved 90.2\% validation accuracy and 0.897 macro-F1 score, dramatically outperforming both the weak baseline (+60.2 percentage points) and strong baseline (+47.2 pp).
 
-Initial validation after 1 epoch showed promising results: 81.0\% accuracy and 0.791 macro-F1, already exceeding the weak baseline (30.0\%) and approaching the strong baseline (43.0\%). Continued training improved performance by an additional 9.2 pp, demonstrating effective learning without overfitting (final train loss: 0.404). The high macro-F1 score (0.897) indicates balanced performance across all six chef classes despite the 2.17:1 class imbalance.
+Initial validation after 1 epoch showed promising results: 81.0\% accuracy and 0.791 macro-F1, already exceeding both baselines by substantial margins. Continued training improved performance by an additional 9.2 percentage points, demonstrating effective learning without overfitting (final train loss: 0.404). The high macro-F1 score (0.897, nearly equal to accuracy) indicates balanced performance across all six chef classes despite the 2.17:1 class imbalance.
 
-% TODO: Add performance analysis after full training
-% - Per-class breakdown
-% - Confusion patterns
-% - Learning curves if space permits
+Figure~\ref{fig:baseline} in the appendix visualizes the stark performance gap between our transformer-based approach and traditional TF-IDF baselines, highlighting the value of contextualized representations for capturing chef-specific patterns.
 
 \section{Discussion}
 
@@ -115,7 +113,19 @@ Bibliography does not count for the two pages limit.
 
 \section*{Appendix A: Extra Figures and Tables}
 
-Maximum one page: just extra figures and tables. We should be able to understand the paper without these figures and tables.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\columnwidth]{../results/figures/baseline_comparison.png}
+\caption{Baseline comparison showing DistilBERT's 90.2\% accuracy substantially outperforms both TF-IDF baselines (30.0\% weak, 43.0\% strong).}
+\label{fig:baseline}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\columnwidth]{../results/figures/training_curves.png}
+\caption{Training curves showing steady improvement across 5 epochs. Loss decreases consistently while accuracy and macro-F1 increase, indicating effective learning without overfitting.}
+\label{fig:curves}
+\end{figure}
 
 \section{Evaluation and tips (remove this section before submission)}
 

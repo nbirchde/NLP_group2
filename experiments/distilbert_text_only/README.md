@@ -181,4 +181,4 @@ pip install datasets scikit-learn
 - [x] Training script with CLI interface
 - [x] Dry-run smoke test mode
 - [x] Evaluation with accuracy + macro-F1
-- [ ] Prediction export for test set (future work)
+- [x] Prediction export script (`predict.py`)

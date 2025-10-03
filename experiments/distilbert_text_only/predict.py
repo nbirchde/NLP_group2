@@ -90,8 +90,8 @@ def prepare_test_data(test_path: Path, config: TrainingConfig) -> pd.DataFrame:
     """Load and prepare test data with text concatenation."""
     print(f"\nLoading test data from: {test_path}")
     
-    # Load raw test data
-    test_data = load_recipes_csv(test_path)
+    # Load raw test data (without requiring chef_id)
+    test_data = load_recipes_csv(test_path, require_labels=False)
     
     # Apply same text concatenation as training
     test_data.frame["text"] = test_data.frame.apply(

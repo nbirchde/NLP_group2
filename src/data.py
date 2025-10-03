@@ -57,21 +57,29 @@ def _maybe_parse_lists(frame: pd.DataFrame) -> pd.DataFrame:
     return frame
 
 
-def _normalize_columns(frame: pd.DataFrame) -> pd.DataFrame:
+def _normalize_columns(frame: pd.DataFrame, require_labels: bool = True) -> pd.DataFrame:
     columns = list(frame.columns)
     if "data" in columns and "date" not in columns:
         frame = frame.rename(columns={"data": "date"})
-    missing = [col for col in EXPECTED_COLUMNS if col not in frame.columns]
+    
+    # Check for missing columns (chef_id is optional for test data)
+    required_cols = EXPECTED_COLUMNS if require_labels else [c for c in EXPECTED_COLUMNS if c != "chef_id"]
+    missing = [col for col in required_cols if col not in frame.columns]
     if missing:
         raise ValueError(f"Missing columns after normalization: {missing}")
     return frame
 
 
-def load_recipes_csv(path: str | Path) -> RecipeData:
-    """Load the raw recipes CSV, normalize schema, and parse list-like columns."""
+def load_recipes_csv(path: str | Path, require_labels: bool = True) -> RecipeData:
+    """Load the raw recipes CSV, normalize schema, and parse list-like columns.
+    
+    Args:
+        path: Path to CSV file
+        require_labels: If False, chef_id column is optional (for test data)
+    """
     csv_path = Path(path)
     frame = pd.read_csv(csv_path, sep=";", engine="python")
-    frame = _normalize_columns(frame)
+    frame = _normalize_columns(frame, require_labels=require_labels)
     frame = _maybe_parse_lists(frame)
     return RecipeData(frame=frame.copy())
 
