@@ -1,0 +1,3 @@
+Training Loss: 1.3387
+Validation Accuracy: 0.8100
+Validation F1-Macro: 0.7913

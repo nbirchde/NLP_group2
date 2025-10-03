@@ -100,10 +100,20 @@ All hyperparameters are defined in `configs/base.yaml`:
 ### Training Strategy
 
 - **Optimizer**: AdamW with weight_decay=0.01
-- **Scheduler**: Linear warmup (10% of steps) + linear decay
+- **Scheduler**: Linear warmup (6% of steps) + linear decay
 - **Early Stopping**: Patience=2 epochs on `f1_macro`
 - **Checkpointing**: Save best model based on validation F1-macro
 - **Device**: Automatic MPS (Mac GPU) or CPU detection
+
+---
+
+## 📈 Baseline Metrics (1 Epoch Quick Test)
+
+- **Train loss:** 1.3387
+- **Validation accuracy:** 0.8100
+- **Validation F1-macro:** 0.7913
+
+Artifacts saved in `artifacts/` for reproducibility.
 
 ---
 

@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Model artifacts (large files)
+experiments/*/artifacts/checkpoint-*/
+experiments/*/artifacts/final_model/
+experiments/*/artifacts/logs/
+*.safetensors
+*.bin
+*.pt
+*.pth
+model.safetensors
+pytorch_model.bin
+
+# But keep metrics and configs
+!experiments/*/artifacts/final_metrics.txt
+!experiments/*/artifacts/*.txt
+!experiments/*/artifacts/*.json
+
+# Dataset analysis outputs (keep markdown, ignore large data files)
+decisions/dataset_analysis/*.png
+decisions/dataset_analysis/*.json
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
