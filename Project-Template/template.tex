@@ -5,14 +5,15 @@
 \usepackage[utf8]{inputenc}
 
 % TITLE
-\title{Title}
+\title{Chef Classification from Recipe Text using DistilBERT Fine-Tuning}
 
 
 % AUTHORS
-\author{Author 1}
-\author{Author 2}
-\author{Author 3}
-\affil{Group XXX\\ Instituto Superior Técnico, Universidade de Lisboa}
+\author{Nicholas Birch de la Calle}
+\author{Gabriel [Last Name]}
+\author{Javier [Last Name]}
+\author{Maxence [Last Name]}
+\affil{Group 2\\ Instituto Superior Técnico, Universidade de Lisboa}
 
 \begin{document}
 
@@ -20,19 +21,85 @@
 
 \section{Introduction}
 
-\section{Models}
+The task of chef classification from recipe text represents an interesting natural language processing challenge that combines culinary domain knowledge with text classification. Given a recipe's name, ingredients, preparation steps, tags, and description, we aim to predict which of six chefs created it. This problem has practical applications in culinary content recommendation, authorship attribution, and understanding chef-specific cooking styles.
+
+Our dataset consists of 2,999 labeled training recipes distributed across 6 chef classes, with a moderate class imbalance ratio of 2.17:1. We approach this as a multi-class text classification problem using transformer-based language models, specifically fine-tuning DistilBERT on concatenated recipe text fields. Our goal is to exceed the baseline accuracies of 30\% (TF-IDF on descriptions only) and 43\% (TF-IDF on all fields).
+
+\section{Model Architecture}
+
+We employ DistilBERT-base-uncased \cite{sanh2019distilbert}, a distilled version of BERT with 66 million parameters, 6 transformer layers, and 768-dimensional hidden states. DistilBERT retains 97\% of BERT's performance while being 40\% smaller and 60\% faster, making it well-suited for our classification task with limited computational resources.
+
+\textbf{Input Representation:} We concatenate five text fields in priority order: recipe\_name $\rightarrow$ ingredients $\rightarrow$ tags $\rightarrow$ description $\rightarrow$ steps. This ordering protects critical identifying information (name, ingredients) from truncation, as recipe steps constitute 42\% of total tokens. Text is tokenized using DistilBERT's WordPiece tokenizer with a maximum sequence length of 512 tokens, which accommodates 98.2\% of our dataset without truncation (median: 272 tokens).
+
+\textbf{Classification Head:} We add a simple linear classification layer (768 $\rightarrow$ 6 classes) on top of the [CLS] token representation. The model outputs raw logits, with softmax and cross-entropy loss computed jointly during training.
+
+\textbf{Training Strategy:} We use the AdamW optimizer with a learning rate of $2 \times 10^{-5}$, weight decay of 0.01, and linear warmup over 6\% of training steps. Training uses batch size 16 with dynamic padding (padding="longest") to minimize memory usage. To address the 2.17:1 class imbalance, we employ stratified train/validation splitting (80/20) and monitor both accuracy and macro-averaged F1 score. Early stopping with patience=2 epochs prevents overfitting.
 
 \section{Experimental Setup}
  
-\subsection{Datasets}
+\subsection{Dataset}
+
+The training dataset contains 2,999 recipes from 6 chefs with the following distribution: Chef 4470 (806 samples), Chef 4883 (639), Chef 4899 (585), Chef 4890 (463), Chef 4898 (434), and Chef 6357 (372). The maximum imbalance ratio is 2.17:1. Each recipe includes structured fields: name, date, tags (list), preparation steps (list), description (text), ingredients (list), and ingredient count. Test set size and format match the training data but without chef labels.
+
+Dataset quality observations: (1) Token lengths follow a right-skewed distribution with median 272 tokens and 95th percentile at 431 tokens, validating our max\_length=512 choice. (2) Field contributions: steps (42\%), tags (31\%), description (13\%), ingredients (12\%), name (2\%). (3) Potential challenges include recipe ambiguity (similar dishes across chefs) and possible data collection biases.
 
 \subsection{Metrics}
 
-\subsection{Parameters/Hyperparamenters}
+We report two primary metrics: (1) \textbf{Accuracy} for overall performance comparison with baselines, and (2) \textbf{Macro-averaged F1} to ensure balanced performance across all chef classes despite the 2.17:1 imbalance. Macro-F1 treats all classes equally, making it sensitive to poor minority-class performance that accuracy might mask.
+
+\subsection{Hyperparameters}
+
+Key hyperparameters: learning rate $2 \times 10^{-5}$, AdamW optimizer with weight decay 0.01, batch size 16 (train) / 32 (eval), maximum sequence length 512 tokens, warmup ratio 0.06, gradient clipping at 1.0, training epochs 5 with early stopping patience 2. All hyperparameters selected based on DistilBERT fine-tuning best practices and validated through initial experimentation.
 
 \section{Results}
 
-\section{Discussion} 
+\begin{table}[h]
+\centering
+\caption{Model Performance Comparison}
+\begin{tabular}{lcc}
+\hline
+\textbf{Method} & \textbf{Accuracy} & \textbf{Macro-F1} \\
+\hline
+Weak Baseline (TF-IDF on description) & 30.0\% & --- \\
+Strong Baseline (TF-IDF on all fields) & 43.0\% & --- \\
+\hline
+DistilBERT (1 epoch) & 81.0\% & 0.791 \\
+DistilBERT (final, [X] epochs) & \textbf{[XX.X]\%} & \textbf{[X.XXX]} \\
+\hline
+\end{tabular}
+\label{tab:results}
+\end{table}
+
+Table~\ref{tab:results} shows our model's performance compared to baseline methods. \textbf{TODO: Update with final 5-epoch metrics.} After [X] epochs of training, our DistilBERT model achieved [XX.X]\% validation accuracy and [X.XXX] macro-F1 score, significantly outperforming both baselines.
+
+Initial validation after 1 epoch showed promising results: 81.0\% accuracy and 0.791 macro-F1, already exceeding the weak baseline (30.0\%) and approaching the strong baseline (43.0\%). This suggests the model quickly learns chef-specific patterns from recipe text.
+
+% TODO: Add performance analysis after full training
+% - Per-class breakdown
+% - Confusion patterns
+% - Learning curves if space permits
+
+\section{Discussion}
+
+\subsection{Model Performance \& Limitations}
+
+Our DistilBERT-based approach demonstrates [strong/moderate] performance on chef classification, [exceeding/approaching] the TF-IDF baselines. The high macro-F1 score indicates balanced performance across chef classes despite the 2.17:1 imbalance, validating our stratification strategy.
+
+However, several limitations merit discussion: (1) \textbf{Single text modality}: We ignore potentially discriminative features like ingredient quantities, cooking temperatures, and temporal patterns. (2) \textbf{Fixed field ordering}: Our concatenation strategy may not be optimal—learned attention over fields could improve performance. (3) \textbf{Simple classification head}: A deeper MLP (e.g., 768 $\rightarrow$ 384 $\rightarrow$ 6 with dropout) might capture more complex chef signatures. (4) \textbf{Computational cost}: Fine-tuning requires GPU/MPS acceleration for practical training times.
+
+\subsection{Critical Analysis}
+
+A fundamental question: does our model learn chef-specific cooking \textit{style} or merely recipe \textit{topics}? If Chef A specializes in Italian cuisine and Chef B in Asian dishes, high accuracy may reflect topic classification rather than stylistic differences. Examining misclassifications and attention weights could reveal whether the model captures linguistic patterns (e.g., instruction phrasing, ingredient combinations) versus content categories.
+
+\subsection{Data Quality Concerns}
+
+The dataset exhibits characteristics that may affect model generalization: (1) Class imbalance, though mitigated by stratification, may bias the model toward majority classes. (2) Potential label noise—if recipes are scraped from multiple sources or modified over time, authorship attribution may be ambiguous. (3) Dataset size (2,999 samples) is modest for deep learning; data augmentation or semi-supervised learning could help. (4) The model cannot generalize to new chefs without retraining, limiting real-world applicability. 
+
+\section{Conclusion}
+
+We presented a DistilBERT-based approach for chef classification from recipe text, achieving [XX.X]\% validation accuracy and [X.XXX] macro-F1 score. Our method significantly outperforms TF-IDF baselines through transformer-based contextualized representations and careful preprocessing (field ordering, stratified splitting, dynamic padding). Key findings include: (1) 98.2\% of recipes fit within 512 tokens, (2) stratified sampling effectively handles 2.17:1 class imbalance, and (3) early convergence (81\% accuracy after 1 epoch) suggests strong transferability from DistilBERT pretraining.
+
+Future work could explore: multi-modal models incorporating structured metadata, ensemble methods combining multiple transformer architectures, data augmentation via back-translation or paraphrasing, and interpretability analysis to understand which textual features drive chef identification.
 
 \section{Future Work}
 

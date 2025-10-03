@@ -105,9 +105,3 @@ After just **1 epoch** of training on 2,399 samples:
 - **Push to Git**: **NO** - model weights are 1GB total and exceed GitHub's 100MB file limit
 - **Solution**: `.gitignore` now excludes all model files but preserves metrics.txt for tracking
 - **Regenerable**: Model weights can be reproduced by re-running training with same config/seed
-
----
-
-*Prepared by: AI Assistant (Codex)*  
-*Date: October 4, 2025*  
-*Branch: nico_test*

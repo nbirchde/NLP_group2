@@ -55,6 +55,26 @@ python train.py --config ../../configs/base.yaml
 - `artifacts/final_metrics.txt`: Final accuracy and F1-macro scores
 - `artifacts/logs/`: Training logs for tensorboard
 
+### Generate Test Predictions
+
+After training completes, generate predictions for the test set:
+
+```bash
+cd experiments/distilbert_text_only
+python predict.py \
+  --model-path artifacts/final_model \
+  --test-path ../../data/test-no-labels.csv \
+  --output ../../results.txt
+```
+
+**Outputs**:
+- `results.txt`: One chef_id prediction per line (submission file)
+- Prediction distribution printed to console
+
+**Options**:
+- `--batch-size`: Inference batch size (default: 32, increase for faster inference)
+- `--config`: Path to config YAML (default: ../../configs/base.yaml)
+
 ---
 
 ## 📊 Configuration

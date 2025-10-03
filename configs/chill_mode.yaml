@@ -1,0 +1,26 @@
+model_name: distilbert-base-uncased
+max_length: 512
+train_batch_size: 8  # Sweet spot: 50% of original, GPU efficient but not maxed out
+eval_batch_size: 16  # Half of original 32
+learning_rate: 2.0e-5
+weight_decay: 0.01
+epochs: 5
+warmup_ratio: 0.06
+max_grad_norm: 1.0
+seed: 42
+val_ratio: 0.2
+label_column: chef_id
+text_fields:
+  - recipe_name
+  - ingredients
+  - tags
+  - description
+  - steps
+padding_strategy: longest
+truncation_strategy: longest_first
+metric_primary: accuracy
+metric_secondary: macro_f1
+patience: 2
+save_total_limit: 2
+output_dir: experiments/distilbert_text_only/artifacts
+logging_steps: 50

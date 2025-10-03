@@ -1,0 +1,8 @@
+\begin{thebibliography}{}
+
+\bibitem[Sanh et~al., 2019]{sanh2019distilbert}
+Sanh, V., Debut, L., Chaumond, J., and Wolf, T. (2019).
+\newblock Distilbert, a distilled version of bert: smaller, faster, cheaper and lighter.
+\newblock In {\em NeurIPS 2019 Workshop on Energy Efficient Machine Learning and Cognitive Computing}.
+
+\end{thebibliography}

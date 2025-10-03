@@ -60,3 +60,13 @@
   - Ignores: checkpoints, model weights (.safetensors, .bin, .pt)
   - Keeps: metrics.txt, configs, documentation
   - Prevents GitHub 100MB file limit errors
+
+## 2025-10-04
+- **End-to-end verification completed**:
+  - ✅ CLI pipeline (train.py:205-280) wiring validated: config → data → tokenization → Trainer
+  - ✅ Confirmed `eval_strategy` is correct parameter name for transformers 4.56.2 (via inspect.signature)
+  - ✅ Documentation accuracy: warmup=6%, stratified split, artifact handling all correct
+  - ✅ Baseline artifacts consistent: 81% acc / 0.79 F1 reproduced in quick_test.yaml
+  - ✅ .gitignore working correctly: heavyweight checkpoints excluded, metrics preserved
+- Cleaned quick-test artifacts (checkpoint-150, final_model) to prepare for 5-epoch production run
+- **Ready for full training**: artifacts/ cleared, baseline documented, all systems validated
