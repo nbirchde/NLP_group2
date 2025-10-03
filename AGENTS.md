@@ -30,19 +30,17 @@ chef_id | recipe_name | date | tags | steps | description | ingredients | n_ingr
 
 ---
 
-## 🎯 Current Phase: Research
+## 🎯 Current Phase: Implementation ✅
 
-Everyone is exploring different approaches. We'll synthesize findings to make informed decisions.
+**Decision**: Fine-tune **DistilBERT-base-uncased** with text-only approach.  
+**Dataset**: 2,999 samples, 6 chefs (imbalance 2.17x), median 272 tokens.  
+**Full analysis**: `decisions/dataset_analysis/` (Oct 3, 2025)
 
-### Key Questions to Answer:
-1. **Which model should we fine-tune?**
-   - BERT-based? RoBERTa? DistilBERT?
-   - Classical ML? Ensemble?
-   
-2. **How should we preprocess the data?**
-   - Which fields are most informative?
-   - How to handle multi-field text?
-   - Tokenization strategy?
+### Critical Stats:
+- **Class imbalance**: 2.17x (372–806 samples) → **stratify=True**
+- **Token lengths**: median=272, 98.2% fit in 512 → **max_length=512, padding='longest'**
+- **Field weights**: steps=42% → **truncate last**, protect name/ingredients
+- **Batch size**: **16** safe for M1/M2 (median 272 tokens)
 
 ---
 
