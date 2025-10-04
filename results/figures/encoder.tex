@@ -124,14 +124,24 @@
     \draw[arrow] (add1) -- (ff1);
     \draw[arrow] (add4) -- (cls);
     
-    % Classification head starting point (bottom-right)
-    \node[layer, text width=2.2cm] (class_start) at (5.8, -3.2) {Pre-classifier};
+    % Classification head pipeline (bottom-right, flowing upward)
+    \node[layer, text width=2.5cm] (preclassifier) at (5.8, -2.8) {Dense \vspace{-0.05cm} \linebreak {\tiny (768 → 768)}};
+    \node[layer, text width=2.5cm, above=0.85em of preclassifier] (relu) {ReLU};
+    \node[layer, text width=2.5cm, above=0.85em of relu] (dropout) {Dropout \vspace{-0.05cm} \linebreak {\tiny (0.2)}};
+    \node[layer, text width=2.5cm, above=0.85em of dropout] (classifier) {Linear \vspace{-0.05cm} \linebreak {\tiny (768 → 6)}};
+    \node[input, above=1.2em of classifier] (chefs) {6 Chefs};
     
     % Route arrow from [CLS] to classification head - single arrow with rounded corners
     % Path: right (past steps) → down → up to box
     \coordinate (corner1) at (4.2, 6);
-    \coordinate (corner2) at (4.2, -4.8);
-    \draw[arrow] (cls.east) -| (corner1) |- (corner2) -| (class_start.south);
+    \coordinate (corner2) at (4.2, -4.5);
+    \draw[arrow] (cls.east) -| (corner1) |- (corner2) -| (preclassifier.south);
+    
+    % Classification pipeline arrows
+    \draw[arrow] (preclassifier) -- (relu);
+    \draw[arrow] (relu) -- (dropout);
+    \draw[arrow] (dropout) -- (classifier);
+    \draw[arrow] (classifier) -- (chefs);
 
     % Residual connections
     \draw[arrow] (ff1.south)++(0, -0.6) -| ($(add4.west) + (-0.6,-0.5)$) |- (add4.west);
