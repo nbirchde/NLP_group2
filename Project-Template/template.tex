@@ -30,9 +30,9 @@ Our dataset consists of 2,999 labeled training recipes distributed across 6 chef
 
 We employ DistilBERT-base-uncased \cite{sanh2019distilbert}, a distilled version of BERT with 66 million parameters, 6 transformer layers, and 768-dimensional hidden states. DistilBERT retains 97\% of BERT's performance while being 40\% smaller and 60\% faster, making it well-suited for our classification task with limited computational resources.
 
-\textbf{Input Representation:} We concatenate five text fields in priority order: recipe\_name $\rightarrow$ ingredients $\rightarrow$ tags $\rightarrow$ description $\rightarrow$ steps. This ordering protects critical identifying information (name, ingredients) from truncation, as recipe steps constitute 42\% of total tokens. Text is tokenized using DistilBERT's WordPiece tokenizer with a maximum sequence length of 512 tokens, which accommodates 98.2\% of our dataset without truncation (median: 272 tokens).
+\textbf{Input Representation:} We concatenate five text fields in priority order: recipe\_name $\rightarrow$ ingredients $\rightarrow$ tags $\rightarrow$ description $\rightarrow$ steps. This ordering protects critical identifying information (name, ingredients) from truncation, as recipe steps constitute 42\% of total tokens. Text is tokenized using DistilBERT's WordPiece tokenizer with a maximum sequence length of 512 tokens, which accommodates 98.2\% of our dataset without truncation (median: 272 tokens). DistilBERT adds a learned positional embedding vector to every token embedding, allowing the model to infer word order directly from parameters trained alongside the rest of the network (in contrast to fixed sinusoidal encodings).
 
-\textbf{Classification Head:} We add a simple linear classification layer (768 $\rightarrow$ 6 classes) on top of the [CLS] token representation. The model outputs raw logits, with softmax and cross-entropy loss computed jointly during training.
+\textbf{Classification Head:} The pooled [CLS] embedding first passes through dropout with $p=0.2$, then a dense projection (768 $\rightarrow$ 768) followed by a ReLU activation, a second dropout layer with the same rate, and finally a linear layer (768 $\rightarrow$ 6). The model outputs raw logits, with softmax and cross-entropy loss computed jointly during training. Figure~\ref{fig:encoder} summarises the end-to-end architecture.
 
 \textbf{Training Strategy:} We use the AdamW optimizer with a learning rate of $2 \times 10^{-5}$, weight decay of 0.01, and linear warmup over 6\% of training steps. Training uses batch size 16 with dynamic padding (padding="longest") to minimize memory usage. To address the 2.17:1 class imbalance, we employ stratified train/validation splitting (80/20) and monitor both accuracy and macro-averaged F1 score. Early stopping with patience=2 epochs prevents overfitting.
 
@@ -122,9 +122,16 @@ Bibliography does not count for the two pages limit.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=\columnwidth]{../results/figures/training_curves.png}
-\caption{Training curves showing steady improvement across 5 epochs. Loss decreases consistently while accuracy and macro-F1 increase, indicating effective learning without overfitting.}
+\includegraphics[width=0.8\columnwidth]{../results/figures/training_curves.png}
+\caption{Training and validation curves illustrating loss reduction alongside gains in accuracy and macro-F1 over five epochs.}
 \label{fig:curves}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\columnwidth]{../results/figures/encoder.pdf}
+\caption{DistilBERT fine-tuning pipeline adopted for chef classification.}
+\label{fig:encoder}
 \end{figure}
 
 \section{Evaluation and tips (remove this section before submission)}

@@ -83,8 +83,9 @@
     % Sum for positional encoding
     \node[circle, draw, minimum size=0.25em, inner sep=0pt, above=1em of iemb] (sum1) {$\mathbf{+}$};
     
-    % Positional Encoding
-    \node [circle, draw, sin wave, minimum size=2em, left=0.8em of sum1] (pe1) {};
+    % Learned positional embeddings icon
+    \node[rectangle, draw, rounded corners=2mm, minimum width=2.2em, minimum height=1.3em,
+          fill=gray!15, align=center, font=\scriptsize, left=0.8em of sum1] (pe1) {Learned\\PosEmb};
     
     % Arrows from fields to concatenation
     \draw[arrow] (field1) -- (concat);
@@ -127,8 +128,13 @@
     % Classification head pipeline (bottom-right, flowing upward)
     % Positioned further right to extend diagram width
     
+    % First dropout on classifier input
+    \node[rectangle, draw, dashed, very thick, rounded corners=1mm, fill=white!10,
+          text width=3cm, minimum height=0.8cm, align=center] (dropout0) at (7.5, -3.0)
+          {Dropout (0.2)};
+
     % Dense layer with vertical neural net (768→768)
-    \node[block, text width=4.5cm, minimum height=2.8cm] (dense) at (7.5, -1.8) {};
+    \node[block, text width=4.5cm, minimum height=2.8cm] (dense) at ($(dropout0.north) + (0,1.9)$) {};
     \node[font=\normalsize, anchor=north] at ($(dense.north) + (0,-0.2)$) {Dense (768→768)};
     % Input layer (bottom) - 6 nodes representing 768 (centered)
     \foreach [count=\i from 1] \x in {-1.0,-0.6,-0.2,0.2,0.6,1.0} {
@@ -187,9 +193,10 @@
     % Route arrow from [CLS] to classification head (keep original working coordinates)
     \coordinate (corner1) at (4.2, 6);
     \coordinate (corner2) at (4.2, -4.5);
-    \draw[arrow] (cls.east) -| (corner1) |- (corner2) -| (dense.south);
-    
+    \draw[arrow] (cls.east) -| (corner1) |- (corner2) -| (dropout0.south);
+
     % Classification pipeline arrows
+    \draw[arrow] (dropout0.north) -- (dense.south);
     \draw[arrow] (dense) -- (relu);
     \draw[arrow] (relu) -- (dropout);
     \draw[arrow] (dropout.north) -- ($(funnel_bl)!0.5!(funnel_br)$);
