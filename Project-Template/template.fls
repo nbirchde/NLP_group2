@@ -101,11 +101,6 @@ INPUT ../results/figures/encoder.pdf
 INPUT ../results/figures/encoder.pdf
 INPUT ../results/figures/encoder.pdf
 INPUT ../results/figures/encoder.pdf
-INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/bera/ts1fve.fd
-INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/bera/ts1fve.fd
-INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/bera/ts1fve.fd
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/bera/fver8c.tfm
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/bera/fver8c.vf
 INPUT template.aux
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb

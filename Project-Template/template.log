@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.19)  4 OCT 2025 21:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.19)  4 OCT 2025 21:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -210,94 +210,41 @@ Underfull \hbox (badness 1946) in paragraph at lines 119--119
 File: ../results/figures/training_curves.png Graphic file (type png)
 <use ../results/figures/training_curves.png>
 Package pdftex.def Info: ../results/figures/training_curves.png  used on input line 125.
-(pdftex.def)             Requested size: 229.5pt x 60.11955pt.
+(pdftex.def)             Requested size: 183.6007pt x 48.09737pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<../results/figures/encoder.pdf, id=23, 396.64084pt x 404.45103pt>
+<../results/figures/encoder.pdf, id=23, 396.64084pt x 401.60541pt>
 File: ../results/figures/encoder.pdf Graphic file (type pdf)
 <use ../results/figures/encoder.pdf>
 Package pdftex.def Info: ../results/figures/encoder.pdf  used on input line 132.
-(pdftex.def)             Requested size: 229.5pt x 234.02634pt.
+(pdftex.def)             Requested size: 206.5486pt x 209.13628pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Font Info:    Trying to load font information for TS1+fve on input line 140.
-(/usr/local/texlive/2025/texmf-dist/tex/latex/bera/ts1fve.fd
-File: ts1fve.fd 2004/09/07 scalable font definitions for TS1/fve.
-)
-LaTeX Font Info:    Font shape `TS1/fve/m/n' will be
-(Font)              scaled to size 8.99994pt on input line 140.
-
-
-
-Underfull \hbox (badness 1253) in paragraph at lines 148--149
-\T1/fve/m/n/10 a clear de-scrip-tion of the di-men-
- []
-
-
-Underfull \hbox (badness 1264) in paragraph at lines 148--149
-\T1/fve/m/n/10 will tackle (from now on, di-men-
- []
-
-
-Underfull \hbox (badness 2435) in paragraph at lines 149--150
-[]\T1/fve/m/n/10 (2.0) Sec-tion Mod-els: pro-vide a
- []
-
-
-Underfull \hbox (badness 2903) in paragraph at lines 149--150
-\T1/fve/m/n/10 clear de-scrip-tion of your mod-els
- []
-
-
-Underfull \hbox (badness 3229) in paragraph at lines 149--150
-\T1/fve/m/n/10 and tech-niques, as for in-stance,
- []
-
-
-
-[4 <../results/figures/baseline_comparison.png> <../results/figures/training_curves.png>]
-Underfull \hbox (badness 1303) in paragraph at lines 151--152
-\T1/fve/m/n/10 own test(s) set(s) from the train-
- []
-
-
-Underfull \hbox (badness 1521) in paragraph at lines 151--152
-\T1/fve/m/n/10 test set (test_no_labels.txt) should
- []
-
-
-Underfull \vbox (badness 2865) has occurred while \output is active []
 
 
 
 
-Underfull \hbox (badness 7379) in paragraph at lines 162--163
-[]\T1/fve/m/n/10 Use for-mal En-glish (so, no ``it's'',
- []
-
-
-
-[5 <../results/figures/encoder.pdf>] (./template.aux)
+[4 <../results/figures/baseline_comparison.png> <../results/figures/training_curves.png> <../results/figures/encoder.pdf>] (./template.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 1839 strings out of 473190
- 30154 string characters out of 5715800
+ 1812 strings out of 473190
+ 29674 string characters out of 5715800
  422615 words of memory out of 5000000
- 25091 multiletter control sequences out of 15000+600000
- 584940 words of font info for 53 fonts, out of 8000000 for 9000
+ 25068 multiletter control sequences out of 15000+600000
+ 584625 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,8n,65p,870b,299s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,8n,65p,870b,246s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/bera/fveb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/bera/fver8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/bera/fver8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on template.pdf (5 pages, 465791 bytes).
+Output written on template.pdf (4 pages, 461965 bytes).
 PDF statistics:
- 111 PDF objects out of 1000 (max. 8388607)
- 71 compressed objects within 1 object stream
+ 108 PDF objects out of 1000 (max. 8388607)
+ 69 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
