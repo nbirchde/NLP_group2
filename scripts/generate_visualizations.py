@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""
-Visualization Generator for Chef Classification Project
+"""Visualization Generator for Chef Classification Project.
 
 Creates publication-quality plots for paper and presentation:
 1. Training curves (loss, accuracy, F1)
 2. Baseline comparison bar chart
-3. Per-class performance breakdown
-4. Confusion matrix
+3. Dataset overview panels
+4. Metrics summary dashboard
+5. Model architecture flow diagram
 """
 
 from __future__ import annotations
@@ -19,7 +19,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
-from matplotlib.patches import Rectangle
+from matplotlib.patches import FancyBboxPatch, Rectangle
 
 # Set style
 sns.set_style("whitegrid")
@@ -291,6 +291,166 @@ def create_metrics_summary():
     return fig
 
 
+def create_model_architecture_diagram():
+    """Render a high-level flow diagram of the training/inference pipeline."""
+    fig, ax = plt.subplots(figsize=(12, 6))
+    ax.axis("off")
+    ax.set_xlim(0, 1)
+    ax.set_ylim(0, 1)
+
+    def draw_box(center_x, center_y, width, height, text, facecolor="#ffffff", edgecolor="#34495e"):
+        """Helper to draw rounded boxes with centered text."""
+        x0 = center_x - width / 2
+        y0 = center_y - height / 2
+        box = FancyBboxPatch(
+            (x0, y0),
+            width,
+            height,
+            boxstyle="round,pad=0.015",
+            linewidth=1.8,
+            facecolor=facecolor,
+            edgecolor=edgecolor,
+        )
+        ax.add_patch(box)
+        ax.text(
+            center_x,
+            center_y,
+            text,
+            ha="center",
+            va="center",
+            fontsize=10,
+            fontweight="bold",
+            color="#2c3e50",
+            wrap=True,
+        )
+
+    def draw_arrow(xy_from, xy_to, color="#34495e"):
+        ax.annotate(
+            "",
+            xy=xy_to,
+            xytext=xy_from,
+            arrowprops=dict(arrowstyle="-|>", linewidth=2, color=color),
+        )
+
+    # Pipeline boxes (left to right)
+    draw_box(
+        center_x=0.12,
+        center_y=0.75,
+        width=0.18,
+        height=0.25,
+        text="Raw Recipe Fields\n• name\n• ingredients\n• tags\n• description\n• steps",
+        facecolor="#ecf6fd",
+    )
+
+    draw_box(
+        center_x=0.38,
+        center_y=0.75,
+        width=0.2,
+        height=0.25,
+        text="Pre-processing\nList parsing +\nfield aliasing\n→ Concatenate text",
+        facecolor="#e8f8f2",
+        edgecolor="#16a085",
+    )
+
+    draw_box(
+        center_x=0.64,
+        center_y=0.75,
+        width=0.22,
+        height=0.25,
+        text="DistilBERT Tokenizer\nmax_length=512 (98.2% fit)\npadding='longest'\ntruncation='longest_first'",
+        facecolor="#fef5e7",
+        edgecolor="#d35400",
+    )
+
+    draw_box(
+        center_x=0.86,
+        center_y=0.75,
+        width=0.2,
+        height=0.25,
+        text="DistilBERT Encoder\n(66M params, 6 layers)\n+ Linear head (768→6)\nSoftmax → chef id",
+        facecolor="#fbeef5",
+        edgecolor="#c0392b",
+    )
+
+    # Arrows between main pipeline boxes
+    draw_arrow((0.21, 0.75), (0.28, 0.75), color="#16a085")
+    draw_arrow((0.48, 0.75), (0.53, 0.75), color="#d35400")
+    draw_arrow((0.75, 0.75), (0.78, 0.75), color="#c0392b")
+
+    # Dataset preparation branch
+    draw_box(
+        center_x=0.12,
+        center_y=0.3,
+        width=0.18,
+        height=0.22,
+        text="Structured CSV\n(2,999 labeled recipes)\n+ Stratified split\n(80/20, seed=42)",
+        facecolor="#edf7fa",
+        edgecolor="#2980b9",
+    )
+
+    draw_box(
+        center_x=0.38,
+        center_y=0.3,
+        width=0.2,
+        height=0.22,
+        text="DatasetDict\n(train / validation)\nlabel2id mapping\nmacro-F1 monitoring",
+        facecolor="#eef1fb",
+        edgecolor="#5e6ad2",
+    )
+
+    draw_arrow((0.21, 0.3), (0.28, 0.3), color="#2980b9")
+    draw_arrow((0.47, 0.3), (0.56, 0.54), color="#5e6ad2")
+
+    # Training strategy box beneath model
+    draw_box(
+        center_x=0.64,
+        center_y=0.3,
+        width=0.24,
+        height=0.24,
+        text="Training Strategy\n• AdamW (lr=2e-5, wd=0.01)\n• Linear warmup 6%\n• Batch size 16 (train)\n• Early stopping (patience=2)",
+        facecolor="#fff9e6",
+        edgecolor="#f39c12",
+    )
+
+    draw_arrow((0.64, 0.54), (0.64, 0.42), color="#f39c12")
+
+    # Output / evaluation box
+    draw_box(
+        center_x=0.86,
+        center_y=0.3,
+        width=0.2,
+        height=0.22,
+        text="Outputs\n• Validation metrics\n• Saved best checkpoint\n• Test predictions → results.txt",
+        facecolor="#f3f8ff",
+        edgecolor="#2980b9",
+    )
+
+    draw_arrow((0.86, 0.54), (0.86, 0.41), color="#2980b9")
+
+    # Titles / subtitles
+    ax.text(
+        0.5,
+        0.96,
+        "Chef Classification Pipeline (DistilBERT Text-Only)",
+        ha="center",
+        va="center",
+        fontsize=16,
+        fontweight="bold",
+        color="#2c3e50",
+    )
+    ax.text(
+        0.5,
+        0.9,
+        "Design choices highlighted in color blocks",
+        ha="center",
+        va="center",
+        fontsize=11,
+        color="#7f8c8d",
+    )
+
+    return fig
+
+
 def main():
     """Generate all visualizations."""
     output_dir = project_root / "results" / "figures"
@@ -326,7 +486,14 @@ def main():
     fig4.savefig(output_dir / "metrics_summary.png", bbox_inches='tight')
     plt.close(fig4)
     print("   ✓ Saved: metrics_summary.png")
-    
+
+    # 5. Architecture diagram
+    print("5. Creating model architecture diagram...")
+    fig5 = create_model_architecture_diagram()
+    fig5.savefig(output_dir / "model_architecture.png", bbox_inches='tight')
+    plt.close(fig5)
+    print("   ✓ Saved: model_architecture.png")
+
     print("=" * 60)
     print(f"✓ All visualizations saved to: {output_dir}")
     print("\nGenerated files:")

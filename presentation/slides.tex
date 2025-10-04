@@ -49,6 +49,27 @@
 \end{itemize}
 \end{frame}
 
+% Slide 3: Architecture
+\begin{frame}{Architecture \& Design Choices}
+\begin{columns}[T]
+\column{0.60\textwidth}
+\begin{center}
+\includegraphics[width=\textwidth]{../results/figures/model_architecture.png}
+\end{center}
+
+\column{0.40\textwidth}
+\small
+\textbf{Why these choices?}
+\begin{itemize}
+    \item Preserve chef signals: concatenate fields, truncate from steps.
+    \item Robust generalization: stratified split + macro-F1 monitoring.
+    \item Efficient training: DistilBERT + batch 16 + longest padding.
+    \item Stable optimization: AdamW, 6\% warmup, early stopping (patience=2).
+    \item Reproducible inference: saved best checkpoint $\rightarrow$ `results.txt`.
+\end{itemize}
+\end{columns}
+\end{frame}
+
 % Slide 3: Results Table
 \begin{frame}{Results}
 \begin{table}

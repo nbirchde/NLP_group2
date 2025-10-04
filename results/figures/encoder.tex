@@ -1,0 +1,141 @@
+\documentclass[border=2mm]{standalone}
+
+\usepackage{tikz}
+
+\usetikzlibrary{positioning, chains, shapes.geometric, fit, shapes, arrows.meta, calc, backgrounds}
+
+\begin{document}
+
+\begin{tikzpicture}[
+    >=LaTeX, % Use default LaTeX arrows
+    very thick,
+    arrow/.style={
+        -latex,
+        very thick,
+        rounded corners=0.2cm
+    },
+    block/.style={
+        rectangle,
+        fill=gray!10,
+        rounded corners=3mm,
+        draw,
+        very thick
+    },
+    layer/.style={
+        rectangle,
+        fill=white!10,
+        rounded corners=1mm,
+        inner xsep=0em,
+        inner ysep=0.25em,
+        minimum height=1.4em,
+        align=center,
+        text width=2.5cm,
+        draw,
+        very thick
+    },
+    field/.style={
+        rectangle,
+        fill=white!10,
+        rounded corners=1mm,
+        inner sep=3pt,
+        minimum height=1em,
+        align=center,
+        draw,
+        very thick,
+        font=\scriptsize
+    },
+    input/.style={ % Input or output node
+        circle,
+        minimum width=2.25em,
+        draw,
+        fill=gray!10,
+        thick
+    },
+    do path picture/.style={%
+        path picture={%
+          \pgfpointdiff{\pgfpointanchor{path picture bounding box}{south west}}%
+            {\pgfpointanchor{path picture bounding box}{north east}}%
+          \pgfgetlastxy\x\y%
+          \tikzset{x=\x/2,y=\y/2}%
+          #1
+        }
+    },
+    sin wave/.style={do path picture={    
+        \draw [line cap=round] (-3/4,0)
+        sin (-3/8,1/2) cos (0,0) sin (3/8,-1/2) cos (3/4,0);
+        }
+    }
+]
+
+    % Recipe fields as input (visual preprocessing)
+    \node[field] (field1) at (-3.2, -4.0) {name};
+    \node[field] (field2) at (-1.6, -4.0) {ingredients};
+    \node[field] (field3) at (0, -4.0) {tags};
+    \node[field] (field4) at (1.6, -4.0) {description};
+    \node[field] (field5) at (3.2, -4.0) {steps};
+    
+    % Concatenation node
+    \node[layer, text width=4cm] (concat) at (0, -2.5) {Concatenate};
+    
+    % Tokenization
+    \node[input] (iemb) at (0, -0.8) {Token.};
+
+    % Sum for positional encoding
+    \node[circle, draw, minimum size=0.25em, inner sep=0pt, above=1em of iemb] (sum1) {$\mathbf{+}$};
+    
+    % Positional Encoding
+    \node [circle, draw, sin wave, minimum size=2em, left=0.8em of sum1] (pe1) {};
+    
+    % Arrows from fields to concatenation
+    \draw[arrow] (field1) -- (concat);
+    \draw[arrow] (field2) -- (concat);
+    \draw[arrow] (field3) -- (concat);
+    \draw[arrow] (field4) -- (concat);
+    \draw[arrow] (field5) -- (concat);
+    
+    % Arrow from concat to tokenization
+    \draw[arrow] (concat) -- (iemb);
+
+    % Encoder, 1st sub-layer (Multi-Head Attention)
+    \node[layer] (add1) at (0,3.6) {Add \& Norm};
+    \node[layer] (attn1) at (0,2.5) {Multi-Head \vspace{-0.05cm} \linebreak Attention \vspace{-0.05cm} \linebreak {\tiny 12 heads}};
+    \draw[] (attn1) -- (add1);
+    
+    % Encoder 2nd sub-layer (Feed Forward)
+    \node[layer] (add4) at (0,5.98) {Add \& Norm};
+    \node[layer] (ff1) at (0,5.13) {Feed \vspace{-0.05cm} \linebreak Forward};
+    \draw[] (ff1) -- (add4);
+
+    % Encoder block background
+    \coordinate (e1) at ($(attn1.south east) + (0.15,-0.7)$);
+    \coordinate (e2) at ($(add4.north west) + (-0.75,0.05)$);
+    \begin{scope}[on background layer]
+        \node[block, fit=(e1) (e2)] (encoder) {};
+    \end{scope}
+
+    % Output
+    \node[input, above=1.5em of add4] (output) {$\mathbf{y}$};
+
+    % Draw arrows
+    \draw[arrow] (iemb) -- (sum1);
+    \draw[arrow] (sum1) -- (attn1);
+    \draw[] (sum1) -- (pe1);
+    
+    \draw[arrow] (add1) -- (ff1);
+    \draw[arrow] (add4) -- (output);
+
+    % Residual connections
+    \draw[arrow] (ff1.south)++(0, -0.6) -| ($(add4.west) + (-0.6,-0.5)$) |- (add4.west);
+    \draw[arrow] (attn1.south)++(0, -0.6) -| ($(add1.west) + (-0.6,-0.5)$) |- (add1.west);
+
+    % Self-attention arrows (Q, K, V from same source)
+    \draw[arrow] (attn1.south)++(0, -0.4) -| ($(attn1.south) + (-1,0)$);
+    \draw[arrow] (attn1.south)++(0, -0.4) -| ($(attn1.south) + (1,0)$);
+
+    % Labels
+    \node[] at ($(pe1.west) + (-0.3,0)$) {$\mathbf{P}$};
+    \node[anchor=east] at ($(encoder.west) + (-0.2,0)$) {$6\times$};
+
+\end{tikzpicture}
+
+\end{document}

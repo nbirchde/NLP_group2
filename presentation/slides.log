@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.19)  3 OCT 2025 18:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.19)  3 OCT 2025 20:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -723,44 +723,50 @@ File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mat
 [3
 
 ]
+<../results/figures/model_architecture.png, id=118, 686.565pt x 348.3414pt>
+File: ../results/figures/model_architecture.png Graphic file (type png)
+<use ../results/figures/model_architecture.png>
+Package pdftex.def Info: ../results/figures/model_architecture.png  used on input line 71.
+(pdftex.def)             Requested size: 205.37926pt x 104.20026pt.
+
 
 [4
 
-]
-<../results/figures/baseline_comparison.png, id=146, 715.473pt x 426.393pt>
-File: ../results/figures/baseline_comparison.png Graphic file (type png)
-<use ../results/figures/baseline_comparison.png>
-Package pdftex.def Info: ../results/figures/baseline_comparison.png  used on input line 81.
-(pdftex.def)             Requested size: 290.9531pt x 173.39088pt.
-
+ <../results/figures/model_architecture.png>]
 
 [5
 
- <../results/figures/baseline_comparison.png>]
-<../results/figures/training_curves.png, id=176, 1076.823pt x 282.0939pt>
-File: ../results/figures/training_curves.png Graphic file (type png)
-<use ../results/figures/training_curves.png>
-Package pdftex.def Info: ../results/figures/training_curves.png  used on input line 89.
-(pdftex.def)             Requested size: 342.2953pt x 89.66927pt.
+]
+<../results/figures/baseline_comparison.png, id=176, 715.473pt x 426.393pt>
+File: ../results/figures/baseline_comparison.png Graphic file (type png)
+<use ../results/figures/baseline_comparison.png>
+Package pdftex.def Info: ../results/figures/baseline_comparison.png  used on input line 102.
+(pdftex.def)             Requested size: 290.9531pt x 173.39088pt.
 
 
 [6
 
- <../results/figures/training_curves.png>]
-<../results/figures/distribution_comparison.png, id=205, 859.5312pt x 353.6412pt>
-File: ../results/figures/distribution_comparison.png Graphic file (type png)
-<use ../results/figures/distribution_comparison.png>
-Package pdftex.def Info: ../results/figures/distribution_comparison.png  used on input line 97.
-(pdftex.def)             Requested size: 342.2953pt x 140.8334pt.
+ <../results/figures/baseline_comparison.png>]
+<../results/figures/training_curves.png, id=205, 1076.823pt x 282.0939pt>
+File: ../results/figures/training_curves.png Graphic file (type png)
+<use ../results/figures/training_curves.png>
+Package pdftex.def Info: ../results/figures/training_curves.png  used on input line 110.
+(pdftex.def)             Requested size: 342.2953pt x 89.66927pt.
 
 
 [7
 
- <../results/figures/distribution_comparison.png>]
+ <../results/figures/training_curves.png>]
+<../results/figures/distribution_comparison.png, id=235, 859.5312pt x 353.6412pt>
+File: ../results/figures/distribution_comparison.png Graphic file (type png)
+<use ../results/figures/distribution_comparison.png>
+Package pdftex.def Info: ../results/figures/distribution_comparison.png  used on input line 118.
+(pdftex.def)             Requested size: 342.2953pt x 140.8334pt.
+
 
 [8
 
-]
+ <../results/figures/distribution_comparison.png>]
 
 [9
 
@@ -775,6 +781,10 @@ Package pdftex.def Info: ../results/figures/distribution_comparison.png  used on
 ]
 
 [12
+
+]
+
+[13
 
 ]
 \tf@nav=\write6
@@ -795,18 +805,18 @@ Package rerunfilecheck Info: File `slides.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 21915 strings out of 473190
- 426811 string characters out of 5715800
+ 21935 strings out of 473190
+ 427437 string characters out of 5715800
  791185 words of memory out of 5000000
- 44686 multiletter control sequences out of 15000+600000
- 570812 words of font info for 79 fonts, out of 8000000 for 9000
+ 44704 multiletter control sequences out of 15000+600000
+ 571106 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,16n,123p,477b,608s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,16n,123p,477b,676s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on slides.pdf (12 pages, 597758 bytes).
+Output written on slides.pdf (13 pages, 860623 bytes).
 PDF statistics:
- 421 PDF objects out of 1000 (max. 8388607)
- 352 compressed objects within 4 object streams
- 25 named destinations out of 1000 (max. 500000)
- 106 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 451 PDF objects out of 1000 (max. 8388607)
+ 378 compressed objects within 4 object streams
+ 27 named destinations out of 1000 (max. 500000)
+ 111 words of extra memory for PDF output out of 10000 (max. 10000000)
 

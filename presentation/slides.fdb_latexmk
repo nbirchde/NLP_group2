@@ -1,9 +1,10 @@
 # Fdb version 4
-["pdflatex"] 1759513124.01613 "/Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/presentation/slides.tex" "slides.pdf" "slides" 1759513125.49004 0
-  "../results/figures/baseline_comparison.png" 1759510820.55055 123811 fe474607a4a177b142d738566a028270 ""
+["pdflatex"] 1759519993.68701 "/Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/presentation/slides.tex" "slides.pdf" "slides" 1759519995.46271 0
+  "../results/figures/baseline_comparison.png" 1759519972.80416 123811 fe474607a4a177b142d738566a028270 ""
   "../results/figures/distribution_comparison.png" 1759512521.58619 128041 e060bdbf0aaf89d675f7d3cf99b2fb34 ""
-  "../results/figures/training_curves.png" 1759510820.75188 242826 94e9f3b6854b4aca05b7ec9e38cc759f ""
-  "/Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/presentation/slides.tex" 1759513123.7344 5300 c509af471193736a617c2b52be41cd98 ""
+  "../results/figures/model_architecture.png" 1759519973.54294 343989 2e0d5d5d38d6cff060f2c8f2e6c157ed ""
+  "../results/figures/training_curves.png" 1759519973.00169 242826 94e9f3b6854b4aca05b7ec9e38cc759f ""
+  "/Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/presentation/slides.tex" 1759519991.86536 6018 780476ab75fc1a29bd3e22a5ea19ca3a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -206,10 +207,10 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1745060723 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1745060667 3345734 96f6f7cc2ce50ab21d0c6db8f51fc67e ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "slides.aux" 1759513125.43034 1980 ae2978e71ef37f8a4cee86a50d701b1e "pdflatex"
-  "slides.nav" 1759513125.43117 1295 ef040a83926d85743749b42a2275f515 "pdflatex"
-  "slides.out" 1759513124.43099 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "slides.tex" 1759513123.7344 5300 c509af471193736a617c2b52be41cd98 ""
+  "slides.aux" 1759519995.41888 2109 2979b9e8e4fa267a2557952810574c09 "pdflatex"
+  "slides.nav" 1759519995.4197 1388 37fb167c90003b6656a249083ce3750a "pdflatex"
+  "slides.out" 1759519994.12536 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "slides.tex" 1759519991.86536 6018 780476ab75fc1a29bd3e22a5ea19ca3a ""
   (generated)
   "slides.aux"
   "slides.log"
