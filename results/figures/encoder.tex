@@ -113,8 +113,8 @@
         \node[block, fit=(e1) (e2)] (encoder) {};
     \end{scope}
 
-    % Output
-    \node[input, above=1.5em of add4] (output) {$\mathbf{y}$};
+    % [CLS] Token Extraction - positioned higher above encoder output
+    \node[input, above=1.8em of add4, font=\small] (cls) {[CLS]};
 
     % Draw arrows
     \draw[arrow] (iemb) -- (sum1);
@@ -122,7 +122,16 @@
     \draw[] (sum1) -- (pe1);
     
     \draw[arrow] (add1) -- (ff1);
-    \draw[arrow] (add4) -- (output);
+    \draw[arrow] (add4) -- (cls);
+    
+    % Classification head starting point (bottom-right)
+    \node[layer, text width=2.2cm] (class_start) at (5.8, -3.2) {Pre-classifier};
+    
+    % Route arrow from [CLS] to classification head - single arrow with rounded corners
+    % Path: right → down → up to box
+    \coordinate (corner1) at (3.5, 6);
+    \coordinate (corner2) at (3.5, -4.8);
+    \draw[arrow] (cls.east) -| (corner1) |- (corner2) -| (class_start.south);
 
     % Residual connections
     \draw[arrow] (ff1.south)++(0, -0.6) -| ($(add4.west) + (-0.6,-0.5)$) |- (add4.west);

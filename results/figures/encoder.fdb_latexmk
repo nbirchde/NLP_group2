@@ -1,14 +1,16 @@
 # Fdb version 4
-["pdflatex"] 1759602454.76165 "/Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/results/figures/encoder.tex" "encoder.pdf" "encoder" 1759602455.22526 0
-  "/Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/results/figures/encoder.tex" 1759602454.51271 4220 4027da5710eeba2e686a0ea8f4585ed8 ""
+["pdflatex"] 1759603414.11484 "/Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/results/figures/encoder.tex" "encoder.pdf" "encoder" 1759603414.56072 0
+  "/Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/results/figures/encoder.tex" 1759603413.94881 4713 5c23bbd5f6249b67deee316b18fedd69 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm" 1136768653 1332 f817c21a1ba54560425663374f1b651a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm" 1136768653 1336 3125ccb448c1a09074e3aa4a9832f130 ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr9.tfm" 1136768653 1292 6b21b9c2c7bebb38aa2273f7ca0fb3af ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb" 1248133631 34811 78b52f49e893bcba91bd7581cdc144c0 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb" 1248133631 31809 8670ca339bf94e56da1fc21c80635e2a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1248133631 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb" 1248133631 33993 9b89b85fd2d9df0482bd47194d1d3bf3 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2025/texmf-dist/tex/generic/iftex/ifluatex.sty" 1572645307 492 1994775aa15b0d1289725a0b1bbc2d4c ""
@@ -120,8 +122,8 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1745060723 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1745060667 3345734 96f6f7cc2ce50ab21d0c6db8f51fc67e ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "encoder.aux" 1759602455.18252 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
-  "encoder.tex" 1759602454.51271 4220 4027da5710eeba2e686a0ea8f4585ed8 ""
+  "encoder.aux" 1759603414.5319 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "encoder.tex" 1759603413.94881 4713 5c23bbd5f6249b67deee316b18fedd69 ""
   (generated)
   "encoder.aux"
   "encoder.log"

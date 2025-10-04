@@ -202,6 +202,7 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
 OUTPUT encoder.pdf
 INPUT /usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT encoder.aux
@@ -209,4 +210,5 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.p
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
