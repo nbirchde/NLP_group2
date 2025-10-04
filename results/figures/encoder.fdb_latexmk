@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1759603414.11484 "/Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/results/figures/encoder.tex" "encoder.pdf" "encoder" 1759603414.56072 0
-  "/Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/results/figures/encoder.tex" 1759603413.94881 4713 5c23bbd5f6249b67deee316b18fedd69 ""
+["pdflatex"] 1759603501.35024 "/Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/results/figures/encoder.tex" "encoder.pdf" "encoder" 1759603501.815 0
+  "/Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/results/figures/encoder.tex" 1759603501.1832 4726 5e9a14fe6422466be22b9a8d6cd8afa5 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm" 1136768653 1332 f817c21a1ba54560425663374f1b651a ""
@@ -122,8 +122,8 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1745060723 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1745060667 3345734 96f6f7cc2ce50ab21d0c6db8f51fc67e ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "encoder.aux" 1759603414.5319 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
-  "encoder.tex" 1759603413.94881 4713 5c23bbd5f6249b67deee316b18fedd69 ""
+  "encoder.aux" 1759603501.78448 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "encoder.tex" 1759603501.1832 4726 5e9a14fe6422466be22b9a8d6cd8afa5 ""
   (generated)
   "encoder.aux"
   "encoder.log"

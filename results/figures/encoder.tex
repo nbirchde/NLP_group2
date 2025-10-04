@@ -128,9 +128,9 @@
     \node[layer, text width=2.2cm] (class_start) at (5.8, -3.2) {Pre-classifier};
     
     % Route arrow from [CLS] to classification head - single arrow with rounded corners
-    % Path: right → down → up to box
-    \coordinate (corner1) at (3.5, 6);
-    \coordinate (corner2) at (3.5, -4.8);
+    % Path: right (past steps) → down → up to box
+    \coordinate (corner1) at (4.2, 6);
+    \coordinate (corner2) at (4.2, -4.8);
     \draw[arrow] (cls.east) -| (corner1) |- (corner2) -| (class_start.south);
 
     % Residual connections
