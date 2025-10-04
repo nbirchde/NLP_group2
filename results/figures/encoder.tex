@@ -148,15 +148,10 @@
     \node[font=\normalsize, anchor=north] at ($(relu.north) + (0,-0.15)$) {ReLU};
     \draw[very thick] ($(relu.center)+(-0.8,-0.15)$) -- ($(relu.center)+(0,-0.15)$) -- ($(relu.center)+(0.8,0.3)$);
     
-    % Dropout with crossed nodes (smaller, white background, centered)
-    \node[layer, text width=3.5cm, minimum height=1.2cm, above=1.1em of relu] (dropout) {};
-    \node[font=\normalsize, anchor=north] at ($(dropout.north) + (0,-0.15)$) {Dropout (0.2)};
-    \foreach [count=\i from 1] \x in {-0.9,-0.54,-0.18,0.18,0.54,0.9} {
-        \node[circle, draw, inner sep=2pt, minimum size=6pt] (drop\i) at ($(dropout.center) + (\x, 0)$) {};
-    }
-    % Cross out one node in black
-    \draw[very thick, black] ($(drop3.south west)+(0.08,0.08)$) -- ($(drop3.north east)+(-0.08,-0.08)$);
-    \draw[very thick, black] ($(drop3.south east)+(-0.08,0.08)$) -- ($(drop3.north west)+(0.08,-0.08)$);
+    % Dropout with dashed border (smaller, minimal design)
+    \node[rectangle, draw, dashed, very thick, rounded corners=1mm, fill=white!10, 
+          text width=3cm, minimum height=0.8cm, align=center, above=1.1em of relu] (dropout) 
+          {Dropout (0.2)};
     
     % Linear classifier as TRAPEZOID/FUNNEL (768→6) - custom shape!
     % Draw trapezoid shape manually instead of using block style
