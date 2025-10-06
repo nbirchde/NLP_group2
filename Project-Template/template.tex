@@ -4,6 +4,7 @@
 \usepackage{bera}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
+\usepackage{enumitem}
 
 % TITLE
 \title{Chef Classification from Recipe Text using DistilBERT}
@@ -19,30 +20,31 @@
 
 \maketitle
 
-\section{Overview}
+\section{Problem Setting}
 
-We fine-tuned DistilBERT-base-uncased to assign each recipe to one of six chefs. The original 2,999-row dataset contained duplicated texts; removing 14 exact matches before splitting left 2,985 unique samples. We stratified an 80/20 train-validation split and evaluated with accuracy and macro-F1. The best checkpoint—captured by early stopping after roughly five epochs—achieves 92.13\% validation accuracy and 0.916 macro-F1, exceeding the strongest TF-IDF baseline by about 49 percentage points.
+We tackle the task of assigning each recipe in a six-class corpus to its original chef using only textual information. The raw dataset contains 2,999 labelled recipes; 14 are duplicated verbatim. Removing those duplicates prior to splitting leaves 2,985 unique examples whose class counts range from 365 to 801. We generate an 80/20 stratified train/validation split and evaluate models with accuracy (for comparability with provided baselines) and macro-F1 (to monitor minority chefs). Our final DistilBERT pipeline achieves 92.13\% validation accuracy and 0.916 macro-F1, comfortably beating the strongest TF-IDF baseline (43\% accuracy).
 
 \section{Data Preparation}
 
-Our preprocessing focuses on consistency and leakage prevention. Recipe fields stored as lists (ingredients, steps, tags) are parsed and trimmed. We concatenate five text segments in the order \textit{name $\rightarrow$ ingredients $\rightarrow$ tags $\rightarrow$ description $\rightarrow$ steps}; shorter sections lead, ensuring that the steps (which average 46\% of tokens) are truncated last when a recipe exceeds the 512-token window. After deduplication, class counts range from 365 to 801 recipes (Appendix Figure~\ref{fig:dataset_overview}). Token statistics remain manageable (median 234 tokens, 95th percentile 418), so the DistilBERT tokenizer rarely truncates content.
+\textbf{Field parsing and ordering.} Ingredients, tags, and steps are parsed from their string representations into lists. We concatenate the five textual sections in the order \textit{name $\rightarrow$ ingredients $\rightarrow$ tags $\rightarrow$ description $\rightarrow$ steps}. This decision protects identifying fields from truncation: after deduplication, steps account for about 46\% of tokens, while the median sequence length is 234 tokens and the 95th percentile is 418, so most recipes fit within DistilBERT's 512-token limit (Appendix Figure~\ref{fig:dataset_overview}).
+
+\textbf{Leakage prevention.} Deduplicating before splitting is essential. Early pilots performed the split first and overestimated accuracy by several points because identical recipes appeared in both splits. With leakage removed, class priors remain close to the original distribution and no recipe text is shared across folds.
+
+\textbf{Minimal normalisation.} We deliberately avoid aggressive cleaning. DistilBERT's uncased tokenizer already handles casing, while keeping punctuation and rare words preserves stylistic cues such as ``diabetic cooking'' or ``OAMC freezer meal'' that are strongly chef-specific.
 
 \section{Model and Optimisation Choices}
 
-We retained DistilBERT’s default classification head: dropout 0.2, a 768\,$\rightarrow$\,768 projection with ReLU, and a linear layer mapping to six logits (Figure~\ref{fig:pipeline}). The optimiser is AdamW with learning rate $2\times10^{-5}$, weight decay 0.01, linear warm-up over 6\% of steps, and gradient clipping at 1.0. To keep the Mac training run stable we use “chill mode” batch sizes of 8/16 (train/eval) with dynamic padding. Evaluation occurs every 100 steps; if macro-F1 fails to improve twice in a row we stop, keeping the best checkpoint. This tighter cadence proved more informative than fixed-epoch schedules—later epochs fluctuate but do not improve the macro-F1 curve (Appendix Figure~\ref{fig:training_curves}).
+\textbf{Architecture.} We fine-tune DistilBERT-base-uncased. The classification head is the default: dropout 0.2, a 768\,$\rightarrow$\,768 projection with ReLU, and a linear layer producing six logits. A diagram of the full pipeline—from field concatenation to prediction—is provided in Appendix Figure~\ref{fig:pipeline}. We experimented with alternative activations (GELU) and deeper heads, but these offered no consistent improvement once we tightened evaluation cadence.
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.95\columnwidth]{../results/figures/encoder.pdf}
-\caption{Text-only DistilBERT pipeline used for chef classification.}
-\label{fig:pipeline}
-\end{figure}
+\textbf{Optimiser and schedule.} Training uses AdamW with learning rate $2\times10^{-5}$, weight decay 0.01, gradient clipping at 1.0, and a linear warm-up covering 6\% of steps. To keep Mac hardware responsive we adopt ``chill mode'' batch sizes of 8 for training and 16 for evaluation with dynamic padding. We evaluate every 100 optimisation steps and apply early stopping after two non-improving macro-F1 evaluations, keeping the checkpoint with the highest macro-F1.
 
-\section{Evaluation}
+\textbf{Monitoring.} Narrowing the evaluation cadence was crucial. Fixed epoch counts suggested continued improvement, but step-wise logging reveals that accuracy and macro-F1 plateau around step~1300 (Appendix Figure~\ref{fig:training_curves}). This insight guided the final schedule and avoided unnecessary epochs.
+
+\section{Results and Analysis}
 
 \begin{table}[h]
 \centering
-\caption{Validation accuracy and macro-F1.}
+\caption{Validation metrics compared with TF-IDF baselines.}
 \begin{tabular}{lcc}
 \hline
 \textbf{Method} & \textbf{Accuracy} & \textbf{Macro-F1} \\
@@ -56,22 +58,15 @@ DistilBERT (ours) & \textbf{92.13\%} & \textbf{0.916} \\
 \label{tab:results}
 \end{table}
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.85\columnwidth]{../results/figures/baseline_comparison.png}
-\caption{Accuracy improvement over TF-IDF baselines.}
-\label{fig:baseline}
-\end{figure}
+Class-level precision and recall all exceed 0.85. Chef~1533 is slightly over-predicted and Chef~3288 slightly under-predicted, reflecting their shared focus on quick appetisers versus make-ahead dishes. Appendix Figure~\ref{fig:dist_comparison} shows that prediction proportions stay within $\pm$2.3 percentage points of the training priors. Remaining errors fall into three buckets: minimal context (very short recipes), cross-cultural dishes appearing in multiple cookbooks, and the small fraction of recipes truncated beyond 512 tokens.
 
-Validation predictions remain well-balanced: class-wise precision and recall exceed 0.85, and the blind test distribution deviates by at most 2.3 percentage points from the training prior (Appendix Figure~\ref{fig:dist_comparison}). Chef~1533 is modestly over-predicted, while Chef~3288 is slightly under-predicted—both chefs specialize in quick appetisers and make-ahead dishes, so confusion is expected. Figure~\ref{fig:training_curves} (appendix) shows that accuracy and macro-F1 improve steadily through epoch~4; thereafter the curves stabilise, and later checkpoints bring no gains.
+Compared to TF-IDF, DistilBERT benefits from contextual semantics: phrases like ``diabetic cooking'' or ingredient substitutions combine with instruction style to distinguish chefs. The baseline gap is illustrated in Appendix Figure~\ref{fig:baseline}.
 
-\section{Key Takeaways and Next Steps}
+\section{Design Rationale and Future Work}
 
-\begin{itemize}
-    \item \textbf{Deduplication mattered.} Earlier experiments that split before deduplicating produced optimistic metrics. Removing the 14 overlapping recipes eliminated this leakage.
-    \item \textbf{Simple head, careful schedule.} Returning to the default ReLU head and monitoring macro-F1 every 100 steps was enough to reach 92\%; more complex heads were unnecessary on this dataset size.
-    \item \textbf{Future improvements.} Structured cues (ingredient quantities, durations) and cross-validation could further stabilise scores. Interpretability analysis—e.g., attention heat maps—would help confirm the model looks beyond obvious keywords such as “diabetic cooking” or “OAMC”.
-\end{itemize}
+The final pipeline emphasises three principles. \textbf{(1) Protect high-signal fields:} ordering the concatenation keeps names and ingredients intact while long step lists absorb truncation. \textbf{(2) Control leakage and cadence:} deduplication plus step-wise early stopping produce reliable metrics and surfaced the optimal checkpoint near epoch~5. \textbf{(3) Prefer simplicity unless justified:} the default ReLU head and modest batch sizes already attain 92\% accuracy; heavier heads or models offered no gain under the resource envelope.
+
+Future extensions could integrate structured cues (ingredient counts, prep times), run cross-validation for tighter variance estimates, and perform attribution analyses to verify the model attends to stylistic signals rather than only obvious keywords. Exploring data augmentation (e.g., recipe paraphrasing) may further improve robustness on chefs with fewer samples.
 
 \section*{Bibliography}
 
@@ -82,25 +77,39 @@ Validation predictions remain well-balanced: class-wise precision and recall exc
 
 \section*{Appendix: Supporting Figures}
 
-\begin{figure}[h]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=0.9\columnwidth]{../results/figures/training_curves.png}
-\caption{Training diagnostics: loss, validation accuracy, and macro-F1 at each evaluation (every 100 steps).}
+\includegraphics[width=0.9\textwidth]{../results/figures/encoder.pdf}
+\caption{DistilBERT text-only pipeline from concatenated recipe fields to chef prediction.}
+\label{fig:pipeline}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.9\textwidth]{../results/figures/training_curves.png}
+\caption{Training loss plus validation accuracy and macro-F1 logged every 25 steps (evaluation every 100).}
 \label{fig:training_curves}
-\end{figure}
+\end{figure*}
 
-\begin{figure}[h]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=0.9\columnwidth]{../results/figures/dataset_overview.png}
-\caption{Dataset overview: deduplicated class counts (left) and token length distribution (right).}
+\includegraphics[width=0.9\textwidth]{../results/figures/dataset_overview.png}
+\caption{Deduplicated class counts (left) and token length histogram (right).}
 \label{fig:dataset_overview}
-\end{figure}
+\end{figure*}
 
-\begin{figure}[h]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=0.9\columnwidth]{../results/figures/distribution_comparison.png}
-\caption{Comparison between training distribution (left) and blind test predictions (right).}
+\includegraphics[width=0.9\textwidth]{../results/figures/distribution_comparison.png}
+\caption{Training distribution (left) vs. blind test predictions (right).}
 \label{fig:dist_comparison}
-\end{figure}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.9\textwidth]{../results/figures/baseline_comparison.png}
+\caption{Accuracy gap between TF-IDF baselines and the final DistilBERT pipeline.}
+\label{fig:baseline}
+\end{figure*}
 
 \end{document}

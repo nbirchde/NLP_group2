@@ -1,10 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.19)  6 OCT 2025 18:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.19)  6 OCT 2025 18:34
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/Project-Template/template.tex
-(/Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/Project-Template/template.tex
+**template.tex
+(./template.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (/usr/local/texlive/2025/texmf-dist/tex/latex/base/article.cls
@@ -23,235 +22,253 @@ File: size10.clo 2024/06/29 v1.4n Standard LaTeX file (size option)
 \abovecaptionskip=\skip49
 \belowcaptionskip=\skip50
 \bibindent=\dimen141
-) (/usr/local/texlive/2025/texmf-dist/tex/latex/preprint/authblk.sty
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/preprint/authblk.sty
 Package: authblk 2001/02/27 1.3 (PWD)
 \affilsep=\skip51
 \@affilsep=\skip52
 \c@Maxaffil=\count270
 \c@authors=\count271
 \c@affil=\count272
-) (/usr/local/texlive/2025/texmf-dist/tex/latex/bera/bera.sty
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/bera/bera.sty
 Package: bera 2004/01/31 (WaS)
- (/usr/local/texlive/2025/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
-) (/usr/local/texlive/2025/texmf-dist/tex/latex/base/textcomp.sty
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/base/textcomp.sty
 Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
-) (/usr/local/texlive/2025/texmf-dist/tex/latex/bera/beraserif.sty
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/bera/beraserif.sty
 Package: beraserif 2004/01/30 (WaS)
- (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/keyval.sty
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks17
 )
-LaTeX Font Info:    Trying to load font information for T1+fve on input line 30.
- (/usr/local/texlive/2025/texmf-dist/tex/latex/bera/t1fve.fd
+LaTeX Font Info:    Trying to load font information for T1+fve on input line 30
+.
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/bera/t1fve.fd
 File: t1fve.fd 2004/09/07 scalable font definitions for T1/fve.
 )
 LaTeX Font Info:    Font shape `T1/fve/m/n' will be
 (Font)              scaled to size 8.99994pt on input line 30.
-) (/usr/local/texlive/2025/texmf-dist/tex/latex/bera/berasans.sty
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/bera/berasans.sty
 Package: berasans 2004/01/30 (WaS)
-) (/usr/local/texlive/2025/texmf-dist/tex/latex/bera/beramono.sty
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/bera/beramono.sty
 Package: beramono 2004/01/31 (WaS)
-)) (/usr/local/texlive/2025/texmf-dist/tex/latex/base/inputenc.sty
+))
+(/usr/local/texlive/2025/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2024/02/08 v1.3d Input encoding file
 \inpenc@prehook=\toks18
 \inpenc@posthook=\toks19
-) (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/graphicx.sty
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
- (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/graphics.sty
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
- (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/trig.sty
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
-) (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 106.
- (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics-def/pdftex.def
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen142
 \Gin@req@width=\dimen143
-) (/usr/local/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2025/02/06 v3.11 Customized lists
+\labelindent=\skip53
+\enit@outerparindent=\dimen144
+\enit@toks=\toks20
+\enit@inbox=\box52
+\enit@count@id=\count273
+\enitdp@description=\count274
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count273
-\l__pdf_internal_box=\box52
-) (./template.aux)
+\l__color_backend_stack_int=\count275
+\l__pdf_internal_box=\box53
+)
+(./template.aux)
 \openout1 = `template.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
- (/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+
+(/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count274
-\scratchdimen=\dimen144
-\scratchbox=\box53
-\nofMPsegments=\count275
-\nofMParguments=\count276
-\everyMPshowfont=\toks20
-\MPscratchCnt=\count277
-\MPscratchDim=\dimen145
-\MPnumerator=\count278
-\makeMPintoPDFobject=\count279
-\everyMPtoPDFconversion=\toks21
+\scratchcounter=\count276
+\scratchdimen=\dimen145
+\scratchbox=\box54
+\nofMPsegments=\count277
+\nofMParguments=\count278
+\everyMPshowfont=\toks21
+\MPscratchCnt=\count279
+\MPscratchDim=\dimen146
+\MPnumerator=\count280
+\makeMPintoPDFobject=\count281
+\everyMPtoPDFconversion=\toks22
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
- (/usr/local/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
 ))
 LaTeX Font Info:    Font shape `T1/fve/m/n' will be
-(Font)              scaled to size 15.55188pt on input line 20.
+(Font)              scaled to size 15.55188pt on input line 21.
 LaTeX Font Info:    Font shape `T1/fve/m/n' will be
-(Font)              scaled to size 10.79993pt on input line 20.
+(Font)              scaled to size 10.79993pt on input line 21.
 LaTeX Font Info:    Font shape `T1/fve/m/n' will be
-(Font)              scaled to size 12.9599pt on input line 22.
+(Font)              scaled to size 12.9599pt on input line 23.
 LaTeX Font Info:    Font shape `T1/fve/b/n' will be
-(Font)              scaled to size 12.9599pt on input line 22.
+(Font)              scaled to size 12.9599pt on input line 23.
+LaTeX Font Info:    Font shape `T1/fve/b/n' will be
+(Font)              scaled to size 8.99994pt on input line 29.
 LaTeX Font Info:    Font shape `T1/fve/m/it' in size <10> not available
-(Font)              Font shape `T1/fve/m/sl' tried instead on input line 28.
+(Font)              Font shape `T1/fve/m/sl' tried instead on input line 29.
 LaTeX Font Info:    Font shape `T1/fve/m/sl' will be
-(Font)              scaled to size 8.99994pt on input line 28.
+(Font)              scaled to size 8.99994pt on input line 29.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 28.
+(Font)              <7> on input line 29.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 28.
+(Font)              <5> on input line 29.
 
-Underfull \hbox (badness 10000) in paragraph at lines 30--30
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
 []\T1/fve/b/n/14.4 Model and Op-ti-mi-sa-tion
  []
 
 
-Underfull \hbox (badness 1472) in paragraph at lines 32--33
-\T1/fve/m/n/10 We re-tained Dis-til-BERT's de-fault clas-si-fi-ca-tion
+Underfull \hbox (badness 1902) in paragraph at lines 37--38
+\T1/fve/b/n/10 Architecture. \T1/fve/m/n/10 We fine-tune DistilBERT-base-
+ []
+
+
+Underfull \hbox (badness 2452) in paragraph at lines 39--40
+[]\T1/fve/b/n/10 Optimiser and sched-ule. \T1/fve/m/n/10 Train-ing uses
  []
 
 
 
-<../results/figures/encoder.pdf, id=1, 396.64084pt x 401.60541pt>
-File: ../results/figures/encoder.pdf Graphic file (type pdf)
-<use ../results/figures/encoder.pdf>
-Package pdftex.def Info: ../results/figures/encoder.pdf  used on input line 36.
-(pdftex.def)             Requested size: 218.02429pt x 220.7611pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-LaTeX Font Info:    Font shape `T1/fve/b/n' will be
-(Font)              scaled to size 8.99994pt on input line 48.
-<../results/figures/baseline_comparison.png, id=2, 518.1759pt x 355.3275pt>
-File: ../results/figures/baseline_comparison.png Graphic file (type png)
-<use ../results/figures/baseline_comparison.png>
-Package pdftex.def Info: ../results/figures/baseline_comparison.png  used on input line 61.
-(pdftex.def)             Requested size: 195.0764pt x 133.76797pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 2726) in paragraph at lines 66--67
-[]\T1/fve/m/n/10 Validation pre-dic-tions re-main well-balanced:
- []
-
-
-Underfull \hbox (badness 1389) in paragraph at lines 66--67
-\T1/fve/m/n/10 predicted, while Chef 3288 is slightly under-
- []
-
-
-
-[1{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc}
+[1{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/l
+ocal/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 
 ]
-Underfull \hbox (badness 4899) in paragraph at lines 68--68
-[]\T1/fve/b/n/14.4 Key Take-aways and Next
- []
-
-LaTeX Font Info:    Trying to load font information for TS1+fve on input line 71.
-(/usr/local/texlive/2025/texmf-dist/tex/latex/bera/ts1fve.fd
-File: ts1fve.fd 2004/09/07 scalable font definitions for TS1/fve.
-)
-LaTeX Font Info:    Font shape `TS1/fve/m/n' will be
-(Font)              scaled to size 8.99994pt on input line 71.
-
-
-
-Underfull \hbox (badness 1270) in paragraph at lines 73--74
-[]\T1/fve/b/n/10 Future im-prove-ments. \T1/fve/m/n/10 Struc-tured cues
+Underfull \hbox (badness 1038) in paragraph at lines 41--42
+\T1/fve/m/n/10 step 1300 (Ap-pendix Fig-ure 2[]). This in-sight
  []
 
 
-Underfull \hbox (badness 1365) in paragraph at lines 73--74
-\T1/fve/m/n/10 ter-pretabil-ity anal-y-sis^^Ve.g., at-ten-tion heat
+Underfull \hbox (badness 1715) in paragraph at lines 61--62
+\T1/fve/m/n/10 fo-cus on quick ap-pe-tis-ers ver-sus make-ahead
  []
+
+
+Underfull \hbox (badness 1014) in paragraph at lines 61--62
+\T1/fve/m/n/10 of the train-ing pri-ors. Re-main-ing er-rors fall
+ []
+
+
 
 (./template.bbl
 
 LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
 )
-<../results/figures/training_curves.png, id=16, 1293.633pt x 322.3242pt>
+<../results/figures/encoder.pdf, id=10, 396.64084pt x 401.60541pt>
+File: ../results/figures/encoder.pdf Graphic file (type pdf)
+<use ../results/figures/encoder.pdf>
+Package pdftex.def Info: ../results/figures/encoder.pdf  used on input line 82.
+
+(pdftex.def)             Requested size: 422.09714pt x 427.39102pt.
+<../results/figures/training_curves.png, id=11, 1293.633pt x 322.3242pt>
 File: ../results/figures/training_curves.png Graphic file (type png)
 <use ../results/figures/training_curves.png>
-Package pdftex.def Info: ../results/figures/training_curves.png  used on input line 87.
-(pdftex.def)             Requested size: 206.5486pt x 51.4598pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<../results/figures/dataset_overview.png, id=17, 859.7721pt x 318.2289pt>
+Package pdftex.def Info: ../results/figures/training_curves.png  used on input 
+line 89.
+(pdftex.def)             Requested size: 422.09714pt x 105.16725pt.
+<../results/figures/dataset_overview.png, id=13, 859.7721pt x 318.2289pt>
 File: ../results/figures/dataset_overview.png Graphic file (type png)
 <use ../results/figures/dataset_overview.png>
-Package pdftex.def Info: ../results/figures/dataset_overview.png  used on input line 94.
-(pdftex.def)             Requested size: 206.5486pt x 76.44933pt.
+Package pdftex.def Info: ../results/figures/dataset_overview.png  used on input
+ line 96.
+(pdftex.def)             Requested size: 422.09714pt x 156.23457pt.
+<../results/figures/distribution_comparison.png, id=14, 860.013pt x 322.3242pt>
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<../results/figures/distribution_comparison.png, id=18, 860.013pt x 322.3242pt>
 File: ../results/figures/distribution_comparison.png Graphic file (type png)
 <use ../results/figures/distribution_comparison.png>
-Package pdftex.def Info: ../results/figures/distribution_comparison.png  used on input line 101.
-(pdftex.def)             Requested size: 206.5486pt x 77.40857pt.
+Package pdftex.def Info: ../results/figures/distribution_comparison.png  used o
+n input line 103.
+(pdftex.def)             Requested size: 422.09714pt x 158.19598pt.
+<../results/figures/baseline_comparison.png, id=15, 518.1759pt x 355.3275pt>
+File: ../results/figures/baseline_comparison.png Graphic file (type png)
+<use ../results/figures/baseline_comparison.png>
+Package pdftex.def Info: ../results/figures/baseline_comparison.png  used on in
+put line 110.
+(pdftex.def)             Requested size: 422.09714pt x 289.45108pt.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-
-[2 <../results/figures/encoder.pdf> <../results/figures/baseline_comparison.png>]
-
-
-
-[3
-
- <../results/figures/training_curves.png> <../results/figures/dataset_overview.png> <../results/figures/distribution_comparison.png>] (./template.aux)
+[2] [3 <../results/figures/encoder.pdf>] [4 <../results/figures/training_curves
+.png> <../results/figures/dataset_overview.png> <../results/figures/distributio
+n_comparison.png>] [5 <../results/figures/baseline_comparison.png>]
+(./template.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 1851 strings out of 473190
- 30836 string characters out of 5715800
- 420628 words of memory out of 5000000
- 25104 multiletter control sequences out of 15000+600000
- 581567 words of font info for 51 fonts, out of 8000000 for 9000
+ 2153 strings out of 473190
+ 35786 string characters out of 5715800
+ 429122 words of memory out of 5000000
+ 25407 multiletter control sequences out of 15000+600000
+ 581252 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,8n,65p,861b,277s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/bera/fveb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/bera/fver8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/bera/fver8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on template.pdf (3 pages, 827264 bytes).
+ 57i,8n,65p,674b,246s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><
+/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></us
+r/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/l
+ocal/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/loca
+l/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
+/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/t
+exlive/2025/texmf-dist/fonts/type1/public/bera/fveb8a.pfb></usr/local/texlive/2
+025/texmf-dist/fonts/type1/public/bera/fver8a.pfb></usr/local/texlive/2025/texm
+f-dist/fonts/type1/public/bera/fver8a.pfb></usr/local/texlive/2025/texmf-dist/f
+onts/type1/public/cm-super/sfrm1000.pfb>
+Output written on template.pdf (5 pages, 829155 bytes).
 PDF statistics:
- 104 PDF objects out of 1000 (max. 8388607)
- 64 compressed objects within 1 object stream
+ 110 PDF objects out of 1000 (max. 8388607)
+ 68 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
