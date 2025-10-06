@@ -136,17 +136,17 @@
     % Dense layer with vertical neural net (768→768)
     \node[block, text width=4.5cm, minimum height=2.8cm] (dense) at ($(dropout0.north) + (0,1.9)$) {};
     \node[font=\normalsize, anchor=north] at ($(dense.north) + (0,-0.2)$) {Dense (768→768)};
-    % Input layer (bottom) - 6 nodes representing 768 (centered)
-    \foreach [count=\i from 1] \x in {-1.0,-0.6,-0.2,0.2,0.6,1.0} {
+    % Input layer (bottom) - 13 nodes representing 768 (centered)
+    \foreach [count=\i from 1] \x in {-1.8,-1.5,-1.2,-0.9,-0.6,-0.3,0.0,0.3,0.6,0.9,1.2,1.5,1.8} {
         \node[circle, draw, inner sep=1.5pt, minimum size=5pt, fill=gray!10] (din\i) at ($(dense.south) + (\x, 0.4)$) {};
     }
-    % Output layer (top) - 6 nodes representing 768 (centered)
-    \foreach [count=\i from 1] \x in {-1.0,-0.6,-0.2,0.2,0.6,1.0} {
+    % Output layer (top) - 13 nodes representing 768 (centered)
+    \foreach [count=\i from 1] \x in {-1.8,-1.5,-1.2,-0.9,-0.6,-0.3,0.0,0.3,0.6,0.9,1.2,1.5,1.8} {
         \node[circle, draw, inner sep=1.5pt, minimum size=5pt, fill=gray!10] (dout\i) at ($(dense.north) + (\x, -0.8)$) {};
     }
     % Connections - fully connected
-    \foreach \i in {1,...,6}
-        \foreach \j in {1,...,6}
+    \foreach \i in {1,...,13}
+        \foreach \j in {1,...,13}
             \draw[very thin, gray!40] (din\i) -- (dout\j);
     
     % ReLU with activation curve (smaller, white background, centered)
@@ -171,8 +171,8 @@
     
     \node[font=\normalsize, anchor=south] at ($(funnel_tl)!0.5!(funnel_tr) + (0, 0.15)$) {Linear (768→6)};
     
-    % Input layer (bottom) - 6 nodes spread WIDE (representing 768)
-    \foreach [count=\i from 1] \x in {-1.5,-0.9,-0.3,0.3,0.9,1.5} {
+    % Input layer (bottom) - 12 nodes spread WIDE (representing 768)
+    \foreach [count=\i from 1] \x in {-1.8,-1.5,-1.2,-0.9,-0.6,-0.3,0.0,0.3,0.6,0.9,1.2,1.5,1.8} {
         \node[circle, draw, inner sep=1.5pt, minimum size=5pt, fill=gray!10] (lin\i) at ($(funnel_bl)!0.5!(funnel_br) + (\x, 0.4)$) {};
     }
     % Output layer (top) - 6 nodes NARROW (representing 6 chefs)
@@ -180,7 +180,7 @@
         \node[circle, draw, inner sep=1.5pt, minimum size=5pt, fill=gray!10] (lout\i) at ($(funnel_tl)!0.5!(funnel_tr) + (\x, -0.4)$) {};
     }
     % Funnel connections - all inputs connect to all outputs, creating funnel effect
-    \foreach \i in {1,...,6}
+    \foreach \i in {1,...,13}
         \foreach \j in {1,...,6}
             \draw[very thin, gray!40] (lin\i) -- (lout\j);
     
