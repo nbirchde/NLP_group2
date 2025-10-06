@@ -351,62 +351,32 @@ def create_dataset_overview_fig(
     config: TrainingConfig,
 ) -> plt.Figure:
     dedup_df: pd.DataFrame = stats["dedup_df"]  # type: ignore[assignment]
-    train_df: pd.DataFrame = stats["train_df"]  # type: ignore[assignment]
-    val_df: pd.DataFrame = stats["val_df"]  # type: ignore[assignment]
     token_lengths: np.ndarray = stats["token_lengths"]  # type: ignore[assignment]
-    field_percentages: dict[str, float] = stats["field_percentages"]  # type: ignore[assignment]
 
-    fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+    fig, axes = plt.subplots(1, 2, figsize=(12, 4.5))
 
     # Class distribution after deduplication
     class_counts = dedup_df["chef_id"].value_counts().sort_index()
     colors = sns.color_palette("viridis", len(class_counts))
-    axes[0, 0].bar(class_counts.index.astype(str), class_counts.values, color=colors)
-    axes[0, 0].set_ylabel("Recipes")
-    axes[0, 0].set_xlabel("Chef ID")
-    axes[0, 0].set_title("Class Distribution after Dedup (2.0x imbalance)")
-    axes[0, 0].grid(axis="y", alpha=0.25)
-    for bar, count in zip(axes[0, 0].patches, class_counts.values):
-        axes[0, 0].text(bar.get_x() + bar.get_width() / 2, count + 5, str(int(count)), ha="center")
+    axes[0].bar(class_counts.index.astype(str), class_counts.values, color=colors)
+    axes[0].set_ylabel("Recipes")
+    axes[0].set_xlabel("Chef ID")
+    axes[0].set_title("Class Distribution after Dedup")
+    axes[0].grid(axis="y", alpha=0.25)
+    for bar, count in zip(axes[0].patches, class_counts.values):
+        axes[0].text(bar.get_x() + bar.get_width() / 2, count + 5, str(int(count)), ha="center", fontsize=9)
 
     # Token length histogram
-    axes[0, 1].hist(token_lengths, bins=40, color="#3498db", edgecolor="black", alpha=0.8)
-    axes[0, 1].set_title("Token Length Distribution (post-dedup)")
-    axes[0, 1].set_xlabel("Tokens per sample")
-    axes[0, 1].set_ylabel("Frequency")
-    axes[0, 1].axvline(np.median(token_lengths), color="#e74c3c", linestyle="--", label=f"Median: {np.median(token_lengths):.0f}")
-    axes[0, 1].axvline(np.percentile(token_lengths, 95), color="#f39c12", linestyle="--", label=f"95th %ile: {np.percentile(token_lengths,95):.0f}")
-    axes[0, 1].axvline(config.max_length, color="#16a085", linestyle="--", label=f"Max length: {config.max_length}")
-    axes[0, 1].legend()
-
-    # Field contributions
-    field_labels = [FIELD_ALIASES.get(f, f).replace(" ", "\n") or f for f in config.text_fields]
-    contributions = [field_percentages.get(f, 0.0) for f in config.text_fields]
-    axes[1, 0].pie(
-        contributions,
-        labels=field_labels,
-        autopct="%1.0f%%",
-        startangle=90,
-        colors=sns.color_palette("Set2", len(contributions)),
-        textprops={"fontsize": 10},
-    )
-    axes[1, 0].set_title("Average Token Share per Field")
-
-    # Train / validation split sizes
-    split_sizes = [len(train_df), len(val_df)]
-    split_labels = [
-        f"Train\n({len(train_df)} samples)",
-        f"Validation\n({len(val_df)} samples)",
-    ]
-    axes[1, 1].pie(
-        split_sizes,
-        labels=split_labels,
-        autopct="%1.1f%%",
-        startangle=90,
-        colors=["#3498db", "#e74c3c"],
-        textprops={"fontsize": 10},
-    )
-    axes[1, 1].set_title("Stratified Split after Dedup (80/20)")
+    axes[1].hist(token_lengths, bins=40, color="#3498db", edgecolor="black", alpha=0.85)
+    axes[1].set_title("Token Length Distribution")
+    axes[1].set_xlabel("Tokens per sample")
+    axes[1].set_ylabel("Frequency")
+    median = np.median(token_lengths)
+    p95 = np.percentile(token_lengths, 95)
+    axes[1].axvline(median, color="#e74c3c", linestyle="--", label=f"Median: {median:.0f}")
+    axes[1].axvline(p95, color="#f39c12", linestyle="--", label=f"95th %ile: {p95:.0f}")
+    axes[1].axvline(config.max_length, color="#16a085", linestyle="--", label=f"Max length: {config.max_length}")
+    axes[1].legend(fontsize=9)
 
     fig.tight_layout()
     return fig
@@ -487,19 +457,20 @@ def create_distribution_comparison_fig(
     pred_pct = pred_series / pred_series.sum() * 100
 
     chefs = train_pct.index.astype(str)
-    x = np.arange(len(chefs))
-    width = 0.35
 
-    fig, ax = plt.subplots(figsize=(10, 5))
-    ax.bar(x - width / 2, train_pct.values, width, label="Train", color="#3498db")
-    ax.bar(x + width / 2, pred_pct.reindex(chefs).fillna(0).values, width, label="Test predictions", color="#2ecc71")
+    fig, axes = plt.subplots(1, 2, figsize=(12, 4.5), sharey=True)
 
-    ax.set_xticks(x)
-    ax.set_xticklabels(chefs)
-    ax.set_ylabel("Percentage")
-    ax.set_title("Class Distribution: Train vs. Test Predictions")
-    ax.legend()
-    ax.grid(axis="y", alpha=0.25)
+    axes[0].bar(chefs, train_pct.values, color="#3498db")
+    axes[0].set_title("Training Distribution (%)")
+    axes[0].set_ylabel("Percentage")
+    axes[0].grid(axis="y", alpha=0.25)
+
+    axes[1].bar(chefs, pred_pct.reindex(chefs).fillna(0).values, color="#2ecc71")
+    axes[1].set_title("Test Predictions (%)")
+    axes[1].grid(axis="y", alpha=0.25)
+
+    fig.suptitle("Class Distributions After Deduplication", fontsize=14, fontweight="bold")
+    fig.tight_layout(rect=(0, 0, 1, 0.93))
     return fig
 
 

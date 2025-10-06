@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.19)  6 OCT 2025 18:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.19)  6 OCT 2025 18:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -119,23 +119,22 @@ LaTeX Font Info:    Font shape `T1/fve/m/n' will be
 (Font)              scaled to size 12.9599pt on input line 22.
 LaTeX Font Info:    Font shape `T1/fve/b/n' will be
 (Font)              scaled to size 12.9599pt on input line 22.
-LaTeX Font Info:    Trying to load font information for TS1+fve on input line 29.
- (/usr/local/texlive/2025/texmf-dist/tex/latex/bera/ts1fve.fd
-File: ts1fve.fd 2004/09/07 scalable font definitions for TS1/fve.
-)
-LaTeX Font Info:    Font shape `TS1/fve/m/n' will be
-(Font)              scaled to size 8.99994pt on input line 29.
 LaTeX Font Info:    Font shape `T1/fve/m/it' in size <10> not available
-(Font)              Font shape `T1/fve/m/sl' tried instead on input line 29.
+(Font)              Font shape `T1/fve/m/sl' tried instead on input line 28.
 LaTeX Font Info:    Font shape `T1/fve/m/sl' will be
-(Font)              scaled to size 8.99994pt on input line 29.
+(Font)              scaled to size 8.99994pt on input line 28.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 29.
+(Font)              <7> on input line 28.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 29.
+(Font)              <5> on input line 28.
 
-Underfull \hbox (badness 3568) in paragraph at lines 37--38
-[]\T1/fve/m/n/10 DistilBERT en-coder with dropout 0.2, a
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+[]\T1/fve/b/n/14.4 Model and Op-ti-mi-sa-tion
+ []
+
+
+Underfull \hbox (badness 1472) in paragraph at lines 32--33
+\T1/fve/m/n/10 We re-tained Dis-til-BERT's de-fault clas-si-fi-ca-tion
  []
 
 
@@ -143,44 +142,29 @@ Underfull \hbox (badness 3568) in paragraph at lines 37--38
 <../results/figures/encoder.pdf, id=1, 396.64084pt x 401.60541pt>
 File: ../results/figures/encoder.pdf Graphic file (type pdf)
 <use ../results/figures/encoder.pdf>
-Package pdftex.def Info: ../results/figures/encoder.pdf  used on input line 44.
+Package pdftex.def Info: ../results/figures/encoder.pdf  used on input line 36.
 (pdftex.def)             Requested size: 218.02429pt x 220.7611pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Font Info:    Font shape `T1/fve/b/n' will be
-(Font)              scaled to size 8.99994pt on input line 56.
-
-Overfull \hbox (32.77623pt too wide) in paragraph at lines 54--65
- [][] 
- []
-
+(Font)              scaled to size 8.99994pt on input line 48.
 <../results/figures/baseline_comparison.png, id=2, 518.1759pt x 355.3275pt>
 File: ../results/figures/baseline_comparison.png Graphic file (type png)
 <use ../results/figures/baseline_comparison.png>
-Package pdftex.def Info: ../results/figures/baseline_comparison.png  used on input line 69.
+Package pdftex.def Info: ../results/figures/baseline_comparison.png  used on input line 61.
 (pdftex.def)             Requested size: 195.0764pt x 133.76797pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 3668) in paragraph at lines 77--78
-[]\T1/fve/m/n/10 Prediction dis-tri-bu-tion on the blind test
+Underfull \hbox (badness 2726) in paragraph at lines 66--67
+[]\T1/fve/m/n/10 Validation pre-dic-tions re-main well-balanced:
  []
 
 
-Underfull \hbox (badness 3396) in paragraph at lines 77--78
-\T1/fve/m/n/10 set stays within $\OMS/cmsy/m/n/10 ^^F$\T1/fve/m/n/10 2.3 per-cent-age points
- []
-
-
-Underfull \hbox (badness 3579) in paragraph at lines 77--78
-\T1/fve/m/n/10 of the train-ing prior (Chef 1533 mildly
- []
-
-
-Underfull \hbox (badness 2189) in paragraph at lines 77--78
-\T1/fve/m/n/10 over-predicted, Chef 3288 slightly under-
+Underfull \hbox (badness 1389) in paragraph at lines 66--67
+\T1/fve/m/n/10 predicted, while Chef 3288 is slightly under-
  []
 
 
@@ -189,32 +173,85 @@ Underfull \hbox (badness 2189) in paragraph at lines 77--78
 
 
 ]
+Underfull \hbox (badness 4899) in paragraph at lines 68--68
+[]\T1/fve/b/n/14.4 Key Take-aways and Next
+ []
+
+LaTeX Font Info:    Trying to load font information for TS1+fve on input line 71.
+(/usr/local/texlive/2025/texmf-dist/tex/latex/bera/ts1fve.fd
+File: ts1fve.fd 2004/09/07 scalable font definitions for TS1/fve.
+)
+LaTeX Font Info:    Font shape `TS1/fve/m/n' will be
+(Font)              scaled to size 8.99994pt on input line 71.
+
+
+
+Underfull \hbox (badness 1270) in paragraph at lines 73--74
+[]\T1/fve/b/n/10 Future im-prove-ments. \T1/fve/m/n/10 Struc-tured cues
+ []
+
+
+Underfull \hbox (badness 1365) in paragraph at lines 73--74
+\T1/fve/m/n/10 ter-pretabil-ity anal-y-sis^^Ve.g., at-ten-tion heat
+ []
 
 (./template.bbl
 
 LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
 )
+<../results/figures/training_curves.png, id=16, 1293.633pt x 322.3242pt>
+File: ../results/figures/training_curves.png Graphic file (type png)
+<use ../results/figures/training_curves.png>
+Package pdftex.def Info: ../results/figures/training_curves.png  used on input line 87.
+(pdftex.def)             Requested size: 206.5486pt x 51.4598pt.
 
-[2 <../results/figures/encoder.pdf> <../results/figures/baseline_comparison.png>] (./template.aux)
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<../results/figures/dataset_overview.png, id=17, 859.7721pt x 318.2289pt>
+File: ../results/figures/dataset_overview.png Graphic file (type png)
+<use ../results/figures/dataset_overview.png>
+Package pdftex.def Info: ../results/figures/dataset_overview.png  used on input line 94.
+(pdftex.def)             Requested size: 206.5486pt x 76.44933pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<../results/figures/distribution_comparison.png, id=18, 860.013pt x 322.3242pt>
+File: ../results/figures/distribution_comparison.png Graphic file (type png)
+<use ../results/figures/distribution_comparison.png>
+Package pdftex.def Info: ../results/figures/distribution_comparison.png  used on input line 101.
+(pdftex.def)             Requested size: 206.5486pt x 77.40857pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
+[2 <../results/figures/encoder.pdf> <../results/figures/baseline_comparison.png>]
+
+
+
+[3
+
+ <../results/figures/training_curves.png> <../results/figures/dataset_overview.png> <../results/figures/distribution_comparison.png>] (./template.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 1827 strings out of 473190
- 29767 string characters out of 5715800
- 420562 words of memory out of 5000000
- 25080 multiletter control sequences out of 15000+600000
+ 1851 strings out of 473190
+ 30836 string characters out of 5715800
+ 420628 words of memory out of 5000000
+ 25104 multiletter control sequences out of 15000+600000
  581567 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,8n,65p,502b,277s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,8n,65p,861b,277s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/bera/fveb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/bera/fver8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/bera/fver8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on template.pdf (2 pages, 218186 bytes).
+Output written on template.pdf (3 pages, 827264 bytes).
 PDF statistics:
- 95 PDF objects out of 1000 (max. 8388607)
- 62 compressed objects within 1 object stream
+ 104 PDF objects out of 1000 (max. 8388607)
+ 64 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

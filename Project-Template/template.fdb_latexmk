@@ -1,16 +1,19 @@
 # Fdb version 4
-["bibtex template"] 1759770091.22019 "template.aux" "template.bbl" "template" 1759770661.41088 0
+["bibtex template"] 1759771768.76017 "template.aux" "template.bbl" "template" 1759771798.76816 0
   "./biblio.bib" 1759509027.35982 362 a1e9be8fcf1727a63d7df26462a07d07 ""
   "/usr/local/texlive/2025/texmf-dist/bibtex/bst/base/apalike.bst" 1292289607 24635 604dafcc79f521a11ea73e506e1fbd98 ""
-  "template.aux" 1759770661.24298 1158 88f5e073afb239c4b0ba670ecd73779d "pdflatex"
+  "template.aux" 1759771798.60992 1919 71ca700f3fa9e4d9b1f04118005355be "pdflatex"
   (generated)
   "template.bbl"
   "template.blg"
   (rewritten before read)
-["pdflatex"] 1759770660.87476 "/Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/Project-Template/template.tex" "template.pdf" "template" 1759770661.41099 0
-  "../results/figures/baseline_comparison.png" 1759770528.68425 105219 987f4bc6cf9e7a23de3968378e41cf6d ""
+["pdflatex"] 1759771797.47275 "/Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/Project-Template/template.tex" "template.pdf" "template" 1759771798.76826 0
+  "../results/figures/baseline_comparison.png" 1759771676.6782 105219 987f4bc6cf9e7a23de3968378e41cf6d ""
+  "../results/figures/dataset_overview.png" 1759771676.96305 187364 4fc7d62d4c71e6f6e8b4f6443f8fca80 ""
+  "../results/figures/distribution_comparison.png" 1759771677.13912 119126 0b65bc03899b90949aa21966be76ae81 ""
   "../results/figures/encoder.pdf" 1759759573.02833 77746 6c2da176b9d89ffdf148f68df45c75ec ""
-  "/Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/Project-Template/template.tex" 1759770081.11731 3988 56f943b36b6fcef5646caf9bdc69549d ""
+  "../results/figures/training_curves.png" 1759771676.85568 323360 cb6bd6cc1f2dc233d5b19c54b2647311 ""
+  "/Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/Project-Template/template.tex" 1759771758.44628 5518 b538e510c6e1f797271723784c3306f5 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/ecrm1000.tfm" 1136768653 3584 adb004a0c8e7c46ee66cad73671f37b4 ""
@@ -61,9 +64,9 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1745060723 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1745060667 3345734 96f6f7cc2ce50ab21d0c6db8f51fc67e ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "template.aux" 1759770661.24298 1158 88f5e073afb239c4b0ba670ecd73779d "pdflatex"
-  "template.bbl" 1759770091.30853 49 0eba253fc001332e731e8aba3f23127b "bibtex template"
-  "template.tex" 1759770081.11731 3988 56f943b36b6fcef5646caf9bdc69549d ""
+  "template.aux" 1759771798.60992 1919 71ca700f3fa9e4d9b1f04118005355be "pdflatex"
+  "template.bbl" 1759771768.83173 49 0eba253fc001332e731e8aba3f23127b "bibtex template"
+  "template.tex" 1759771758.44628 5518 b538e510c6e1f797271723784c3306f5 ""
   (generated)
   "template.aux"
   "template.log"

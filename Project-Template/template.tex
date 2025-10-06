@@ -21,23 +21,15 @@
 
 \section{Overview}
 
-We fine-tuned DistilBERT-base-uncased to assign each recipe in a 6-class corpus to its chef. After removing 14 exact duplicates, we retained 2,985 unique recipes and produced an 80/20 stratified split. The best checkpoint (early stopping after ~5 epochs) reaches 92.13\% validation accuracy and 0.916 macro-F1, a gain of roughly 49 percentage points over the strongest TF-IDF baseline.
+We fine-tuned DistilBERT-base-uncased to assign each recipe to one of six chefs. The original 2,999-row dataset contained duplicated texts; removing 14 exact matches before splitting left 2,985 unique samples. We stratified an 80/20 train-validation split and evaluated with accuracy and macro-F1. The best checkpoint—captured by early stopping after roughly five epochs—achieves 92.13\% validation accuracy and 0.916 macro-F1, exceeding the strongest TF-IDF baseline by about 49 percentage points.
 
 \section{Data Preparation}
 
-\begin{itemize}
-    \item Parsed list fields (tags, ingredients, steps) and concatenated five text sections in the order \textit{name $\rightarrow$ ingredients $\rightarrow$ tags $\rightarrow$ description $\rightarrow$ steps}. This protects short, identifying fields from truncation.
-    \item Dropped duplicated concatenated texts prior to splitting to prevent leakage (class counts range from 365 to 801 after deduplication).
-    \item Tokenised with DistilBERT's WordPiece tokenizer at max length 512. The deduplicated corpus has a median of 234 tokens and 95th percentile of 418, so truncation is rare.
-\end{itemize}
+Our preprocessing focuses on consistency and leakage prevention. Recipe fields stored as lists (ingredients, steps, tags) are parsed and trimmed. We concatenate five text segments in the order \textit{name $\rightarrow$ ingredients $\rightarrow$ tags $\rightarrow$ description $\rightarrow$ steps}; shorter sections lead, ensuring that the steps (which average 46\% of tokens) are truncated last when a recipe exceeds the 512-token window. After deduplication, class counts range from 365 to 801 recipes (Appendix Figure~\ref{fig:dataset_overview}). Token statistics remain manageable (median 234 tokens, 95th percentile 418), so the DistilBERT tokenizer rarely truncates content.
 
-\section{Model and Training}
+\section{Model and Optimisation Choices}
 
-\begin{itemize}
-    \item DistilBERT encoder with dropout 0.2, a 768\,$\rightarrow$\,768 projection, ReLU activation, and a final linear layer producing six logits.
-    \item Optimiser: AdamW with learning rate $2\times10^{-5}$, weight decay 0.01, linear warmup across 6\% of steps, gradient clipping at 1.0.
-    \item Chill-mode batches (8 for training, 16 for evaluation) on Apple MPS. Evaluation every 100 steps with patience two evaluations keeps the best macro-F1 checkpoint.
-\end{itemize}
+We retained DistilBERT’s default classification head: dropout 0.2, a 768\,$\rightarrow$\,768 projection with ReLU, and a linear layer mapping to six logits (Figure~\ref{fig:pipeline}). The optimiser is AdamW with learning rate $2\times10^{-5}$, weight decay 0.01, linear warm-up over 6\% of steps, and gradient clipping at 1.0. To keep the Mac training run stable we use “chill mode” batch sizes of 8/16 (train/eval) with dynamic padding. Evaluation occurs every 100 steps; if macro-F1 fails to improve twice in a row we stop, keeping the best checkpoint. This tighter cadence proved more informative than fixed-epoch schedules—later epochs fluctuate but do not improve the macro-F1 curve (Appendix Figure~\ref{fig:training_curves}).
 
 \begin{figure}[h]
 \centering
@@ -46,7 +38,7 @@ We fine-tuned DistilBERT-base-uncased to assign each recipe in a 6-class corpus 
 \label{fig:pipeline}
 \end{figure}
 
-\section{Results}
+\section{Evaluation}
 
 \begin{table}[h]
 \centering
@@ -58,7 +50,7 @@ We fine-tuned DistilBERT-base-uncased to assign each recipe in a 6-class corpus 
 TF-IDF (description) & 30.0\% & --- \\
 TF-IDF (all fields) & 43.0\% & --- \\
 \hline
-DistilBERT (best checkpoint) & \textbf{92.13\%} & \textbf{0.916} \\
+DistilBERT (ours) & \textbf{92.13\%} & \textbf{0.916} \\
 \hline
 \end{tabular}
 \label{tab:results}
@@ -71,24 +63,44 @@ DistilBERT (best checkpoint) & \textbf{92.13\%} & \textbf{0.916} \\
 \label{fig:baseline}
 \end{figure}
 
-Key observations:
-\begin{itemize}
-    \item Validation accuracy and macro-F1 peak between epochs~4 and 5; later checkpoints oscillate slightly but do not improve macro-F1.
-    \item Prediction distribution on the blind test set stays within $\pm$2.3 percentage points of the training prior (Chef~1533 mildly over-predicted, Chef~3288 slightly under-predicted).
-    \item Misclassifications mostly confuse chefs 1533 and 3288, whose recipes overlap on small appetisers versus make-ahead meals.
-\end{itemize}
+Validation predictions remain well-balanced: class-wise precision and recall exceed 0.85, and the blind test distribution deviates by at most 2.3 percentage points from the training prior (Appendix Figure~\ref{fig:dist_comparison}). Chef~1533 is modestly over-predicted, while Chef~3288 is slightly under-predicted—both chefs specialize in quick appetisers and make-ahead dishes, so confusion is expected. Figure~\ref{fig:training_curves} (appendix) shows that accuracy and macro-F1 improve steadily through epoch~4; thereafter the curves stabilise, and later checkpoints bring no gains.
 
-\section{Lessons and Next Steps}
+\section{Key Takeaways and Next Steps}
 
 \begin{itemize}
-    \item Deduplicating texts before splitting was essential; earlier runs that skipped this step overstated validation accuracy.
-    \item The straightforward DistilBERT head is sufficient once evaluation cadence and early stopping are tightened; longer schedules offer little extra gain.
-    \item Future improvements could add non-textual cues (quantities, durations), explore cross-validation for more stable estimates, and analyse attention patterns to separate stylistic cues from obvious keywords.
+    \item \textbf{Deduplication mattered.} Earlier experiments that split before deduplicating produced optimistic metrics. Removing the 14 overlapping recipes eliminated this leakage.
+    \item \textbf{Simple head, careful schedule.} Returning to the default ReLU head and monitoring macro-F1 every 100 steps was enough to reach 92\%; more complex heads were unnecessary on this dataset size.
+    \item \textbf{Future improvements.} Structured cues (ingredient quantities, durations) and cross-validation could further stabilise scores. Interpretability analysis—e.g., attention heat maps—would help confirm the model looks beyond obvious keywords such as “diabetic cooking” or “OAMC”.
 \end{itemize}
 
 \section*{Bibliography}
 
 \bibliographystyle{apalike}
 \bibliography{biblio}
+
+\appendix
+
+\section*{Appendix: Supporting Figures}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\columnwidth]{../results/figures/training_curves.png}
+\caption{Training diagnostics: loss, validation accuracy, and macro-F1 at each evaluation (every 100 steps).}
+\label{fig:training_curves}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\columnwidth]{../results/figures/dataset_overview.png}
+\caption{Dataset overview: deduplicated class counts (left) and token length distribution (right).}
+\label{fig:dataset_overview}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\columnwidth]{../results/figures/distribution_comparison.png}
+\caption{Comparison between training distribution (left) and blind test predictions (right).}
+\label{fig:dist_comparison}
+\end{figure}
 
 \end{document}
