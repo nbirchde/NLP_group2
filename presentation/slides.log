@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.19)  3 OCT 2025 20:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.19)  6 OCT 2025 16:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -737,31 +737,31 @@ Package pdftex.def Info: ../results/figures/model_architecture.png  used on inpu
 [5
 
 ]
-<../results/figures/baseline_comparison.png, id=176, 715.473pt x 426.393pt>
+<../results/figures/baseline_comparison.png, id=176, 518.1759pt x 355.3275pt>
 File: ../results/figures/baseline_comparison.png Graphic file (type png)
 <use ../results/figures/baseline_comparison.png>
 Package pdftex.def Info: ../results/figures/baseline_comparison.png  used on input line 102.
-(pdftex.def)             Requested size: 290.9531pt x 173.39088pt.
+(pdftex.def)             Requested size: 290.9531pt x 199.5188pt.
 
 
 [6
 
  <../results/figures/baseline_comparison.png>]
-<../results/figures/training_curves.png, id=205, 1076.823pt x 282.0939pt>
+<../results/figures/training_curves.png, id=205, 1293.633pt x 322.3242pt>
 File: ../results/figures/training_curves.png Graphic file (type png)
 <use ../results/figures/training_curves.png>
 Package pdftex.def Info: ../results/figures/training_curves.png  used on input line 110.
-(pdftex.def)             Requested size: 342.2953pt x 89.66927pt.
+(pdftex.def)             Requested size: 342.2953pt x 85.2827pt.
 
 
 [7
 
  <../results/figures/training_curves.png>]
-<../results/figures/distribution_comparison.png, id=235, 859.5312pt x 353.6412pt>
+<../results/figures/distribution_comparison.png, id=235, 626.34pt x 339.669pt>
 File: ../results/figures/distribution_comparison.png Graphic file (type png)
 <use ../results/figures/distribution_comparison.png>
 Package pdftex.def Info: ../results/figures/distribution_comparison.png  used on input line 118.
-(pdftex.def)             Requested size: 342.2953pt x 140.8334pt.
+(pdftex.def)             Requested size: 342.2953pt x 185.63681pt.
 
 
 [8
@@ -813,7 +813,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  128i,16n,123p,477b,676s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on slides.pdf (13 pages, 860623 bytes).
+Output written on slides.pdf (13 pages, 869789 bytes).
 PDF statistics:
  451 PDF objects out of 1000 (max. 8388607)
  378 compressed objects within 4 object streams

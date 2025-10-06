@@ -10,15 +10,15 @@
 
 | Metric | Score |
 |--------|-------|
-| **Validation Accuracy** | **90.17%** |
-| **Macro-F1 Score** | **89.67%** |
-| Train Loss | 0.4042 |
+| **Validation Accuracy** | **89.95%** (95% CI: 87.60–92.13) |
+| **Macro-F1 Score** | **89.25%** (95% CI: 86.66–91.59) |
+| Train Loss | 0.5571 |
 
 **Baseline Comparisons**:
-- Weak baseline (TF-IDF on description): 30.0% → **+60.17 pp improvement** ✅
-- Strong baseline (TF-IDF on all fields): 43.0% → **+47.17 pp improvement** ✅
+- Weak baseline (TF-IDF on description): 30.0% → **+59.95 pp improvement** ✅
+- Strong baseline (TF-IDF on all fields): 43.0% → **+46.95 pp improvement** ✅
 
-**Model**: DistilBERT-base-uncased fine-tuned for 5 epochs
+**Model**: DistilBERT-base-uncased with GELU classification head, deduplicated split, chill-mode training (batch 8/16) and early stopping (best checkpoint ≈4 epochs of a 10-epoch schedule)
 
 ---
 
@@ -37,16 +37,16 @@
 ### Training
 
 ```bash
-# 1. Install dependencies
-pip install transformers datasets torch accelerate scikit-learn
+# 1. Install dependencies (once)
+pip install transformers datasets torch accelerate scikit-learn seaborn matplotlib
 
-# 2. Quick test (1 epoch, ~5 minutes)
+# 2. Smoke test (1 quick epoch)
 python experiments/distilbert_text_only/train.py --config configs/quick_test.yaml
 
-# 3. Full training (5 epochs, ~20-25 minutes, Mac-friendly)
+# 3. Final pipeline (chill mode, ~30 min, early stops around epoch 4)
 ./train_chill.sh
 
-# Check results
+# Inspect metrics + 95% CI
 cat experiments/distilbert_text_only/artifacts/final_metrics.txt
 ```
 
@@ -87,10 +87,12 @@ python scripts/generate_visualizations.py
 ```
 
 **Output** (`results/figures/`):
-- `baseline_comparison.png` - Bar chart comparing our model to baselines
-- `training_curves.png` - Loss, accuracy, F1 evolution across epochs
-- `dataset_overview.png` - Class distribution, token stats, field contributions
-- `metrics_summary.png` - Comprehensive results dashboard
+- `baseline_comparison.png` - Baselines vs. final model with 95% CI
+- `training_curves.png` - Train loss + validation accuracy/F1 across steps
+- `dataset_overview.png` - Updated class distribution, token stats, field shares
+- `distribution_comparison.png` - Train vs. test prediction proportions (dedup aware)
+- `metrics_summary.png` - One-page highlight (metrics + bootstrap intervals)
+- `model_architecture.png` - Final pipeline diagram (dedup + GELU head)
 
 **Presentation**:
 - Markdown slides: `presentation/PRESENTATION.md`

@@ -1,3 +1,7 @@
-Training Loss: 0.4042
-Validation Accuracy: 0.9017
-Validation F1-Macro: 0.8967
+Config: /Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/configs/chill_mode.yaml
+Removed Duplicates: 14
+Training Loss: 0.5571
+Validation Accuracy: 0.8995
+Validation F1-Macro: 0.8925
+Accuracy 95% CI: [0.8760, 0.9213]
+Macro-F1 95% CI: [0.8666, 0.9159]

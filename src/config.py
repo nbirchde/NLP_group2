@@ -30,6 +30,11 @@ class TrainingConfig:
     save_total_limit: int
     output_dir: str
     logging_steps: int
+    evaluation_strategy: str = "epoch"
+    eval_steps: int = 0
+    bootstrap_samples: int = 0
+    bootstrap_seed: int = 42
+    classifier_activation: str = "relu"
 
     @staticmethod
     def from_yaml(path: Path | str) -> "TrainingConfig":

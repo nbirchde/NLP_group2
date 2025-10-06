@@ -17,7 +17,7 @@ from pathlib import Path
 
 import pandas as pd
 import torch
-from transformers import AutoModelForSequenceClassification, AutoTokenizer
+from transformers import AutoTokenizer
 from tqdm import tqdm
 
 # Add project root to path
@@ -26,6 +26,7 @@ sys.path.insert(0, str(project_root))
 
 from src.data import load_recipes_csv, concat_text_fields
 from src.config import TrainingConfig
+from src.models import load_sequence_classification_model
 
 
 def parse_args() -> argparse.Namespace:
@@ -66,11 +67,14 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def load_model_and_tokenizer(model_path: Path):
+def load_model_and_tokenizer(model_path: Path, activation: str):
     """Load trained model and tokenizer from checkpoint."""
     print(f"Loading model from: {model_path}")
     
-    model = AutoModelForSequenceClassification.from_pretrained(model_path)
+    model = load_sequence_classification_model(
+        model_name=str(model_path),
+        classifier_activation=activation,
+    )
     tokenizer = AutoTokenizer.from_pretrained(model_path)
     
     # Set to evaluation mode
@@ -164,7 +168,10 @@ def main():
     print(f"✓ Text fields: {config.text_fields}")
     
     # Load model and tokenizer
-    model, tokenizer, device = load_model_and_tokenizer(model_path)
+    model, tokenizer, device = load_model_and_tokenizer(
+        model_path,
+        activation=config.classifier_activation,
+    )
     
     # Prepare test data
     test_df = prepare_test_data(test_path, config)

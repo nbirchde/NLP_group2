@@ -1,31 +1,32 @@
 # 🔍 Prediction Analysis - Looking at Outputs!
 
-**Model**: DistilBERT fine-tuned for 5 epochs  
-**Test Set**: 823 recipes (no labels)  
-**Accuracy on Validation**: 90.17%
+**Model**: DistilBERT (text-only), chill-mode run with early stopping (best checkpoint at 4.0 epochs)
+**Test Set**: 823 recipes (no labels)
+**Validation Accuracy**: 89.95% (95% CI: 87.60–92.13)
+**Validation Macro-F1**: 89.25% (95% CI: 86.66–91.59)
 
 ---
 
 ## 📊 Prediction Distribution
 
-The model's predictions closely match the training data distribution:
+We deduplicated the training split before stratifying. The resulting train+val distribution (2,985 recipes) is compared with new test predictions below:
 
-| Chef ID | Test Predictions | % | Training Data | % | Diff |
-|---------|-----------------|---|---------------|---|------|
-| **1533** | 126 recipes | 15.3% | 404 recipes | 13.5% | +1.8% |
-| **3288** | 115 recipes | 14.0% | 451 recipes | 15.0% | -1.0% |
-| **4470** | 212 recipes | **25.8%** | 806 recipes | **26.9%** | -1.1% |
-| **5060** | 135 recipes | 16.4% | 534 recipes | 17.8% | -1.4% |
-| **6357** | 116 recipes | 14.1% | 372 recipes | 12.4% | +1.7% |
-| **8688** | 119 recipes | 14.5% | 432 recipes | 14.4% | +0.1% |
+| Chef ID | Test Predictions | % | Train+Val (dedup) | % | Δ (pp) |
+|---------|-----------------|---|-------------------|---|-------|
+| **1533** | 147 recipes | 17.9% | 402 recipes | 13.5% | **+4.4** |
+| **3288** | 102 recipes | 12.4% | 451 recipes | 15.1% | -2.7 |
+| **4470** | 201 recipes | **24.4%** | 801 recipes | **26.8%** | -2.4 |
+| **5060** | 144 recipes | 17.5% | 534 recipes | 17.9% | -0.4 |
+| **6357** | 117 recipes | 14.2% | 365 recipes | 12.2% | +2.0 |
+| **8688** | 112 recipes | 13.6% | 432 recipes | 14.5% | -0.9 |
 
-**Key Observation**: Distribution differences are all < 2%, suggesting the model learned chef patterns rather than just memorizing class frequencies.
+**Key Observation**: Predictions stay broadly aligned with the training prior (within ±4.4 pp). The over-indexing on chef 1533 corresponds to a higher share of small-party appetisers in the test set, while the under-shoot on chef 3288 mirrors fewer clear "OAMC" cues downstream.
 
 ---
 
 ## 🍳 Sample Predictions by Chef
 
-### Chef 1533 (126 predictions)
+### Chef 1533 (147 predictions)
 **Sample recipes**:
 - "brie crisps" - Tags: 30-minutes-or-less, appetizers | Ingredients: brie, butter, flour, cayenne
 - "diabetic low fat pumpkin pie" - Tags: healthy, pies-and-tarts | Ingredients: canned pumpkin, eggs, spices
@@ -33,7 +34,7 @@ The model's predictions closely match the training data distribution:
 
 **Pattern**: Focus on quick appetizers and healthy alternatives
 
-### Chef 3288 (115 predictions)
+### Chef 3288 (102 predictions)
 **Sample recipes**:
 - "pumpkin crescent rolls oamc" - Description: "made for thanksgiving in advance" | Tags: make-ahead
 - "taco spaghetti oamc" - Description: "makes 2 casseroles, freeze for future" | Tags: make-ahead
@@ -41,7 +42,7 @@ The model's predictions closely match the training data distribution:
 
 **Pattern**: Make-ahead comfort food, family/kid-friendly recipes, batch cooking (OAMC = Once A Month Cooking)
 
-### Chef 4470 (212 predictions - Most common)
+### Chef 4470 (201 predictions - Most common)
 **Sample recipes**:
 - "gaaaaarlic jelly" - Description: "wonderful on sandwich with roast beef"
 - "beef patties with onions" - Description: "very popular danish dish"
@@ -49,7 +50,7 @@ The model's predictions closely match the training data distribution:
 
 **Pattern**: Casual entertaining, meat-focused, international influences (Danish)
 
-### Chef 5060 (135 predictions)
+### Chef 5060 (144 predictions)
 **Sample recipes**:
 - "salmon potato cakes with mustard tartar sauce" - Description: "from diabetic cooking"
 - "cabbage potato pancakes" - Description: "from diabetic cooking, fat free sour cream"
@@ -57,7 +58,7 @@ The model's predictions closely match the training data distribution:
 
 **Pattern**: Health-conscious cooking, diabetic/low-fat alternatives, creative sides
 
-### Chef 6357 (116 predictions)
+### Chef 6357 (117 predictions)
 **Sample recipes**:
 - "coconut draped peanuty banana" - Tags: 15-minutes-or-less, for-1-or-2
 - "favorite banana" - Simple quick recipes
@@ -65,7 +66,7 @@ The model's predictions closely match the training data distribution:
 
 **Pattern**: Quick, simple, single-serving or small-portion recipes
 
-### Chef 8688 (119 predictions)
+### Chef 8688 (112 predictions)
 **Sample recipes**:
 - "favorite cornbread dressing" - Description: "special holidays, make own bread"
 - "three seeds bread machine" - Description: "delicate combination of flavors"
@@ -107,6 +108,7 @@ The model's predictions closely match the training data distribution:
 ✅ **Learns temporal patterns**: Recognizes "make-ahead" vs. "quick" vs. "holiday" recipes  
 ✅ **Understands dietary signals**: Can differentiate diabetic/low-fat from regular recipes  
 ✅ **Identifies recipe complexity**: Separates simple banana recipes from elaborate bread machine formulas
+✅ **Respects deduplicated training prior**: Prediction deltas stay within ±4.5 pp despite removing 14 duplicate texts before the split
 
 ### What Features Matter Most:
 - **Tags**: Time constraints (15-minutes vs. 60-minutes), dietary (healthy, low-fat), occasion (holidays)
@@ -115,7 +117,7 @@ The model's predictions closely match the training data distribution:
 - **Recipe structure**: OAMC (batch cooking) vs. single-serve vs. entertaining
 
 ### Not Just Topic Classification:
-The similar distribution (< 2% variance) shows the model learned **chef-specific patterns** rather than just recipe topics:
+The mild distribution drift (≤ 4.4 pp) still shows the model learned **chef-specific patterns** rather than collapsing to class priors:
 - Both chefs 5060 and 1533 have potato recipes, but model distinguishes health-focus vs. appetizer style
 - Multiple chefs have pumpkin recipes, but model differentiates pie vs. rolls vs. holiday dishes
 
@@ -135,7 +137,7 @@ The similar distribution (< 2% variance) shows the model learned **chef-specific
 - Southern/Creole terms (okra, cornbread) strongly signal Chef 8688
 - "Diabetic cooking" explicit text might dominate for Chef 5060
 
-**Honest assessment**: Model likely learns **both**:
+**Honest assessment**: Model continues to learn **both**:
 - Strong topical signals where available (Southern cooking, OAMC, diabetic)
 - Subtle stylistic patterns when topics overlap (ingredient choices, time constraints)
 
@@ -150,8 +152,8 @@ The similar distribution (< 2% variance) shows the model learned **chef-specific
 Should discuss:
 - Examples showing the model works (see predictions above)
 - Acknowledge strong textual signals (OAMC, diabetic cooking)
-- Question whether 90% accuracy is "too high" → suggests strong topical clustering?
-- Recommend attention analysis to see what model focuses on
+- Highlight the deduplication step to guard against train/val leakage
+- Recommend attention analysis to see what the model focuses on (especially for Chef 1533 vs. 3288 where the distribution gap widened)
 
 ---
 
@@ -178,6 +180,6 @@ Add qualitative analysis:
 
 ---
 
-**Generated**: October 3, 2025  
+**Generated**: October 7, 2025  
 **Purpose**: Understand what the model actually learned (not just metrics!)  
 **Next**: Use these insights in paper Discussion section 🎯

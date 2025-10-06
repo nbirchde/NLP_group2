@@ -17,6 +17,14 @@ class DatasetArtifacts:
     dataset: DatasetDict
     label2id: Dict[str, int]
     id2label: Dict[int, str]
+    removed_duplicates: int = 0
+
+
+def drop_duplicate_text_rows(frame: pd.DataFrame) -> tuple[pd.DataFrame, int]:
+    """Remove duplicate samples based on the concatenated text column."""
+    before = len(frame)
+    deduped = frame.drop_duplicates(subset="text", keep="first").reset_index(drop=True)
+    return deduped, before - len(deduped)
 
 
 def add_text_column(frame: pd.DataFrame, text_fields: Sequence[str]) -> pd.DataFrame:
@@ -59,11 +67,17 @@ def prepare_dataset(  # noqa: D401
 ) -> DatasetArtifacts:
     """Create Hugging Face datasets with text and encoded labels."""
     text_df = add_text_column(data.frame, text_fields)
-    encoded_df, label2id, id2label = encode_labels(text_df, label_column)
+    deduped_df, removed = drop_duplicate_text_rows(text_df)
+    encoded_df, label2id, id2label = encode_labels(deduped_df, label_column)
     train_df, val_df = stratified_split(encoded_df, label_column, val_ratio, seed)
 
     train_dataset = Dataset.from_pandas(train_df, preserve_index=False)
     val_dataset = Dataset.from_pandas(val_df, preserve_index=False)
 
     ds = DatasetDict({"train": train_dataset, "validation": val_dataset})
-    return DatasetArtifacts(dataset=ds, label2id=label2id, id2label=id2label)
+    return DatasetArtifacts(
+        dataset=ds,
+        label2id=label2id,
+        id2label=id2label,
+        removed_duplicates=removed,
+    )

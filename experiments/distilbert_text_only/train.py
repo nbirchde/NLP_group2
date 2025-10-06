@@ -21,7 +21,6 @@ import torch
 from datasets import DatasetDict
 from sklearn.metrics import accuracy_score, f1_score
 from transformers import (
-    AutoModelForSequenceClassification,
     DataCollatorWithPadding,
     EarlyStoppingCallback,
     Trainer,
@@ -36,6 +35,7 @@ from src.config import TrainingConfig
 from src.data import load_recipes_csv
 from src.dataset import prepare_dataset
 from src.tokenization import load_tokenizer, tokenize_dataset
+from src.models import load_sequence_classification_model
 
 
 def parse_args() -> argparse.Namespace:
@@ -69,7 +69,9 @@ def load_config(config_path: str) -> TrainingConfig:
     return config
 
 
-def load_and_prepare_data(config: TrainingConfig) -> tuple[DatasetDict, dict[str, int], dict[int, str]]:
+def load_and_prepare_data(
+    config: TrainingConfig,
+) -> tuple[DatasetDict, dict[str, int], dict[int, str], int]:
     """Load raw CSV data and prepare train/val splits with text concatenation."""
     train_path = project_root / "data" / "train.csv"
     
@@ -93,12 +95,15 @@ def load_and_prepare_data(config: TrainingConfig) -> tuple[DatasetDict, dict[str
     val_size = len(artifacts.dataset["validation"])
     num_classes = len(artifacts.label2id)
     
+    if artifacts.removed_duplicates:
+        print(f"✓ Removed {artifacts.removed_duplicates} duplicate samples before splitting")
+
     print(f"✓ Dataset prepared:")
     print(f"  - Train: {train_size} samples")
     print(f"  - Val: {val_size} samples")
     print(f"  - Classes: {num_classes}")
-    
-    return artifacts.dataset, artifacts.label2id, artifacts.id2label
+
+    return artifacts.dataset, artifacts.label2id, artifacts.id2label, artifacts.removed_duplicates
 
 
 def compute_metrics(eval_pred):
@@ -112,6 +117,48 @@ def compute_metrics(eval_pred):
     return {
         "accuracy": acc,
         "f1_macro": f1_macro,
+    }
+
+
+def bootstrap_metric_summary(
+    labels: np.ndarray,
+    predictions: np.ndarray,
+    samples: int,
+    seed: int,
+    alpha: float = 0.05,
+) -> dict[str, float]:
+    """Estimate accuracy and macro-F1 uncertainty via bootstrap resampling."""
+    rng = np.random.default_rng(seed)
+    n = len(labels)
+    acc_draws = np.empty(samples, dtype=float)
+    f1_draws = np.empty(samples, dtype=float)
+
+    for i in range(samples):
+        idx = rng.integers(0, n, size=n)
+        resampled_labels = labels[idx]
+        resampled_preds = predictions[idx]
+        acc_draws[i] = accuracy_score(resampled_labels, resampled_preds)
+        f1_draws[i] = f1_score(resampled_labels, resampled_preds, average="macro")
+
+    def summarize(draws: np.ndarray) -> tuple[float, float, float, float]:
+        mean = float(draws.mean())
+        std = float(draws.std(ddof=1))
+        lower = float(np.quantile(draws, alpha / 2))
+        upper = float(np.quantile(draws, 1 - alpha / 2))
+        return mean, std, lower, upper
+
+    acc_mean, acc_std, acc_lo, acc_hi = summarize(acc_draws)
+    f1_mean, f1_std, f1_lo, f1_hi = summarize(f1_draws)
+
+    return {
+        "accuracy_mean": acc_mean,
+        "accuracy_std": acc_std,
+        "accuracy_ci_low": acc_lo,
+        "accuracy_ci_high": acc_hi,
+        "f1_macro_mean": f1_mean,
+        "f1_macro_std": f1_std,
+        "f1_macro_ci_low": f1_lo,
+        "f1_macro_ci_high": f1_hi,
     }
 
 
@@ -158,7 +205,7 @@ def main():
     config = load_config(args.config)
     
     # 2. Load and prepare data
-    dataset, label2id, id2label = load_and_prepare_data(config)
+    dataset, label2id, id2label, removed_dupes = load_and_prepare_data(config)
     
     # 3. Load tokenizer
     print(f"\nLoading tokenizer: {config.model_name}")
@@ -185,11 +232,12 @@ def main():
     
     # 5. Load model
     print(f"\nLoading model: {config.model_name}")
-    model = AutoModelForSequenceClassification.from_pretrained(
-        config.model_name,
+    model = load_sequence_classification_model(
+        model_name=config.model_name,
         num_labels=len(label2id),
         id2label=id2label,
         label2id=label2id,
+        classifier_activation=config.classifier_activation,
     )
     print(f"✓ Model loaded with {len(label2id)} output classes")
     
@@ -208,10 +256,22 @@ def main():
     print(f"\nSetting up training...")
     print(f"Output directory: {output_dir}")
     
+    eval_strategy = config.evaluation_strategy
+    save_strategy = "steps" if eval_strategy == "steps" else "epoch"
+    eval_steps = config.eval_steps if eval_strategy == "steps" and config.eval_steps > 0 else None
+
+    save_kwargs: dict[str, int] = {}
+    if save_strategy == "steps":
+        save_kwargs["save_steps"] = eval_steps or config.logging_steps
+
+    eval_kwargs: dict[str, int] = {}
+    if eval_steps is not None:
+        eval_kwargs["eval_steps"] = eval_steps
+
     training_args = TrainingArguments(
         output_dir=str(output_dir),
-        eval_strategy="epoch",
-        save_strategy="epoch",
+        eval_strategy=eval_strategy,
+        save_strategy=save_strategy,
         learning_rate=config.learning_rate,
         per_device_train_batch_size=config.train_batch_size,
         per_device_eval_batch_size=config.eval_batch_size,
@@ -219,14 +279,18 @@ def main():
         weight_decay=config.weight_decay,
         warmup_ratio=config.warmup_ratio,
         logging_dir=str(output_dir / "logs"),
-        logging_strategy="epoch",
+        logging_strategy="steps",
+        logging_steps=config.logging_steps,
         load_best_model_at_end=True,
         metric_for_best_model="f1_macro",
         greater_is_better=True,
-        save_total_limit=2,
+        save_total_limit=config.save_total_limit,
         seed=config.seed,
         report_to="none",  # Disable wandb/tensorboard
         use_mps_device=torch.backends.mps.is_available(),  # Use MPS on Mac if available
+        overwrite_output_dir=True,
+        **save_kwargs,
+        **eval_kwargs,
     )
     
     # 9. Create Trainer
@@ -260,11 +324,33 @@ def main():
     print("=" * 60)
     
     eval_metrics = trainer.evaluate()
+
+    bootstrap_stats: dict[str, float] | None = None
+    if config.bootstrap_samples > 0:
+        print("\nComputing bootstrap confidence intervals...")
+        pred_output = trainer.predict(tokenized_ds["validation"])
+        val_preds = np.argmax(pred_output.predictions, axis=-1)
+        val_labels = pred_output.label_ids
+        bootstrap_stats = bootstrap_metric_summary(
+            labels=val_labels,
+            predictions=val_preds,
+            samples=config.bootstrap_samples,
+            seed=config.bootstrap_seed,
+        )
     
     print(f"\n✓ Training completed!")
     print(f"  - Final train loss: {train_result.training_loss:.4f}")
     print(f"  - Final validation accuracy: {eval_metrics['eval_accuracy']:.4f}")
     print(f"  - Final validation F1-macro: {eval_metrics['eval_f1_macro']:.4f}")
+    if bootstrap_stats:
+        print(
+            "  - Accuracy 95% CI: "
+            f"[{bootstrap_stats['accuracy_ci_low']:.4f}, {bootstrap_stats['accuracy_ci_high']:.4f}]"
+        )
+        print(
+            "  - Macro-F1 95% CI: "
+            f"[{bootstrap_stats['f1_macro_ci_low']:.4f}, {bootstrap_stats['f1_macro_ci_high']:.4f}]"
+        )
     
     # 12. Save final model
     final_model_path = output_dir / "final_model"
@@ -274,9 +360,20 @@ def main():
     # 13. Save metrics
     metrics_path = output_dir / "final_metrics.txt"
     with open(metrics_path, "w") as f:
+        f.write(f"Config: {Path(args.config).resolve()}\n")
+        f.write(f"Removed Duplicates: {removed_dupes}\n")
         f.write(f"Training Loss: {train_result.training_loss:.4f}\n")
         f.write(f"Validation Accuracy: {eval_metrics['eval_accuracy']:.4f}\n")
         f.write(f"Validation F1-Macro: {eval_metrics['eval_f1_macro']:.4f}\n")
+        if bootstrap_stats:
+            f.write(
+                "Accuracy 95% CI: "
+                f"[{bootstrap_stats['accuracy_ci_low']:.4f}, {bootstrap_stats['accuracy_ci_high']:.4f}]\n"
+            )
+            f.write(
+                "Macro-F1 95% CI: "
+                f"[{bootstrap_stats['f1_macro_ci_low']:.4f}, {bootstrap_stats['f1_macro_ci_high']:.4f}]\n"
+            )
     print(f"✓ Metrics saved to: {metrics_path}")
     
     print("\n" + "=" * 60)

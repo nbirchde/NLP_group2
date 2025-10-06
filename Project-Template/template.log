@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.19)  4 OCT 2025 21:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.19)  6 OCT 2025 16:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -140,6 +140,9 @@ Underfull \hbox (badness 1478) in paragraph at lines 31--32
  []
 
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 
 LaTeX Font Info:    Font shape `T1/fve/b/n' will be
 (Font)              scaled to size 8.99994pt on input line 33.
@@ -148,7 +151,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 33.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 2269) has occurred while \output is active []
 
 
 
@@ -159,10 +162,18 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 LaTeX Font Info:    Font shape `T1/fve/b/n' will be
 (Font)              scaled to size 10.79993pt on input line 41.
 
+Underfull \vbox (badness 1990) has occurred while \output is active []
+
+
 
 
 Overfull \hbox (77.13686pt too wide) in paragraph at lines 60--72
  [][] 
+ []
+
+
+Underfull \hbox (badness 2762) in paragraph at lines 74--75
+[]\T1/fve/m/n/10 Table 1[] sum-marises per-for-mance along-side
  []
 
 
@@ -172,53 +183,49 @@ Underfull \hbox (badness 2512) in paragraph at lines 82--82
 []\T1/fve/b/n/12 Model Per-for-mance & Lim-i-ta-
  []
 
-
-Underfull \hbox (badness 5592) in paragraph at lines 84--85
-\T1/fve/m/n/10 Our DistilBERT-based ap-proach demon-strates
- []
-
 LaTeX Font Info:    Font shape `T1/fve/m/it' in size <10> not available
-(Font)              Font shape `T1/fve/m/sl' tried instead on input line 90.
+(Font)              Font shape `T1/fve/m/sl' tried instead on input line 88.
 LaTeX Font Info:    Font shape `T1/fve/m/sl' will be
-(Font)              scaled to size 8.99994pt on input line 90.
+(Font)              scaled to size 8.99994pt on input line 88.
 
 
 
-Underfull \hbox (badness 1354) in paragraph at lines 98--99
+Underfull \hbox (badness 1354) in paragraph at lines 96--97
 \T1/fve/m/n/10 chef clas-si-fi-ca-tion from recipe text, achiev-ing
  []
 
-(./template.bbl
+
+Underfull \hbox (badness 1609) in paragraph at lines 96--97
+\T1/fve/m/n/10 out-per-forms TF-IDF base-lines by +46.95 per-
+ []
+
+
+
+[3] (./template.bbl
 Underfull \hbox (badness 1845) in paragraph at lines 4--7
 []\T1/fve/m/n/10 Sanh, V., De-but, L., Chau-
  []
 
-
-
-[3])
-<../results/figures/baseline_comparison.png, id=20, 715.473pt x 426.393pt>
+)
+<../results/figures/baseline_comparison.png, id=20, 518.1759pt x 355.3275pt>
 File: ../results/figures/baseline_comparison.png Graphic file (type png)
 <use ../results/figures/baseline_comparison.png>
-Package pdftex.def Info: ../results/figures/baseline_comparison.png  used on input line 118.
-(pdftex.def)             Requested size: 183.6007pt x 109.41518pt.
-
-Underfull \hbox (badness 1946) in paragraph at lines 119--119
-[]\T1/fve/m/n/10 Figure 1: Base-line com-par-i-son show-ing Dis-
- []
-
-<../results/figures/training_curves.png, id=22, 1076.823pt x 282.0939pt>
+Package pdftex.def Info: ../results/figures/baseline_comparison.png  used on input line 114.
+(pdftex.def)             Requested size: 183.6007pt x 125.89543pt.
+<../results/figures/training_curves.png, id=22, 1293.633pt x 322.3242pt>
 File: ../results/figures/training_curves.png Graphic file (type png)
 <use ../results/figures/training_curves.png>
-Package pdftex.def Info: ../results/figures/training_curves.png  used on input line 125.
-(pdftex.def)             Requested size: 183.6007pt x 48.09737pt.
+Package pdftex.def Info: ../results/figures/training_curves.png  used on input line 121.
+(pdftex.def)             Requested size: 183.6007pt x 45.74478pt.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<../results/figures/encoder.pdf, id=23, 396.64084pt x 401.60541pt>
-File: ../results/figures/encoder.pdf Graphic file (type pdf)
-<use ../results/figures/encoder.pdf>
-Package pdftex.def Info: ../results/figures/encoder.pdf  used on input line 132.
-(pdftex.def)             Requested size: 206.5486pt x 209.13628pt.
+<../results/figures/model_architecture.png, id=23, 686.565pt x 348.3414pt>
+File: ../results/figures/model_architecture.png Graphic file (type png)
+<use ../results/figures/model_architecture.png>
+Package pdftex.def Info: ../results/figures/model_architecture.png  used on input line 128.
+(pdftex.def)             Requested size: 206.5486pt x 104.79556pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -226,7 +233,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[4 <../results/figures/baseline_comparison.png> <../results/figures/training_curves.png> <../results/figures/encoder.pdf>] (./template.aux)
+[4 <../results/figures/baseline_comparison.png> <../results/figures/training_curves.png> <../results/figures/model_architecture.png>] (./template.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -234,17 +241,17 @@ L3 programming layer <2025-01-18>
  ) 
 Here is how much of TeX's memory you used:
  1812 strings out of 473190
- 29674 string characters out of 5715800
+ 29728 string characters out of 5715800
  422615 words of memory out of 5000000
  25068 multiletter control sequences out of 15000+600000
  584625 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,8n,65p,870b,246s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/bera/fveb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/bera/fver8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/bera/fver8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on template.pdf (4 pages, 461965 bytes).
+ 57i,8n,65p,1005b,246s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/bera/fveb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/bera/fver8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/bera/fver8a.pfb>
+Output written on template.pdf (4 pages, 698663 bytes).
 PDF statistics:
- 108 PDF objects out of 1000 (max. 8388607)
- 69 compressed objects within 1 object stream
+ 65 PDF objects out of 1000 (max. 8388607)
+ 36 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

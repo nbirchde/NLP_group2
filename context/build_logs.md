@@ -87,3 +87,10 @@
 - Archived redundant guides (`CHILL_MODE.md`, `DOCUMENTATION_INDEX.md`, `RESULTS_GUIDE.md`, `SUBMISSION_CHECKLIST.md`, and context handoff files) after migrating key details into the main README and experiment README.
 - Added concise thermal-training instructions directly in `README.md` alongside links to surviving resources.
 - Verified `experiments/distilbert_text_only/README.md` reflects completed prediction script and updated status checklist.
+
+## 2025-10-07 (Codex)
+- Audited training data for leakage: dropped 14 duplicate recipes based on concatenated text and verified there is no overlap between train/validation splits after stratification.
+- Re-ran chill-mode training with the updated pipeline (batch 8/16, eval every 100 steps, GELU head) → early stopping at epoch ≈4 delivered 89.95% validation accuracy and 0.892 macro-F1 with 95% bootstrap confidence intervals saved in `artifacts/final_metrics.txt`.
+- Refreshed inference outputs (`results.txt`) and computed new train vs. prediction distribution deltas (largest shift +4.4 pp for chef 1533).
+- Rebuilt `scripts/generate_visualizations.py` to ingest real artefacts (trainer_state, deduplicated dataset, predictions) and regenerated all figures (`baseline_comparison.png`, `training_curves.png`, `dataset_overview.png`, `distribution_comparison.png`, `metrics_summary.png`, `model_architecture.png`).
+- Updated documentation (README, experiment README, PREDICTION_ANALYSIS.md, LaTeX paper) to reflect deduplication, GELU head, new metrics, and confidence intervals.
