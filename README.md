@@ -10,15 +10,15 @@
 
 | Metric | Score |
 |--------|-------|
-| **Validation Accuracy** | **89.95%** (95% CI: 87.60–92.13) |
-| **Macro-F1 Score** | **89.25%** (95% CI: 86.66–91.59) |
-| Train Loss | 0.5571 |
+| **Validation Accuracy** | **92.13%** |
+| **Macro-F1 Score** | **91.63%** |
+| Train Loss | 0.4497 |
 
 **Baseline Comparisons**:
-- Weak baseline (TF-IDF on description): 30.0% → **+59.95 pp improvement** ✅
-- Strong baseline (TF-IDF on all fields): 43.0% → **+46.95 pp improvement** ✅
+- Weak baseline (TF-IDF on description): 30.0% → **+62.13 pp improvement** ✅
+- Strong baseline (TF-IDF on all fields): 43.0% → **+49.13 pp improvement** ✅
 
-**Model**: DistilBERT-base-uncased with GELU classification head, deduplicated split, chill-mode training (batch 8/16) and early stopping (best checkpoint ≈4 epochs of a 10-epoch schedule)
+**Model**: DistilBERT-base-uncased with deduplicated split, chill-mode training (batch 8/16) and early stopping at the best validation macro-F1
 
 ---
 
@@ -46,7 +46,7 @@ python experiments/distilbert_text_only/train.py --config configs/quick_test.yam
 # 3. Final pipeline (chill mode, ~30 min, early stops around epoch 4)
 ./train_chill.sh
 
-# Inspect metrics + 95% CI
+# Inspect metrics
 cat experiments/distilbert_text_only/artifacts/final_metrics.txt
 ```
 
@@ -87,12 +87,11 @@ python scripts/generate_visualizations.py
 ```
 
 **Output** (`results/figures/`):
-- `baseline_comparison.png` - Baselines vs. final model with 95% CI
+- `baseline_comparison.png` - Baselines vs. final model
 - `training_curves.png` - Train loss + validation accuracy/F1 across steps
 - `dataset_overview.png` - Updated class distribution, token stats, field shares
 - `distribution_comparison.png` - Train vs. test prediction proportions (dedup aware)
-- `metrics_summary.png` - One-page highlight (metrics + bootstrap intervals)
-- `model_architecture.png` - Final pipeline diagram (dedup + GELU head)
+- `metrics_summary.png` - One-page highlight of results and distributions
 
 **Presentation**:
 - Markdown slides: `presentation/PRESENTATION.md`

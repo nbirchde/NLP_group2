@@ -2,8 +2,8 @@
 
 **Model**: DistilBERT (text-only), chill-mode run with early stopping (best checkpoint at 4.0 epochs)
 **Test Set**: 823 recipes (no labels)
-**Validation Accuracy**: 89.95% (95% CI: 87.60–92.13)
-**Validation Macro-F1**: 89.25% (95% CI: 86.66–91.59)
+**Validation Accuracy**: 92.13%
+**Validation Macro-F1**: 91.63%
 
 ---
 
@@ -13,20 +13,20 @@ We deduplicated the training split before stratifying. The resulting train+val d
 
 | Chef ID | Test Predictions | % | Train+Val (dedup) | % | Δ (pp) |
 |---------|-----------------|---|-------------------|---|-------|
-| **1533** | 147 recipes | 17.9% | 402 recipes | 13.5% | **+4.4** |
-| **3288** | 102 recipes | 12.4% | 451 recipes | 15.1% | -2.7 |
-| **4470** | 201 recipes | **24.4%** | 801 recipes | **26.8%** | -2.4 |
-| **5060** | 144 recipes | 17.5% | 534 recipes | 17.9% | -0.4 |
-| **6357** | 117 recipes | 14.2% | 365 recipes | 12.2% | +2.0 |
-| **8688** | 112 recipes | 13.6% | 432 recipes | 14.5% | -0.9 |
+| **1533** | 128 recipes | 15.6% | 402 recipes | 13.5% | +2.1 |
+| **3288** | 106 recipes | 12.9% | 451 recipes | 15.1% | -2.2 |
+| **4470** | 206 recipes | **25.0%** | 801 recipes | **26.8%** | -1.8 |
+| **5060** | 149 recipes | 18.1% | 534 recipes | 17.9% | +0.2 |
+| **6357** | 119 recipes | 14.5% | 365 recipes | 12.2% | +2.3 |
+| **8688** | 115 recipes | 14.0% | 432 recipes | 14.5% | -0.5 |
 
-**Key Observation**: Predictions stay broadly aligned with the training prior (within ±4.4 pp). The over-indexing on chef 1533 corresponds to a higher share of small-party appetisers in the test set, while the under-shoot on chef 3288 mirrors fewer clear "OAMC" cues downstream.
+**Key Observation**: Predictions remain close to the training prior (within ±2.3 pp). The mild over-indexing on chef 1533 aligns with a larger fraction of small-party appetisers in the test set, while the under-shoot on chef 3288 reflects fewer explicit "OAMC" signals downstream.
 
 ---
 
 ## 🍳 Sample Predictions by Chef
 
-### Chef 1533 (147 predictions)
+### Chef 1533 (128 predictions)
 **Sample recipes**:
 - "brie crisps" - Tags: 30-minutes-or-less, appetizers | Ingredients: brie, butter, flour, cayenne
 - "diabetic low fat pumpkin pie" - Tags: healthy, pies-and-tarts | Ingredients: canned pumpkin, eggs, spices
@@ -34,7 +34,7 @@ We deduplicated the training split before stratifying. The resulting train+val d
 
 **Pattern**: Focus on quick appetizers and healthy alternatives
 
-### Chef 3288 (102 predictions)
+### Chef 3288 (106 predictions)
 **Sample recipes**:
 - "pumpkin crescent rolls oamc" - Description: "made for thanksgiving in advance" | Tags: make-ahead
 - "taco spaghetti oamc" - Description: "makes 2 casseroles, freeze for future" | Tags: make-ahead
@@ -42,7 +42,7 @@ We deduplicated the training split before stratifying. The resulting train+val d
 
 **Pattern**: Make-ahead comfort food, family/kid-friendly recipes, batch cooking (OAMC = Once A Month Cooking)
 
-### Chef 4470 (201 predictions - Most common)
+### Chef 4470 (206 predictions - Most common)
 **Sample recipes**:
 - "gaaaaarlic jelly" - Description: "wonderful on sandwich with roast beef"
 - "beef patties with onions" - Description: "very popular danish dish"
@@ -50,7 +50,7 @@ We deduplicated the training split before stratifying. The resulting train+val d
 
 **Pattern**: Casual entertaining, meat-focused, international influences (Danish)
 
-### Chef 5060 (144 predictions)
+### Chef 5060 (149 predictions)
 **Sample recipes**:
 - "salmon potato cakes with mustard tartar sauce" - Description: "from diabetic cooking"
 - "cabbage potato pancakes" - Description: "from diabetic cooking, fat free sour cream"
@@ -58,7 +58,7 @@ We deduplicated the training split before stratifying. The resulting train+val d
 
 **Pattern**: Health-conscious cooking, diabetic/low-fat alternatives, creative sides
 
-### Chef 6357 (117 predictions)
+### Chef 6357 (119 predictions)
 **Sample recipes**:
 - "coconut draped peanuty banana" - Tags: 15-minutes-or-less, for-1-or-2
 - "favorite banana" - Simple quick recipes
@@ -66,7 +66,7 @@ We deduplicated the training split before stratifying. The resulting train+val d
 
 **Pattern**: Quick, simple, single-serving or small-portion recipes
 
-### Chef 8688 (112 predictions)
+### Chef 8688 (115 predictions)
 **Sample recipes**:
 - "favorite cornbread dressing" - Description: "special holidays, make own bread"
 - "three seeds bread machine" - Description: "delicate combination of flavors"

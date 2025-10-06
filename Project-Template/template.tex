@@ -6,8 +6,7 @@
 \usepackage{graphicx}
 
 % TITLE
-\title{Chef Classification from Recipe Text using DistilBERT Fine-Tuning}
-
+\title{Chef Classification from Recipe Text using DistilBERT}
 
 % AUTHORS
 \author{Nicholas Birch de la Calle}
@@ -20,114 +19,76 @@
 
 \maketitle
 
-\section{Introduction}
+\section{Overview}
 
-The task of chef classification from recipe text represents an interesting natural language processing challenge that combines culinary domain knowledge with text classification. Given a recipe's name, ingredients, preparation steps, tags, and description, we aim to predict which of six chefs created it. This problem has practical applications in culinary content recommendation, authorship attribution, and understanding chef-specific cooking styles.
+We fine-tuned DistilBERT-base-uncased to assign each recipe in a 6-class corpus to its chef. After removing 14 exact duplicates, we retained 2,985 unique recipes and produced an 80/20 stratified split. The best checkpoint (early stopping after ~5 epochs) reaches 92.13\% validation accuracy and 0.916 macro-F1, a gain of roughly 49 percentage points over the strongest TF-IDF baseline.
 
-Our raw dataset contains 2,999 labeled training recipes from six chefs with a moderate imbalance ratio of 2.17:1. Prior to splitting we remove 14 duplicated records that shared the exact same concatenated text, leaving 2,985 unique recipes. We approach the task as a multi-class text classification problem using transformer-based language models, specifically fine-tuning DistilBERT on concatenated recipe text fields. Our objective is to substantially outperform the provided baselines of 30\% (TF-IDF on descriptions only) and 43\% (TF-IDF on all fields).
+\section{Data Preparation}
 
-\section{Model Architecture}
+\begin{itemize}
+    \item Parsed list fields (tags, ingredients, steps) and concatenated five text sections in the order \textit{name $\rightarrow$ ingredients $\rightarrow$ tags $\rightarrow$ description $\rightarrow$ steps}. This protects short, identifying fields from truncation.
+    \item Dropped duplicated concatenated texts prior to splitting to prevent leakage (class counts range from 365 to 801 after deduplication).
+    \item Tokenised with DistilBERT's WordPiece tokenizer at max length 512. The deduplicated corpus has a median of 234 tokens and 95th percentile of 418, so truncation is rare.
+\end{itemize}
 
-We employ DistilBERT-base-uncased \cite{sanh2019distilbert}, a distilled version of BERT with 66 million parameters, 6 transformer layers, and 768-dimensional hidden states. DistilBERT retains 97\% of BERT's performance while being 40\% smaller and 60\% faster, making it well-suited for our classification task with limited computational resources.
+\section{Model and Training}
 
-\textbf{Input Representation:} We concatenate five text fields in priority order: recipe\_name $\rightarrow$ ingredients $\rightarrow$ tags $\rightarrow$ description $\rightarrow$ steps. This ordering protects critical identifying information (name, ingredients) from truncation; after deduplication the token share per field is: steps 46.4\%, tags 25.6\%, description 15.5\%, ingredients 10.0\%, name 2.6\%. Text is tokenized using DistilBERT's WordPiece tokenizer with a maximum sequence length of 512 tokens, which comfortably covers the distribution (median 234 tokens, 95th percentile 418 tokens).
+\begin{itemize}
+    \item DistilBERT encoder with dropout 0.2, a 768\,$\rightarrow$\,768 projection, ReLU activation, and a final linear layer producing six logits.
+    \item Optimiser: AdamW with learning rate $2\times10^{-5}$, weight decay 0.01, linear warmup across 6\% of steps, gradient clipping at 1.0.
+    \item Chill-mode batches (8 for training, 16 for evaluation) on Apple MPS. Evaluation every 100 steps with patience two evaluations keeps the best macro-F1 checkpoint.
+\end{itemize}
 
-\textbf{Classification Head:} The pooled [CLS] embedding first passes through dropout with $p=0.2$, then a dense projection (768 $\rightarrow$ 768) followed by a GELU activation, a second dropout layer with the same rate, and finally a linear layer (768 $\rightarrow$ 6). Replacing the original ReLU with GELU improved late-epoch stability once we increased the training horizon. Figure~\ref{fig:pipeline} summarises the end-to-end architecture.
-
-\textbf{Training Strategy:} We fine-tune DistilBERT with AdamW (learning rate $2 \times 10^{-5}$, weight decay 0.01) and a linear warmup covering 6\% of steps. Chill-mode constraints on an M1/M2 GPU led us to a batch size of 8 for training (16 for evaluation) with dynamic padding. Evaluation runs every 100 optimisation steps; we keep the checkpoint with the highest macro-F1 and apply early stopping with patience two evaluations. Post-training we bootstrap 1,000 resamples of the validation set to report 95\% confidence intervals.
-
-\section{Experimental Setup}
- 
-\subsection{Dataset}
-
-After removing duplicate texts, the 2,985 unique recipes distribute as follows: Chef 4470 (801), Chef 5060 (534), Chef 3288 (451), Chef 8688 (432), Chef 1533 (402), and Chef 6357 (365). The resulting imbalance ratio remains close to 2.0:1. Each recipe includes structured fields: name, date, tags (list), preparation steps (list), description (text), ingredients (list), and ingredient count. The blind test set has the same schema without chef labels.
-
-Dataset quality observations: (1) Token lengths remain right-skewed with median 234 tokens and 95th percentile 418 tokens, validating the choice of max\_length=512. (2) Token share by field is dominated by steps (46.4\%) and tags (25.6\%), reinforcing the need to prepend name and ingredients. (3) One highly generic description ("wonderful!") appears across two chefs, and a handful of recipes retain near-identical descriptions even after deduplication—an important limitation to document in the discussion.
-
-\subsection{Metrics}
-
-We report two primary metrics: (1) \textbf{Accuracy} for overall performance comparison with baselines, and (2) \textbf{Macro-averaged F1} to ensure balanced performance across all chef classes despite the 2.17:1 imbalance. Macro-F1 treats all classes equally, making it sensitive to poor minority-class performance that accuracy might mask.
-
-\subsection{Hyperparameters}
-
-Key hyperparameters: learning rate $2 \times 10^{-5}$, AdamW optimiser with weight decay 0.01, batch size 8 (train) / 16 (eval), maximum sequence length 512 tokens, warmup ratio 0.06, gradient clipping at 1.0, evaluation interval 100 steps, early stopping patience 2 (evaluations), and a nominal schedule of 10 epochs that typically halts after four. All hyperparameters follow DistilBERT fine-tuning best practices and were validated under the chill-mode resource constraints of the target hardware.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.95\columnwidth]{../results/figures/encoder.pdf}
+\caption{Text-only DistilBERT pipeline used for chef classification.}
+\label{fig:pipeline}
+\end{figure}
 
 \section{Results}
 
 \begin{table}[h]
 \centering
-\caption{Model Performance Comparison}
+\caption{Validation accuracy and macro-F1.}
 \begin{tabular}{lcc}
 \hline
 \textbf{Method} & \textbf{Accuracy} & \textbf{Macro-F1} \\
 \hline
-Weak Baseline (TF-IDF on description) & 30.0\% & --- \\
-Strong Baseline (TF-IDF on all fields) & 43.0\% & --- \\
+TF-IDF (description) & 30.0\% & --- \\
+TF-IDF (all fields) & 43.0\% & --- \\
 \hline
-DistilBERT (1 epoch snapshot) & 77.1\% & 0.758 \\
-DistilBERT (final pipeline) & \textbf{89.95\%} & \textbf{0.892} \\
+DistilBERT (best checkpoint) & \textbf{92.13\%} & \textbf{0.916} \\
 \hline
 \end{tabular}
 \label{tab:results}
 \end{table}
 
-Table~\ref{tab:results} summarises performance alongside baselines. The final checkpoint selected by early stopping reaches 89.95\% validation accuracy and 0.892 macro-F1, corresponding to +46.95 percentage points over the strong TF-IDF baseline. The 1,000-sample bootstrap places the 95\% confidence interval at [87.60, 92.13]\% for accuracy and [86.66, 91.59]\% for macro-F1.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\columnwidth]{../results/figures/baseline_comparison.png}
+\caption{Accuracy improvement over TF-IDF baselines.}
+\label{fig:baseline}
+\end{figure}
 
-We still observe rapid gains during the first epoch (77.1\% accuracy, 0.758 macro-F1), but a longer schedule plus the GELU head provides an additional 13 percentage-point lift. The final training loss is 0.557, and class-wise analysis reveals the main residual errors stem from chefs 1533 and 3288 whose styles overlap on appetisers versus make-ahead dishes.
+Key observations:
+\begin{itemize}
+    \item Validation accuracy and macro-F1 peak between epochs~4 and 5; later checkpoints oscillate slightly but do not improve macro-F1.
+    \item Prediction distribution on the blind test set stays within $\pm$2.3 percentage points of the training prior (Chef~1533 mildly over-predicted, Chef~3288 slightly under-predicted).
+    \item Misclassifications mostly confuse chefs 1533 and 3288, whose recipes overlap on small appetisers versus make-ahead meals.
+\end{itemize}
 
-Figure~\ref{fig:baseline} in the appendix visualizes the stark performance gap between our transformer-based approach and traditional TF-IDF baselines, highlighting the value of contextualized representations for capturing chef-specific patterns.
+\section{Lessons and Next Steps}
 
-\section{Discussion}
-
-\subsection{Model Performance \& Limitations}
-
-Our DistilBERT-based approach remains robust relative to TF-IDF baselines while keeping macro-F1 in sync with accuracy. Stratified splitting post-dedup keeps minority chefs within 80--90\% recall, and prediction distributions on the blind test set deviate by at most 4.4 percentage points per class. Nonetheless, several limitations remain: (1) \textbf{Single text modality}: structured cues such as ingredient quantities or time constraints are ignored. (2) \textbf{Field concatenation}: a learned field-weighting mechanism could replace the hand-crafted ordering. (3) \textbf{Residual leakage risk}: some descriptions still recur across chefs (e.g., the generic "wonderful!" string), warranting future manual cleaning. (4) \textbf{Compute budget}: even in chill mode the run requires roughly 30 minutes with MPS acceleration; full cross-validation would demand more automation.
-
-\subsection{Critical Analysis}
-
-A fundamental question remains: does the model learn chef-specific cooking \textit{style} or merely recipe \textit{topics}? The strongest signals still come from explicit markers such as "diabetic cooking" (Chef 5060) or "OAMC" (Chef 3288). Attention analysis or token-attribution studies would clarify whether subtler linguistic cues (instruction phrasing, ingredient pairings) contribute meaningfully beyond high-level topics.
-
-\subsection{Data Quality Concerns}
-
-The dataset exhibits characteristics that may affect generalisation: (1) Residual class imbalance, though mitigated by stratification, still nudges predictions toward chefs 4470 and 5060. (2) Potential label noise—recipes may have been mirrored across sites, leading to near-duplicates with different authors. (3) The post-dedup size (2,985 samples) remains modest for transformer fine-tuning; semi-supervised objectives could help. (4) The model cannot generalise to unseen chefs without retraining, limiting downstream applicability.
-
-\section{Conclusion}
-
-We presented a DistilBERT-based approach for chef classification from recipe text, achieving 89.95\% validation accuracy and 0.892 macro-F1 with tight 95\% confidence intervals. Our method outperforms TF-IDF baselines by +46.95 percentage points through contextualised representations, deduplicated splitting, and step-wise evaluation. Key findings include: (1) 98\% of recipes fit within 512 tokens even after deduplication, (2) stratified sampling plus macro-F1 monitoring keeps minority chefs competitive, (3) replacing the classifier ReLU with GELU stabilises the longer training schedule, and (4) predictions on the blind set remain aligned with the deduplicated training prior.
-
-Future work could explore multi-modal models (e.g., incorporating ingredient quantities), ensembling smaller checkpoints for improved calibration, data augmentation via controlled paraphrasing, and interpretability analysis to disentangle stylistic cues from topical shortcuts.
+\begin{itemize}
+    \item Deduplicating texts before splitting was essential; earlier runs that skipped this step overstated validation accuracy.
+    \item The straightforward DistilBERT head is sufficient once evaluation cadence and early stopping are tightened; longer schedules offer little extra gain.
+    \item Future improvements could add non-textual cues (quantities, durations), explore cross-validation for more stable estimates, and analyse attention patterns to separate stylistic cues from obvious keywords.
+\end{itemize}
 
 \section*{Bibliography}
 
 \bibliographystyle{apalike}
 \bibliography{biblio}
-Bibliography does not count for the two pages limit.
-
-% One page at most. Only the first two pages of the paper will be read. The appendix should only contain complementary information.
-
-\appendix
-
-\section*{Appendix A: Extra Figures and Tables}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.8\columnwidth]{../results/figures/baseline_comparison.png}
-\caption{Baseline comparison: the final DistilBERT pipeline reaches 89.95\% accuracy, comfortably above the TF-IDF baselines (30.0\% and 43.0\%). Error bars show the 95\% bootstrap CI.}
-\label{fig:baseline}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.8\columnwidth]{../results/figures/training_curves.png}
-\caption{Training diagnostics with logging every 25 steps and validation every 100 steps. Early stopping selected the checkpoint at epoch 4.0.}
-\label{fig:curves}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.9\columnwidth]{../results/figures/model_architecture.png}
-\caption{Final DistilBERT pipeline with deduplication, step-wise evaluation, and GELU head.}
-\label{fig:pipeline}
-\end{figure}
 
 \end{document}

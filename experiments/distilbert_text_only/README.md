@@ -52,7 +52,7 @@ python train.py --config ../../configs/base.yaml
 **Outputs**:
 - `artifacts/checkpoint-*`: Model checkpoints per epoch
 - `artifacts/final_model/`: Best model from training
-- `artifacts/final_metrics.txt`: Final accuracy and macro-F1 with bootstrap 95% CIs
+- `artifacts/final_metrics.txt`: Final accuracy and macro-F1 from the best checkpoint
 - `artifacts/logs/`: Training logs for tensorboard
 
 ### Generate Test Predictions
@@ -82,13 +82,13 @@ python predict.py \
 All hyperparameters are defined in `configs/base.yaml`:
 
 - **Model**: `distilbert-base-uncased` (66M parameters)
-- **Max Length**: 512 tokens (98.2% of samples fit)
+- **Max Length**: 512 tokens (covers 98% of deduplicated samples)
 - **Padding**: `longest` (dynamic per batch, saves memory)
 - **Batch Size**: 16 (train), 32 (eval) — chill-mode uses 8/16
 - **Learning Rate**: 2e-5 with AdamW
 - **Epochs**: 10 (early stopping patience 2 on macro-F1)
 - **Evaluation**: every 100 steps with checkpointing on the same cadence
-- **Metrics**: Accuracy (primary), Macro-F1 (secondary) + bootstrap confidence intervals
+- **Metrics**: Accuracy (primary), Macro-F1 (secondary)
 - **Split**: 80/20 stratified (critical for 2.17x class imbalance)
 
 ---
@@ -116,7 +116,7 @@ All hyperparameters are defined in `configs/base.yaml`:
 
 - **Base**: DistilBERT-base-uncased (66M params, 6 layers, 768 hidden)
 - **Head**: Single linear layer (768 → 6 classes)
-- **Activation**: GELU substituted in the classification head (replaces default ReLU)
+- **Activation**: ReLU in the classification head (matching the default DistilBERT setup)
 - **Loss**: CrossEntropyLoss (built into `AutoModelForSequenceClassification`)
 
 ### Training Strategy
@@ -125,7 +125,6 @@ All hyperparameters are defined in `configs/base.yaml`:
 - **Scheduler**: Linear warmup (6% of steps) + linear decay
 - **Early Stopping**: Patience=2 evaluations on `f1_macro`
 - **Checkpointing**: Save best model at evaluation cadence (every 100 steps)
-- **Uncertainty**: Bootstrap resampling (1,000 draws) for accuracy and macro-F1 confidence intervals
 - **Device**: Automatic MPS (Mac GPU) or CPU detection
 
 ---

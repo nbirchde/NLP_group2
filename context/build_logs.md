@@ -90,7 +90,7 @@
 
 ## 2025-10-07 (Codex)
 - Audited training data for leakage: dropped 14 duplicate recipes based on concatenated text and verified there is no overlap between train/validation splits after stratification.
-- Re-ran chill-mode training with the updated pipeline (batch 8/16, eval every 100 steps, GELU head) → early stopping at epoch ≈4 delivered 89.95% validation accuracy and 0.892 macro-F1 with 95% bootstrap confidence intervals saved in `artifacts/final_metrics.txt`.
+- Re-ran chill-mode training with the updated pipeline (batch 8/16, eval every 100 steps, default ReLU head) → early stopping at epoch ≈4 delivered 89.95% validation accuracy and 0.892 macro-F1 at the best checkpoint.
 - Refreshed inference outputs (`results.txt`) and computed new train vs. prediction distribution deltas (largest shift +4.4 pp for chef 1533).
 - Rebuilt `scripts/generate_visualizations.py` to ingest real artefacts (trainer_state, deduplicated dataset, predictions) and regenerated all figures (`baseline_comparison.png`, `training_curves.png`, `dataset_overview.png`, `distribution_comparison.png`, `metrics_summary.png`, `model_architecture.png`).
-- Updated documentation (README, experiment README, PREDICTION_ANALYSIS.md, LaTeX paper) to reflect deduplication, GELU head, new metrics, and confidence intervals.
+- Updated documentation (README, experiment README, PREDICTION_ANALYSIS.md, LaTeX paper) to reflect deduplication, revised metrics, and the new visualization sources.

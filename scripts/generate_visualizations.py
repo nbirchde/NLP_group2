@@ -5,7 +5,7 @@ This script rebuilds all figures used in the paper and slides directly from
 project artifacts so that plots always stay in sync with the final pipeline.
 It produces the following assets under ``results/figures``:
 
-* ``baseline_comparison.png`` – baselines vs. DistilBERT (with 95% CI)
+* ``baseline_comparison.png`` – baselines vs. DistilBERT
 * ``training_curves.png`` – training loss plus validation accuracy/F1 traces
 * ``dataset_overview.png`` – class balance, token lengths, field contributions
 * ``metrics_summary.png`` – one-page highlight of final metrics & key facts
@@ -224,9 +224,6 @@ def create_baseline_comparison_fig(final_metrics: dict[str, float]) -> plt.Figur
     weak_baseline = 30.0
     strong_baseline = 43.0
     final_accuracy = final_metrics.get("validation_accuracy", 0.0) * 100
-    acc_low = final_metrics.get("accuracy_95%_ci_low", final_accuracy / 100) * 100
-    acc_high = final_metrics.get("accuracy_95%_ci_high", final_accuracy / 100) * 100
-    ci_half_width = max(final_accuracy - acc_low, acc_high - final_accuracy, 0)
 
     methods = [
         "Weak Baseline\nTF-IDF (desc)",
@@ -239,19 +236,6 @@ def create_baseline_comparison_fig(final_metrics: dict[str, float]) -> plt.Figur
     fig, ax = plt.subplots(figsize=(8, 5))
     bars = ax.bar(methods, accuracies, color=colors, alpha=0.85, edgecolor="black")
 
-    # Add CI for DistilBERT
-    ax.errorbar(
-        x=2,
-        y=final_accuracy,
-        yerr=ci_half_width,
-        fmt="none",
-        ecolor="#1e8449",
-        elinewidth=2,
-        capsize=6,
-        capthick=2,
-        label="95% CI",
-    )
-
     for idx, (bar, acc) in enumerate(zip(bars, accuracies)):
         height = bar.get_height()
         ax.text(
@@ -263,22 +247,11 @@ def create_baseline_comparison_fig(final_metrics: dict[str, float]) -> plt.Figur
             fontsize=11,
             fontweight="bold",
         )
-        if idx == 2 and ci_half_width:
-            ax.text(
-                bar.get_x() + bar.get_width() / 2,
-                height - 7,
-                f"CI: [{acc_low:.1f}, {acc_high:.1f}]",
-                ha="center",
-                va="bottom",
-                fontsize=9,
-                color="#1e8449",
-            )
 
     ax.set_ylabel("Accuracy (%)", fontsize=12, fontweight="bold")
     ax.set_title("Performance vs. Baselines", fontsize=14, fontweight="bold")
     ax.set_ylim(0, 100)
     ax.grid(axis="y", alpha=0.25)
-    ax.legend(loc="upper left")
     return fig
 
 
@@ -450,10 +423,6 @@ def create_metrics_summary_fig(
     final_f1 = final_metrics.get("validation_f1-macro", 0) * 100 or final_metrics.get("validation_f1_macro", 0) * 100
     final_f1 = final_f1 if final_f1 else final_metrics.get("validation_f1_macro", 0) * 100
     final_loss = final_metrics.get("training_loss", 0)
-    acc_lo = final_metrics.get("accuracy_95%_ci_low", 0) * 100
-    acc_hi = final_metrics.get("accuracy_95%_ci_high", 0) * 100
-    f1_lo = final_metrics.get("macro-f1_95%_ci_low", 0) * 100
-    f1_hi = final_metrics.get("macro-f1_95%_ci_high", 0) * 100
 
     improvement = final_acc - 43.0
 
@@ -469,8 +438,8 @@ def create_metrics_summary_fig(
     ax.text(0.5, 0.92, "DistilBERT Chef Classification – Final Snapshot", ha="center", fontsize=18, fontweight="bold")
 
     text_lines = [
-        f"Validation accuracy: {final_acc:.2f}% (95% CI: {acc_lo:.2f} – {acc_hi:.2f})",
-        f"Macro-F1 score: {final_f1:.2f}% (95% CI: {f1_lo:.2f} – {f1_hi:.2f})",
+        f"Validation accuracy: {final_acc:.2f}%",
+        f"Macro-F1 score: {final_f1:.2f}%",
         f"Training loss: {final_loss:.4f}",
         f"Improvement over strong baseline (43%): +{improvement:.2f} pp",
         f"Duplicates removed before split: {duplicates_removed}",
@@ -500,7 +469,7 @@ def create_metrics_summary_fig(
         "Key evaluation choices:\n"
         "– Deduplicated by concatenated text before splitting\n"
         "– Step-wise evaluation every 100 steps with early stopping\n"
-        "– GELU classifier head + 1,000 bootstrap resamples for CIs\n"
+        "– ReLU classification head (DistilBERT default)\n"
         "– Chill-mode batch size 8 to stay within Mac GPU limits",
         fontsize=11,
         va="top",
@@ -589,7 +558,7 @@ def create_model_architecture_fig(config: TrainingConfig, removed_duplicates: in
         0.75,
         0.2,
         0.27,
-        "DistilBERT encoder\n+ GELU classifier head\n→ 6-way softmax",
+        "DistilBERT encoder\n+ ReLU classification head\n→ 6-way softmax",
         facecolor="#fbeef5",
         edgecolor="#c0392b",
     )

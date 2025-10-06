@@ -28,4 +28,4 @@ evaluation_strategy: epoch
 eval_steps: 0
 bootstrap_samples: 0
 bootstrap_seed: 42
-classifier_activation: gelu
+classifier_activation: relu
