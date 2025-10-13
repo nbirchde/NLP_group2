@@ -23,7 +23,7 @@ We fine-tune \texttt{distilbert-base-uncased} \cite{sanh2019distilbert} with the
 \section{Models}
 We turn every recipe into a single string in the order \textit{name $\rightarrow$ ingredients $\rightarrow$ tags $\rightarrow$ description $\rightarrow$ steps}. This layout keeps the short, informative parts at the front so that any truncation affects the long step lists first. The same concatenation is used for training, validation, and test prediction, and the overall flow is shown in Figure~\ref{fig:pipeline}.
 
-The classifier is the standard DistilBERT encoder with a 768$\rightarrow$768 pre-classifier, a dropout layer with $p=0.2$, and a final linear layer that produces six logits. We rely on the Hugging Face implementation for both the model and the fast uncased tokenizer. Dynamic padding keeps each batch as short as possible.
+The classifier is the standard DistilBERT encoder with a 768$\rightarrow$768 pre-classifier, a ReLU activation, a single dropout layer with $p=0.2$, and a final linear layer that produces six logits. We rely on the Hugging Face implementation for both the model and the fast uncased tokenizer. Dynamic padding keeps each batch as short as possible.
 
 \begin{figure}[t]
 \centering
@@ -34,7 +34,7 @@ The classifier is the standard DistilBERT encoder with a 768$\rightarrow$768 pre
 
 \section{Experimental Setup}
 \subsection{Datasets}
-After removing duplicates we stratify an 80/20 split with seed~42, producing 2{,}388 training and 597 validation recipes. The blind test file has 823 items. Median sequence length is 272 WordPiece tokens, the 95th percentile is 431, and 98.2\% fit below 512 tokens, so we keep DistilBERT's maximum length.
+After removing 14 duplicate texts we work with 2{,}985 unique recipes. Stratifying an 80/20 split with seed~42 yields 2{,}388 training and 597 validation samples, and the blind test file contains 823 items. When we tokenize the deduplicated corpus before any truncation, the median sequence length is 234 WordPiece tokens, the 95th percentile is 418, the maximum is 1{,}065, and 98.7\% of examples remain within 512 tokens, so we keep DistilBERT's default maximum length.
 
 \subsection{Metrics}
 Accuracy is the primary metric to match the grading rubric. We also track macro-F1, per-class precision, and per-class recall to ensure the minority chefs are not ignored.

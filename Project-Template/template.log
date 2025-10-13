@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.19)  13 OCT 2025 12:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.19)  13 OCT 2025 12:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -169,11 +169,11 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 24.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 24.
-<../results/figures/encoder.pdf, id=1, 396.64084pt x 401.60541pt>
+<../results/figures/encoder.pdf, id=1, 396.64084pt x 381.50932pt>
 File: ../results/figures/encoder.pdf Graphic file (type pdf)
 <use ../results/figures/encoder.pdf>
 Package pdftex.def Info: ../results/figures/encoder.pdf  used on input line 30.
-(pdftex.def)             Requested size: 229.5pt x 232.37978pt.
+(pdftex.def)             Requested size: 229.5pt x 220.75163pt.
 LaTeX Font Info:    Font shape `T1/fve/b/n' will be
 (Font)              scaled to size 10.79993pt on input line 36.
 
@@ -230,7 +230,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  57i,6n,65p,796b,309s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/bera/fveb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/bera/fver8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/bera/fver8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/bera/fvmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on template.pdf (3 pages, 738550 bytes).
+Output written on template.pdf (3 pages, 738541 bytes).
 PDF statistics:
  112 PDF objects out of 1000 (max. 8388607)
  70 compressed objects within 1 object stream
