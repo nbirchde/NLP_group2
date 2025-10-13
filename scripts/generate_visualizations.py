@@ -155,8 +155,7 @@ def compute_dataset_assets(config: TrainingConfig) -> dict[str, object]:
     encoded = tokenizer(
         dedup_df["text"].tolist(),
         padding=False,
-        truncation=True,
-        max_length=config.max_length,
+        truncation=False,
         return_length=True,
     )
     token_lengths = np.array(encoded["length"], dtype=int)

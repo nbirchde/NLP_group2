@@ -47,6 +47,10 @@ INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/graphics-def/pdftex.def
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/graphics-def/pdftex.def
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/enumitem/enumitem.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/enumitem/enumitem.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/caption/caption.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/caption/caption.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/caption/caption3.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/caption/caption3.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT ./template.aux
@@ -96,6 +100,12 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/bera/fveb8r.tfm
 INPUT ./template.bbl
 INPUT ./template.bbl
 INPUT template.bbl
+INPUT ../results/figures/dataset_overview.png
+INPUT ../results/figures/dataset_overview.png
+INPUT ../results/figures/dataset_overview.png
+INPUT ../results/figures/dataset_overview.png
+INPUT ../results/figures/dataset_overview.png
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/bera/fver8t.tfm
 INPUT ../results/figures/training_curves.png
 INPUT ../results/figures/training_curves.png
 INPUT ../results/figures/training_curves.png
@@ -106,6 +116,8 @@ INPUT ../results/figures/confusion_matrix.png
 INPUT ../results/figures/confusion_matrix.png
 INPUT ../results/figures/confusion_matrix.png
 INPUT ../results/figures/confusion_matrix.png
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/bera/fver8t.vf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/bera/fver8r.tfm
 INPUT template.aux
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb

@@ -5,16 +5,13 @@
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{enumitem}
+\usepackage{caption}
 
 % TITLE
 \title{Chef Attribution from Recipe Text with DistilBERT}
 
 % AUTHORS
-\author{Nicholas Birch de la Calle}
-\author{Gabriel Badan}
-\author{Javier [Last Name]}
-\author{Maxence [Last Name]}
-\affil{Group 2\\ Instituto Superior Técnico, Universidade de Lisboa}
+\author{Nicholas Birch de la Calle, Gabriel Bandan, Javier Sánchez Zárate, Maxence Bomo}
 
 \begin{document}
 
@@ -26,7 +23,7 @@ We fine-tune \texttt{distilbert-base-uncased} \cite{sanh2019distilbert} with the
 \section{Models}
 We turn every recipe into a single string in the order \textit{name $\rightarrow$ ingredients $\rightarrow$ tags $\rightarrow$ description $\rightarrow$ steps}. This layout keeps the short, informative parts at the front so that any truncation affects the long step lists first. The same concatenation is used for training, validation, and test prediction, and the overall flow is shown in Figure~\ref{fig:pipeline}.
 
-The classifier is the standard DistilBERT encoder with its default dropout--linear head (ReLU activation, 768$\rightarrow$768 projection, six logits). We rely on the Hugging Face implementation for both the model and the fast uncased tokenizer. Dynamic padding keeps each batch as short as possible.
+The classifier is the standard DistilBERT encoder with a 768$\rightarrow$768 pre-classifier, a dropout layer with $p=0.2$, and a final linear layer that produces six logits. We rely on the Hugging Face implementation for both the model and the fast uncased tokenizer. Dynamic padding keeps each batch as short as possible.
 
 \begin{figure}[t]
 \centering
@@ -60,22 +57,32 @@ Next steps include testing class-weighted loss or simple calibration to tighten 
 \bibliographystyle{apalike}
 \bibliography{biblio}
 
+\clearpage
 \appendix
-
+\onecolumn
 \section*{Appendix: Supporting Figures}
+\vspace{-0.3cm}
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.9\columnwidth]{../results/figures/training_curves.png}
-\caption{Training loss and validation accuracy/macro-F1 logged during fine-tuning (evaluation every 100 steps).}
-\label{fig:training_curves}
-\end{figure}
+% Use the full text width and explicit heights (fractions of \textheight)
+% so the three images together fill the page without creating floats.
+\begin{center}
+	\includegraphics[width=0.98\textwidth,height=0.33\textheight,keepaspectratio]{../results/figures/dataset_overview.png}
+	\captionof{figure}{\footnotesize Class distribution and token lengths.}
+	\label{fig:dataset_overview}
+\end{center}
+\vspace{0.15cm}
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.85\columnwidth]{../results/figures/confusion_matrix.png}
-\caption{Normalised validation confusion matrix for the best checkpoint.}
-\label{fig:confusion}
-\end{figure}
+\begin{center}
+	\includegraphics[width=0.98\textwidth,height=0.45\textheight,keepaspectratio]{../results/figures/training_curves.png}
+	\captionof{figure}{\footnotesize Training metrics over time.}
+	\label{fig:training_curves}
+\end{center}
+\vspace{0.15cm}
+
+\begin{center}
+	\includegraphics[width=0.45\textwidth,height=0.16\textheight,keepaspectratio]{../results/figures/confusion_matrix.png}
+	\captionof{figure}{\footnotesize Validation confusion matrix (normalized).}
+	\label{fig:confusion}
+\end{center}
 
 \end{document}

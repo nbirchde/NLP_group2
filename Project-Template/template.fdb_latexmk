@@ -1,17 +1,18 @@
 # Fdb version 4
-["bibtex template"] 1760351447.18749 "template.aux" "template.bbl" "template" 1760351663.3602 0
+["bibtex template"] 1760355424.87019 "template.aux" "template.bbl" "template" 1760355732.65234 0
   "./biblio.bib" 1760351025.64765 957 8394c5e14d19e706f8e64e3a48ce4c23 ""
   "/usr/local/texlive/2025/texmf-dist/bibtex/bst/base/apalike.bst" 1292289607 24635 604dafcc79f521a11ea73e506e1fbd98 ""
-  "template.aux" 1760351663.17677 1851 98554fabcc49c8b66222c5db0fd0de50 "pdflatex"
+  "template.aux" 1760355732.4723 2057 889b928e875c263a8ebdb56e09598215 "pdflatex"
   (generated)
   "template.bbl"
   "template.blg"
   (rewritten before read)
-["pdflatex"] 1760351662.47525 "/Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/Project-Template/template.tex" "template.pdf" "template" 1760351663.36032 0
+["pdflatex"] 1760355731.47894 "/Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/Project-Template/template.tex" "template.pdf" "template" 1760355732.65251 0
   "../results/figures/confusion_matrix.png" 1760350609.59316 143961 76a90c552e46aa9ae904b5b280cb30cf ""
+  "../results/figures/dataset_overview.png" 1760354272.40362 187930 6cd2a0d0d1bd421905182a899e66f62d ""
   "../results/figures/encoder.pdf" 1759759573.02833 77746 6c2da176b9d89ffdf148f68df45c75ec ""
-  "../results/figures/training_curves.png" 1759771676.85568 323360 cb6bd6cc1f2dc233d5b19c54b2647311 ""
-  "/Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/Project-Template/template.tex" 1760351662.29245 5273 0967d921ef48e135a0943d20a9ac3b35 ""
+  "../results/figures/training_curves.png" 1760354272.30175 323360 cb6bd6cc1f2dc233d5b19c54b2647311 ""
+  "/Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/Project-Template/template.tex" 1760355731.2843 5691 583b28c64e5f70a53f0bb909df4f33ac ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/ecrm1000.tfm" 1136768653 3584 adb004a0c8e7c46ee66cad73671f37b4 ""
@@ -51,6 +52,8 @@
   "/usr/local/texlive/2025/texmf-dist/tex/latex/bera/beraserif.sty" 1137109926 781 48c37ca64a11eecc4c87c38696c6f06d ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/bera/t1fve.fd" 1137109926 999 1f5eac544d64b1f0e70a72e0e1897720 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/bera/t1fvm.fd" 1137109926 819 be55b7e3c5cc7c059be8eb7852d712b5 ""
+  "/usr/local/texlive/2025/texmf-dist/tex/latex/caption/caption.sty" 1696191071 56128 c2ccf1a29d78c33bc553880402e4fb9a ""
+  "/usr/local/texlive/2025/texmf-dist/tex/latex/caption/caption3.sty" 1696191071 72619 ee90b6612147680fd73c3b1406a74245 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/enumitem/enumitem.sty" 1738874546 52272 63d293bc0d496619edb57585740861a2 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty" 1579991033 13886 d1306dcf79a944f6988e688c1785f9ce ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/graphics-cfg/graphics.cfg" 1465944070 1224 978390e9c2234eab29404bc21b268d1e ""
@@ -66,9 +69,9 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1745060723 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1745060667 3345734 96f6f7cc2ce50ab21d0c6db8f51fc67e ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "template.aux" 1760351663.17677 1851 98554fabcc49c8b66222c5db0fd0de50 "pdflatex"
-  "template.bbl" 1760351447.26979 791 36a26a873712705110ca31f043a85346 "bibtex template"
-  "template.tex" 1760351662.29245 5273 0967d921ef48e135a0943d20a9ac3b35 ""
+  "template.aux" 1760355732.4723 2057 889b928e875c263a8ebdb56e09598215 "pdflatex"
+  "template.bbl" 1760355424.95025 791 36a26a873712705110ca31f043a85346 "bibtex template"
+  "template.tex" 1760355731.2843 5691 583b28c64e5f70a53f0bb909df4f33ac ""
   (generated)
   "template.aux"
   "template.log"
