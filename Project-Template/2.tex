@@ -6,6 +6,9 @@
 \usepackage{graphicx}
 \usepackage{enumitem}
 \usepackage{caption}
+% Slight typographic tweaks and bibliography spacing control
+\usepackage{etoolbox}
+\usepackage{microtype}
 
 % TITLE
 \title{Chef Attribution from Recipe Text with DistilBERT}
@@ -55,7 +58,17 @@ Manual review of validation and test predictions highlights recurring cues: heal
 Next steps include testing class-weighted loss or simple calibration to tighten recall for chefs~1533 and~3288, running cross-validation to estimate variance beyond a single stratified split, and applying attention or gradient-based attribution to confirm the model exploits stylistic cues rather than only explicit keywords.
 
 \section*{Bibliography}
-
+% Reduce the vertical gap before the list and make the bibliography font
+% slightly smaller with tighter item spacing so it can fit without
+% creating an extra page when it's only marginally overfull.
+\vspace{-0.6em}
+% Apply compact settings to thebibliography environment
+\AtBeginEnvironment{thebibliography}{%
+	\small
+	\setlength{\itemsep}{0.2ex}%
+	\setlength{\parskip}{0pt}%
+	\setlength{\parsep}{0pt}%
+}
 \bibliographystyle{apalike}
 \bibliography{biblio}
 
@@ -68,21 +81,21 @@ Next steps include testing class-weighted loss or simple calibration to tighten 
 % Use the full text width and explicit heights (fractions of \textheight)
 % so the three images together fill the page without creating floats.
 \begin{center}
-	\includegraphics[width=0.98\textwidth,height=0.33\textheight,keepaspectratio]{../results/figures/dataset_overview.png}
+	\includegraphics[width=0.98\textwidth,height=0.30\textheight,keepaspectratio]{../results/figures/dataset_overview.png}
 	\captionof{figure}{\footnotesize Class distribution and token lengths.}
 	\label{fig:dataset_overview}
 \end{center}
 \vspace{0.15cm}
 
 \begin{center}
-	\includegraphics[width=0.98\textwidth,height=0.45\textheight,keepaspectratio]{../results/figures/training_curves.png}
+	\includegraphics[width=0.98\textwidth,height=0.40\textheight,keepaspectratio]{../results/figures/training_curves.png}
 	\captionof{figure}{\footnotesize Training metrics over time.}
 	\label{fig:training_curves}
 \end{center}
 \vspace{0.15cm}
 
 \begin{center}
-	\includegraphics[width=0.45\textwidth,height=0.16\textheight,keepaspectratio]{../results/figures/confusion_matrix.png}
+	\includegraphics[width=0.45\textwidth,height=0.13\textheight,keepaspectratio]{../results/figures/confusion_matrix.png}
 	\captionof{figure}{\footnotesize Validation confusion matrix (normalized).}
 	\label{fig:confusion}
 \end{center}

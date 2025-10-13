@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.19)  13 OCT 2025 13:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.19)  13 OCT 2025 14:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -95,40 +95,68 @@ Package caption Info: Standard document class detected.
 )
 \c@caption@flags=\count275
 \c@continuedfloat=\count276
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count277
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/microtype.sty
+Package: microtype 2025/02/11 v3.2a Micro-typographical refinements (RS)
+\MT@toks=\toks21
+\MT@tempbox=\box53
+\MT@count=\count278
+LaTeX Info: Redefining \noprotrusionifhmode on input line 1087.
+LaTeX Info: Redefining \leftprotrusion on input line 1088.
+\MT@prot@toks=\toks22
+LaTeX Info: Redefining \rightprotrusion on input line 1107.
+LaTeX Info: Redefining \textls on input line 1449.
+\MT@outer@kern=\dimen153
+LaTeX Info: Redefining \microtypecontext on input line 2053.
+LaTeX Info: Redefining \textmicrotypecontext on input line 2070.
+\MT@listname@count=\count279
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/microtype-pdftex.def
+File: microtype-pdftex.def 2025/02/11 v3.2a Definitions specific to pdftex (RS)
+LaTeX Info: Redefining \lsstyle on input line 944.
+LaTeX Info: Redefining \lslig on input line 944.
+\MT@outer@space=\skip54
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/microtype.cfg
+File: microtype.cfg 2025/02/11 v3.2a microtype main configuration file (RS)
+)
+LaTeX Info: Redefining \microtypesetup on input line 3065.
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count277
-\l__pdf_internal_box=\box53
+\l__color_backend_stack_int=\count280
+\l__pdf_internal_box=\box54
 ) (./2.aux)
 \openout1 = `2.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
  (/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count278
-\scratchdimen=\dimen153
-\scratchbox=\box54
-\nofMPsegments=\count279
-\nofMParguments=\count280
-\everyMPshowfont=\toks21
-\MPscratchCnt=\count281
-\MPscratchDim=\dimen154
-\MPnumerator=\count282
-\makeMPintoPDFobject=\count283
-\everyMPtoPDFconversion=\toks22
+\scratchcounter=\count281
+\scratchdimen=\dimen154
+\scratchbox=\box55
+\nofMPsegments=\count282
+\nofMParguments=\count283
+\everyMPshowfont=\toks23
+\MPscratchCnt=\count284
+\MPscratchDim=\dimen155
+\MPnumerator=\count285
+\makeMPintoPDFobject=\count286
+\everyMPtoPDFconversion=\toks24
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -137,45 +165,73 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
+LaTeX Info: Redefining \microtypecontext on input line 19.
+Package microtype Info: Applying patch `item' on input line 19.
+Package microtype Info: Applying patch `toc' on input line 19.
+Package microtype Info: Applying patch `eqnum' on input line 19.
+Package microtype Info: Applying patch `footnote' on input line 19.
+Package microtype Info: Applying patch `verbatim' on input line 19.
+LaTeX Info: Redefining \microtypesetup on input line 19.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using default protrusion set `alltext'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `alltext-nott'.
+LaTeX Info: Redefining \showhyphens on input line 19.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of interword spacing.
+Package microtype Info: No adjustment of character kerning.
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `fve' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/fve/m/n' will be
-(Font)              scaled to size 15.55188pt on input line 18.
+(Font)              scaled to size 15.55188pt on input line 21.
 LaTeX Font Info:    Font shape `T1/fve/m/n' will be
-(Font)              scaled to size 10.79993pt on input line 18.
+(Font)              scaled to size 10.79993pt on input line 21.
 LaTeX Font Info:    Font shape `T1/fve/m/n' will be
-(Font)              scaled to size 12.9599pt on input line 20.
+(Font)              scaled to size 12.9599pt on input line 23.
 LaTeX Font Info:    Font shape `T1/fve/b/n' will be
-(Font)              scaled to size 12.9599pt on input line 20.
-LaTeX Font Info:    Trying to load font information for T1+fvm on input line 21.
+(Font)              scaled to size 12.9599pt on input line 23.
+LaTeX Font Info:    Trying to load font information for T1+fvm on input line 24.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/bera/t1fvm.fd
 File: t1fvm.fd 2004/09/07 scalable font definitions for T1/fvm.
 )
 LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
-(Font)              scaled to size 8.99994pt on input line 21.
+(Font)              scaled to size 8.99994pt on input line 24.
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `fvm' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
 
-Underfull \hbox (badness 10000) in paragraph at lines 21--22
-\T1/fve/m/n/10 We fine-tune \T1/fvm/m/n/10 distilbert-base-uncased
+Underfull \hbox (badness 10000) in paragraph at lines 24--25
+\T1/fve/m/n/10 (+20) We fine-tune \T1/fvm/m/n/10 distilbert-base-uncased
  []
 
 
-Underfull \hbox (badness 1931) in paragraph at lines 21--22
-\T1/fve/m/n/10 pro-vided base-lines TF-IDF on the de-scrip-tion
+Underfull \hbox (badness 10000) in paragraph at lines 24--25
+\T1/fve/m/n/10 (+20) [[]] with the Hug-ging Face
  []
 
 LaTeX Font Info:    Font shape `T1/fve/m/it' in size <10> not available
-(Font)              Font shape `T1/fve/m/sl' tried instead on input line 24.
+(Font)              Font shape `T1/fve/m/sl' tried instead on input line 27.
 LaTeX Font Info:    Font shape `T1/fve/m/sl' will be
-(Font)              scaled to size 8.99994pt on input line 24.
+(Font)              scaled to size 8.99994pt on input line 27.
+(/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
+)
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 24.
+(Font)              <7> on input line 27.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 24.
+(Font)              <5> on input line 27.
 <../results/figures/encoder.pdf, id=1, 396.64084pt x 370.12779pt>
 File: ../results/figures/encoder.pdf Graphic file (type pdf)
 <use ../results/figures/encoder.pdf>
-Package pdftex.def Info: ../results/figures/encoder.pdf  used on input line 30.
+Package pdftex.def Info: ../results/figures/encoder.pdf  used on input line 33.
 (pdftex.def)             Requested size: 229.5pt x 214.16597pt.
 LaTeX Font Info:    Font shape `T1/fve/b/n' will be
-(Font)              scaled to size 10.79993pt on input line 36.
+(Font)              scaled to size 10.79993pt on input line 39.
 
 
 
@@ -189,39 +245,35 @@ Underfull \vbox (badness 2261) has occurred while \output is active []
 
 
 (./2.bbl
-Underfull \hbox (badness 1845) in paragraph at lines 4--7
-[]\T1/fve/m/n/10 Sanh, V., De-but, L., Chau-
- []
+LaTeX Font Info:    Font shape `T1/fve/m/n' will be
+(Font)              scaled to size 8.09995pt on input line 1.
+LaTeX Font Info:    Font shape `T1/fve/m/it' in size <9> not available
+(Font)              Font shape `T1/fve/m/sl' tried instead on input line 6.
+LaTeX Font Info:    Font shape `T1/fve/m/sl' will be
+(Font)              scaled to size 8.09995pt on input line 6.
+)
 
-
-
-[2])
-
+[2]
+<../results/figures/dataset_overview.png, id=62, 859.7721pt x 318.2289pt>
+File: ../results/figures/dataset_overview.png Graphic file (type png)
+<use ../results/figures/dataset_overview.png>
+Package pdftex.def Info: ../results/figures/dataset_overview.png  used on input line 84.
+(pdftex.def)             Requested size: 445.79839pt x 165.0041pt.
+LaTeX Font Info:    Font shape `T1/fve/m/n' will be
+(Font)              scaled to size 7.19995pt on input line 85.
+<../results/figures/training_curves.png, id=64, 1293.633pt x 322.3242pt>
+File: ../results/figures/training_curves.png Graphic file (type png)
+<use ../results/figures/training_curves.png>
+Package pdftex.def Info: ../results/figures/training_curves.png  used on input line 91.
+(pdftex.def)             Requested size: 459.60811pt x 114.51688pt.
+<../results/figures/confusion_matrix.png, id=65, 433.62pt x 361.35pt>
+File: ../results/figures/confusion_matrix.png Graphic file (type png)
+<use ../results/figures/confusion_matrix.png>
+Package pdftex.def Info: ../results/figures/confusion_matrix.png  used on input line 98.
+(pdftex.def)             Requested size: 85.80276pt x 71.5023pt.
 
 
 [3
-
-]
-<../results/figures/dataset_overview.png, id=65, 859.7721pt x 318.2289pt>
-File: ../results/figures/dataset_overview.png Graphic file (type png)
-<use ../results/figures/dataset_overview.png>
-Package pdftex.def Info: ../results/figures/dataset_overview.png  used on input line 71.
-(pdftex.def)             Requested size: 459.62587pt x 170.12209pt.
-LaTeX Font Info:    Font shape `T1/fve/m/n' will be
-(Font)              scaled to size 7.19995pt on input line 72.
-<../results/figures/training_curves.png, id=67, 1293.633pt x 322.3242pt>
-File: ../results/figures/training_curves.png Graphic file (type png)
-<use ../results/figures/training_curves.png>
-Package pdftex.def Info: ../results/figures/training_curves.png  used on input line 78.
-(pdftex.def)             Requested size: 459.60811pt x 114.51688pt.
-<../results/figures/confusion_matrix.png, id=68, 433.62pt x 361.35pt>
-File: ../results/figures/confusion_matrix.png Graphic file (type png)
-<use ../results/figures/confusion_matrix.png>
-Package pdftex.def Info: ../results/figures/confusion_matrix.png  used on input line 85.
-(pdftex.def)             Requested size: 105.59933pt x 87.99944pt.
-
-
-[4
 
 
  <../results/figures/dataset_overview.png> <../results/figures/training_curves.png> <../results/figures/confusion_matrix.png>] (./2.aux)
@@ -231,18 +283,18 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 3531 strings out of 473190
- 61997 string characters out of 5715800
- 453111 words of memory out of 5000000
- 26772 multiletter control sequences out of 15000+600000
- 585112 words of font info for 54 fonts, out of 8000000 for 9000
+ 5943 strings out of 473190
+ 101884 string characters out of 5715800
+ 521676 words of memory out of 5000000
+ 28991 multiletter control sequences out of 15000+600000
+ 604976 words of font info for 164 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,6n,65p,789b,309s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,6n,65p,1081b,343s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/bera/fveb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/bera/fver8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/bera/fver8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/bera/fvmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on 2.pdf (4 pages, 738911 bytes).
+Output written on 2.pdf (3 pages, 739353 bytes).
 PDF statistics:
- 115 PDF objects out of 1000 (max. 8388607)
- 72 compressed objects within 1 object stream
+ 112 PDF objects out of 1000 (max. 8388607)
+ 70 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 40981 words of extra memory for PDF output out of 42996 (max. 10000000)
 

@@ -1,18 +1,18 @@
 # Fdb version 4
-["bibtex 2"] 1760358539.61999 "2.aux" "2.bbl" "2" 1760358540.88526 0
+["bibtex 2"] 1760363443.03868 "2.aux" "2.bbl" "2" 1760363444.29522 0
   "./biblio.bib" 1760351025.64765 957 8394c5e14d19e706f8e64e3a48ce4c23 ""
   "/usr/local/texlive/2025/texmf-dist/bibtex/bst/base/apalike.bst" 1292289607 24635 604dafcc79f521a11ea73e506e1fbd98 ""
-  "2.aux" 1760358540.69303 2057 8d203de6c47891aedc2d9f5ad42b3fb1 "pdflatex"
+  "2.aux" 1760363444.13223 2057 889b928e875c263a8ebdb56e09598215 "pdflatex"
   (generated)
   "2.bbl"
   "2.blg"
   (rewritten before read)
-["pdflatex"] 1760358539.69895 "/Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/Project-Template/2.tex" "2.pdf" "2" 1760358540.88539 0
+["pdflatex"] 1760363443.11583 "/Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/Project-Template/2.tex" "2.pdf" "2" 1760363444.29534 0
   "../results/figures/confusion_matrix.png" 1760350609.59316 143961 76a90c552e46aa9ae904b5b280cb30cf ""
   "../results/figures/dataset_overview.png" 1760354272.40362 187930 6cd2a0d0d1bd421905182a899e66f62d ""
   "../results/figures/encoder.pdf" 1760357325.37514 77592 2147cf0882aa30b6a336611e18e98f55 ""
   "../results/figures/training_curves.png" 1760354272.30175 323360 cb6bd6cc1f2dc233d5b19c54b2647311 ""
-  "/Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/Project-Template/2.tex" 1760358537.0026 5989 a45e2cee53bafa6241efcdecc15d5ef2 ""
+  "/Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/Project-Template/2.tex" 1760363291.8326 6501 9909409e061276499ae67a8d94b33499 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/ecrm1000.tfm" 1136768653 3584 adb004a0c8e7c46ee66cad73671f37b4 ""
@@ -56,6 +56,7 @@
   "/usr/local/texlive/2025/texmf-dist/tex/latex/caption/caption3.sty" 1696191071 72619 ee90b6612147680fd73c3b1406a74245 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/enumitem/enumitem.sty" 1738874546 52272 63d293bc0d496619edb57585740861a2 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty" 1579991033 13886 d1306dcf79a944f6988e688c1785f9ce ""
+  "/usr/local/texlive/2025/texmf-dist/tex/latex/etoolbox/etoolbox.sty" 1739306980 46850 d87daedc2abdc653769a6f1067849fe0 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/graphics-cfg/graphics.cfg" 1465944070 1224 978390e9c2234eab29404bc21b268d1e ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/graphics-def/pdftex.def" 1713382759 19440 9da9dcbb27470349a580fca7372d454b ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/graphics.sty" 1730496337 18363 dee506cb8d56825d8a4d020f5d5f8704 ""
@@ -64,14 +65,18 @@
   "/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/trig.sty" 1717359999 4023 2c9f39712cf7b43d3eb93a8bbd5c8f67 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def" 1716410060 29785 9f93ab201fe5dd053afcc6c1bcf7d266 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg" 1279039959 678 4792914a8f45be57bb98413425e4c7af ""
+  "/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/microtype-pdftex.def" 1739394495 49650 26a5e891c8da4553198575ba0517c0e5 ""
+  "/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/microtype.cfg" 1739394495 27015 bd167d0154f271c424b157d8894ae4a4 ""
+  "/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/microtype.sty" 1739394495 102775 6624742dafeb6f262a13657f9f77f048 ""
+  "/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/mt-cmr.cfg" 1739394495 22906 b0be544692bb405a84d147a96af5d777 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/preprint/authblk.sty" 1368488610 7016 985a983ce041cc8959cd31133cba0244 ""
   "/usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf" 1739380943 42148 61becc7c670cd061bb319c643c27fdd4 ""
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1745060723 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1745060667 3345734 96f6f7cc2ce50ab21d0c6db8f51fc67e ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "2.aux" 1760358540.69303 2057 8d203de6c47891aedc2d9f5ad42b3fb1 "pdflatex"
-  "2.bbl" 1760358539.69743 791 36a26a873712705110ca31f043a85346 "bibtex 2"
-  "2.tex" 1760358537.0026 5989 a45e2cee53bafa6241efcdecc15d5ef2 ""
+  "2.aux" 1760363444.13223 2057 889b928e875c263a8ebdb56e09598215 "pdflatex"
+  "2.bbl" 1760363443.11401 791 36a26a873712705110ca31f043a85346 "bibtex 2"
+  "2.tex" 1760363291.8326 6501 9909409e061276499ae67a8d94b33499 ""
   (generated)
   "2.aux"
   "2.log"
