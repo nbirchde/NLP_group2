@@ -2,8 +2,8 @@ PWD /Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/Project-Te
 INPUT /usr/local/texlive/2025/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/Project-Template/template.tex
-OUTPUT template.log
+INPUT /Users/nicholasbirchdelacalle/Documents/NL/NLP_project/NLP_group2/Project-Template/2.tex
+OUTPUT 2.log
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/base/size10.clo
@@ -53,10 +53,10 @@ INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/caption/caption3.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/caption/caption3.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-INPUT ./template.aux
-INPUT ./template.aux
-INPUT template.aux
-OUTPUT template.aux
+INPUT ./2.aux
+INPUT ./2.aux
+INPUT 2.aux
+OUTPUT 2.aux
 INPUT /usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -78,7 +78,7 @@ INPUT ../results/figures/encoder.pdf
 INPUT ../results/figures/encoder.pdf
 INPUT ../results/figures/encoder.pdf
 INPUT ../results/figures/encoder.pdf
-OUTPUT template.pdf
+OUTPUT 2.pdf
 INPUT ../results/figures/encoder.pdf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/bera/fveb8t.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/bera/fver8t.vf
@@ -97,9 +97,9 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/bera/fvero8t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/bera/fvero8r.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/bera/fveb8t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/bera/fveb8r.tfm
-INPUT ./template.bbl
-INPUT ./template.bbl
-INPUT template.bbl
+INPUT ./2.bbl
+INPUT ./2.bbl
+INPUT 2.bbl
 INPUT ../results/figures/dataset_overview.png
 INPUT ../results/figures/dataset_overview.png
 INPUT ../results/figures/dataset_overview.png
@@ -118,7 +118,7 @@ INPUT ../results/figures/confusion_matrix.png
 INPUT ../results/figures/confusion_matrix.png
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/bera/fver8t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/bera/fver8r.tfm
-INPUT template.aux
+INPUT 2.aux
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb

@@ -1,56 +1,31 @@
-# 🤖 NLP Group 2 - Chef Classification Project
+# Chef Classification (Group 2)
 
-**Goal**: Build a model that predicts which chef created a recipe based on recipe features.
+DistilBERT-based classifier that assigns each recipe in the provided dataset to one of six chefs.  
+All code runs on Python 3.10+ and was tested on macOS with Apple Silicon (MPS) acceleration.
 
-**Team**: 4 people | **Deadline**: October 15, 2025 | **Language**: Python 3
-
----
-
-## 🎯 Final Results
-
-| Metric | Score |
-|--------|-------|
-| **Validation Accuracy** | **92.13%** |
-| **Macro-F1 Score** | **91.63%** |
-| Train Loss | 0.4497 |
-
-**Baseline Comparisons**:
-- Weak baseline (TF-IDF on description): 30.0% → **+62.13 pp improvement** ✅
-- Strong baseline (TF-IDF on all fields): 43.0% → **+49.13 pp improvement** ✅
-
-**Model**: DistilBERT-base-uncased with deduplicated split, chill-mode training (batch 8/16) and early stopping at the best validation macro-F1
-
----
-
-## 📊 The Challenge
-
-- **Dataset**: Recipe data with features (name, tags, steps, description, ingredients, etc.)
-- **Task**: Multi-class classification (6 chefs)
-- **Metric**: Accuracy
-- **Training**: `data/train.csv` (2,999 recipes with labels)
-- **Test**: `data/test-no-labels.csv` (predict these!)
-
----
-
-## 🚀 Quick Start
-
-### Training
+## 1. Setup
 
 ```bash
-# 1. Install dependencies (once)
-pip install transformers datasets torch accelerate scikit-learn seaborn matplotlib
-
-# 2. Smoke test (1 quick epoch)
-python experiments/distilbert_text_only/train.py --config configs/quick_test.yaml
-
-# 3. Final pipeline (chill mode, ~30 min, early stops around epoch 4)
-./train_chill.sh
-
-# Inspect metrics
-cat experiments/distilbert_text_only/artifacts/final_metrics.txt
+python -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install torch transformers datasets accelerate scikit-learn pandas numpy matplotlib seaborn
 ```
 
-### Generate Test Predictions
+The training and test CSV files (`data/train.csv`, `data/test-no-labels.csv`) must be in place before running the scripts.
+
+## 2. Train the model
+
+```bash
+python experiments/distilbert_text_only/train.py --config configs/chill_mode.yaml
+```
+
+Outputs:
+- Fine-tuned model: `experiments/distilbert_text_only/artifacts/final_model/`
+- Metrics summary: `experiments/distilbert_text_only/artifacts/final_metrics.txt`
+- Training log: `experiments/distilbert_text_only/chill_training.log`
+
+## 3. Generate test predictions
 
 ```bash
 python experiments/distilbert_text_only/predict.py \
@@ -59,105 +34,15 @@ python experiments/distilbert_text_only/predict.py \
   --output results.txt
 ```
 
----
+The `results.txt` file contains one chef ID per test recipe and is ready for submission.
 
-## 🧊 Thermal-Friendly Training (Optional)
-
-- `configs/chill_mode.yaml`: lower batch size (8/16) for gentler runs
-- `train_chill.sh`: wraps the chill config with `nice` priority and logs to `experiments/distilbert_text_only/chill_training.log`
-
-Manual invocation:
-
-```bash
-source .venv/bin/activate
-nice -n 15 python experiments/distilbert_text_only/train.py --config configs/chill_mode.yaml
-```
-
----
-
-## 📈 Visualizations & Presentation
-
-**Generate Publication-Quality Figures**:
-```bash
-# Install visualization dependencies
-python scripts/install_viz_deps.py
-
-# Generate all figures
-python scripts/generate_visualizations.py
-```
-
-**Output** (`results/figures/`):
-- `baseline_comparison.png` - Baselines vs. final model
-- `training_curves.png` - Train loss + validation accuracy/F1 across steps
-- `dataset_overview.png` - Updated class distribution, token stats, field shares
-- `distribution_comparison.png` - Train vs. test prediction proportions (dedup aware)
-- `metrics_summary.png` - One-page highlight of results and distributions
-
-**Presentation**:
-- Markdown slides: `presentation/PRESENTATION.md`
-- Includes all key results, architecture, challenges, and discussion
-
----
-
-## 📂 Project Structure
+## 4. Repository map
 
 ```
-├── data/                    # Training & test datasets
-├── experiments/             # Implementation & testing
-│   └── distilbert_text_only/
-│       ├── train.py        # Training script
-│       ├── predict.py      # Test set inference
-│       └── artifacts/      # Trained models & checkpoints
-├── configs/                # Training configurations
-│   ├── base.yaml          # Full-speed training
-│   ├── chill_mode.yaml    # Mac-friendly settings
-│   └── quick_test.yaml    # 1-epoch validation
-├── scripts/                # Utility scripts
-│   └── generate_visualizations.py
-├── presentation/           # Slide deck
-├── decisions/             # Team decisions & analysis
-├── research/              # Research phase notes
-├── results/               # Figures & predictions
-└── Project-Template/      # LaTeX paper
+configs/                 YAML configs used by train.py
+experiments/distilbert_text_only/train.py   main training script
+experiments/distilbert_text_only/predict.py inference script
+src/                    data loading, tokenisation, and model helpers
+results/figures/        generated plots for the report
+Project-Template/       LaTeX sources for the two-page paper
 ```
-
----
-
-## 📝 Deliverables
-
-1. **Code**: Training & prediction scripts ✅
-2. **Model**: Fine-tuned DistilBERT (90.17% accuracy) ✅
-3. **Results**: `results.txt` with predicted chef_ids for test set ⏳
-4. **Paper**: 2-page report with results & analysis ⏳
-5. **Visualizations**: Publication-quality figures ✅
-6. **Presentation**: Slide deck with all findings ✅
-
----
-
-## 💡 Key Features
-
-- **Chill Mode Training** 🌡️: Mac-friendly config that keeps your computer cool
-- **Dry-Run Testing** 🔍: Validate setup before full training
-- **Modular Config System** ⚙️: YAML-based hyperparameter management
-- **Complete Documentation** 📚: README, experiment guide, build log
-- **Professional Visualizations** 📊: Publication-ready figures
-- **Git-Safe** 🔒: Large files excluded from version control
-
----
-
-## 📚 Documentation & Assets
-
-- **Training Guide**: `experiments/distilbert_text_only/README.md`
-- **Dataset Analysis**: `decisions/dataset_analysis/DATASET_ANALYSIS.md`
-- **Research Notes**: `research/` (team rationale and experiments)
-- **Build Log**: `context/build_logs.md`
-- **Slide Deck**: `presentation/PRESENTATION.md`
-- **Paper Template**: `Project-Template/template.tex`
-
----
-
-## 🏆 Team
-
-NLP Group 2 - Building context together! 🚀
-
-**Remember**: Write everything down - we're creating a comprehensive knowledge base.

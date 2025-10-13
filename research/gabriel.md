@@ -1,3 +1,0 @@
-# Gabriel's Research
-
-TODO

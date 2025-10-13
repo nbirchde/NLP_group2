@@ -42,6 +42,8 @@ Accuracy is the primary metric to match the grading rubric. We also track macro-
 \subsection{Parameters/Hyperparameters}
 Training uses AdamW with learning rate $2\times10^{-5}$, weight decay 0.01, gradient clipping at 1.0, and a linear warm-up over 6\% of the steps. Batch sizes are 8 for training and 16 for evaluation with dynamic padding. We evaluate every 100 optimisation steps and stop after two non-improving macro-F1 scores, keeping the best checkpoint. All random seeds are set to 42.
 
+All scripts, configuration files, and experiment artefacts are version-controlled in our Git repository.
+
 \section{Results}
 \label{sec:results}
 The best checkpoint (training step~1{,}300) reaches 92.13\% validation accuracy, macro-F1~0.916, and training loss~0.45. Every class has precision above 0.85 and recall in $[0.862, 0.972]$. Appendix Figure~\ref{fig:training_curves} plots the training and validation curves, while the normalised confusion matrix in Appendix Figure~\ref{fig:confusion} shows the minority chefs (1533 and 6357) are rarely mislabelled as the majority chef (4470). On the blind test set, predicted class proportions stay within $\pm$2.3 percentage points of the training priors, suggesting the model generalises rather than memorising class frequencies.
