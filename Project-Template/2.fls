@@ -51,6 +51,10 @@ INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/caption/caption.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/caption/caption.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/caption/caption3.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/caption/caption3.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/url/url.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/url/url.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/microtype/microtype.sty
@@ -94,6 +98,14 @@ INPUT ../results/figures/encoder.pdf
 OUTPUT 2.pdf
 INPUT ../results/figures/encoder.pdf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/bera/fveb8t.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/bera/fver8t.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/bera/fvmr8t.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr6.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/bera/fver8t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/bera/fver8r.tfm
 INPUT /usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map
@@ -110,6 +122,10 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/bera/fvero8t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/bera/fvero8r.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/bera/fveb8t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/bera/fveb8r.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/bera/fver8t.vf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/bera/fver8r.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/bera/fvmr8t.vf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/bera/fvmr8r.tfm
 INPUT ./2.bbl
 INPUT ./2.bbl
 INPUT 2.bbl
@@ -124,7 +140,6 @@ INPUT ../results/figures/dataset_overview.png
 INPUT ../results/figures/dataset_overview.png
 INPUT ../results/figures/dataset_overview.png
 INPUT ../results/figures/dataset_overview.png
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/bera/fver8t.tfm
 INPUT ../results/figures/training_curves.png
 INPUT ../results/figures/training_curves.png
 INPUT ../results/figures/training_curves.png
@@ -135,8 +150,6 @@ INPUT ../results/figures/confusion_matrix.png
 INPUT ../results/figures/confusion_matrix.png
 INPUT ../results/figures/confusion_matrix.png
 INPUT ../results/figures/confusion_matrix.png
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/bera/fver8t.vf
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/bera/fver8r.tfm
 INPUT 2.aux
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
