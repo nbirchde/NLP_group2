@@ -1,21 +1,24 @@
 \relax 
-\@writefile{toc}{\contentsline {section}{\numberline {1}Problem Setting}{1}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2}Data Preparation}{1}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3}Model and Optimisation Choices}{1}{}\protected@file@percent }
+\citation{sanh2019distilbert}
+\citation{wolf2020transformers}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Models}{1}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Experimental Setup}{1}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Datasets}{1}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Metrics}{1}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Parameters/Hyperparameters}{1}{}\protected@file@percent }
 \bibstyle{apalike}
 \bibdata{biblio}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Results and Analysis}{2}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Validation metrics compared with TF-IDF baselines.}}{2}{}\protected@file@percent }
-\newlabel{tab:results}{{1}{2}{}{table.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Design Rationale and Future Work}{2}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces DistilBERT text-only pipeline from concatenated recipe fields to chef prediction.}}{3}{}\protected@file@percent }
-\newlabel{fig:pipeline}{{1}{3}{}{figure.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Training loss plus validation accuracy and macro-F1 logged every 25 steps (evaluation every 100).}}{4}{}\protected@file@percent }
-\newlabel{fig:training_curves}{{2}{4}{}{figure.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Deduplicated class counts (left) and token length histogram (right).}}{4}{}\protected@file@percent }
-\newlabel{fig:dataset_overview}{{3}{4}{}{figure.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Training distribution (left) vs. blind test predictions (right).}}{4}{}\protected@file@percent }
-\newlabel{fig:dist_comparison}{{4}{4}{}{figure.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Accuracy gap between TF-IDF baselines and the final DistilBERT pipeline.}}{5}{}\protected@file@percent }
-\newlabel{fig:baseline}{{5}{5}{}{figure.5}{}}
-\gdef \@abspage@last{5}
+\bibcite{sanh2019distilbert}{Sanh et~al., 2019}
+\bibcite{wolf2020transformers}{Wolf et~al., 2020}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Data flow from raw fields to chef prediction.}}{2}{}\protected@file@percent }
+\newlabel{fig:pipeline}{{1}{2}{}{figure.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Results}{2}{}\protected@file@percent }
+\newlabel{sec:results}{{4}{2}{}{section.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Future Work}{2}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Training loss and validation accuracy/macro-F1 logged during fine-tuning (evaluation every 100 steps).}}{3}{}\protected@file@percent }
+\newlabel{fig:training_curves}{{2}{3}{}{figure.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Normalised validation confusion matrix for the best checkpoint.}}{3}{}\protected@file@percent }
+\newlabel{fig:confusion}{{3}{3}{}{figure.3}{}}
+\gdef \@abspage@last{3}

@@ -1,3 +1,13 @@
 \begin{thebibliography}{}
 
+\bibitem[Sanh et~al., 2019]{sanh2019distilbert}
+Sanh, V., Debut, L., Chaumond, J., and Wolf, T. (2019).
+\newblock Distilbert, a distilled version of bert: smaller, faster, cheaper and lighter.
+\newblock In {\em NeurIPS 2019 Workshop on Energy Efficient Machine Learning and Cognitive Computing}.
+
+\bibitem[Wolf et~al., 2020]{wolf2020transformers}
+Wolf, T., Debut, L., Sanh, V., Chaumond, J., Delangue, C., Moi, A., Cistac, P., Rault, T., Louf, R., Funtowicz, M., and Brew, J. (2020).
+\newblock Transformers: State-of-the-art natural language processing.
+\newblock In {\em Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing: System Demonstrations}, pages 38--45. Association for Computational Linguistics.
+
 \end{thebibliography}
